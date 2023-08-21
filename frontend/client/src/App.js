@@ -56,7 +56,7 @@ function App() {
           <div className="location">
             <p>dallas</p>
           </div>
-          <div className="temp">
+          <div className="temperature">
             <h1>32</h1>
           </div>
           <div className="description">
