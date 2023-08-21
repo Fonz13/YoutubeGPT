@@ -1,0 +1,2708 @@
+0.48 4.64 hello friends today we are gonna create 
+2.8 4.72 this beautiful chat application using 
+5.12 5.36 react and firebase 
+7.52 5.76 we will be able to create a new user 
+10.48 2.8 or login 
+14.0 5.76 after that we will see this chat page 
+16.8 5.84 there are the latest conversations here 
+19.76 5.92 we can click on them to see messages 
+22.64 4.639 or search for any user to start a new 
+25.68 5.439 conversation 
+27.279 7.361 i can send a text i can send an image 
+31.119 6.001 and all these operations are real time 
+34.64 6.0 let's log into the second user's chat 
+37.12 3.52 and see how fast it is 
+41.36 4.64 and also if someone else writes anything 
+44.0 4.64 to us we are gonna see it here 
+46.0 5.199 immediately with the latest message 
+48.64 4.32 it's a perfect project to learn react 
+51.199 3.04 and the latest version of google 
+52.96 3.759 firebase 
+54.239 5.521 and finally we are gonna deploy this 
+56.719 6.0 application using a hosting service to 
+59.76 4.88 do that we'll be using hostinger it's my 
+62.719 4.72 favorite hosting provider and the 
+64.64 5.76 sponsor of this video i've been using 
+67.439 6.241 their services for two years and never 
+70.4 5.84 had a single issue i've deployed all my 
+73.68 5.52 websites on their servers and they are 
+76.24 6.0 really fast you can use just one hosting 
+79.2 5.84 for many websites and also you are gonna 
+82.24 6.48 get a free domain and free ssl 
+85.04 6.24 certificate at this price it's amazing 
+88.72 5.92 and if you have some large applications 
+91.28 6.32 that require more memory and more space 
+94.64 5.439 you can prefer a vps server 
+97.6 5.04 after selecting the best option for you 
+100.079 5.441 choose your time period here and if you 
+102.64 5.92 use the link in the description below or 
+105.52 5.84 lamadev coupon code here you are gonna 
+108.56 5.28 get an extra discount 
+111.36 4.719 after choosing the payment methods and 
+113.84 4.0 purchasing you are gonna redirect it to 
+116.079 4.64 hostinger panel 
+117.84 4.559 so let's claim our free domain and set 
+120.719 5.36 up our hosting 
+122.399 3.68 i'm gonna write a domain name 
+126.159 6.08 after the registration it's ready to use 
+129.679 4.801 so let's set up the hosting 
+132.239 5.201 build a website 
+134.48 6.16 i'll start from scratch 
+137.44 6.32 and choose my new domain 
+140.64 5.52 and we can finish this setup 
+143.76 5.28 it's gonna take a while and right after 
+146.16 5.439 that you are gonna see your h panel 
+149.04 6.16 it's really user friendly you can manage 
+151.599 6.72 your domains your folders and files 
+155.2 5.759 and this file manager is my favorite 
+158.319 4.56 you are gonna see how easy to deploy any 
+160.959 5.201 website in a minute 
+162.879 8.36 so if you are ready let's create our app 
+166.16 5.079 and deploy it here using this manager 
+173.28 4.959 okay if you created a new folder let's 
+176.4 4.479 get started firstly we are going to 
+178.239 6.161 install a react app to do that of course 
+180.879 5.201 you can use mpx create react app but if 
+184.4 3.6 you do that there will be many 
+186.08 3.84 unnecessary files here you are going to 
+188.0 5.28 waste your time deleting all those 
+189.92 5.16 folders and files instead you can use my 
+193.28 5.679 github repository 
+195.08 6.439 youtube2022 and here as you can see 
+198.959 4.56 there is a branch which is react mini we 
+201.519 3.921 are going to install this branch to do 
+203.519 3.36 that i'm going to come here and copy 
+205.44 2.96 this link 
+206.879 4.0 and i will say 
+208.4 6.479 git clone we are going to install only 
+210.879 6.801 one branch so i will say single branch 
+214.879 5.201 and it's gonna be react mini 
+217.68 5.199 and i'm gonna paste my link and finally 
+220.08 5.6 i will say dot that because i want to 
+222.879 4.961 install everything in this folder 
+225.68 4.16 i will enter 
+227.84 4.479 and as you can see they are here but we 
+229.84 5.2 don't have our node modules to install 
+232.319 4.961 our libraries i will just say yarn or if 
+235.04 3.68 you are using npm you can say npm 
+237.28 4.08 install 
+238.72 4.799 it's gonna take a while but before let's 
+241.36 4.079 see what we are gonna create 
+243.519 3.92 as you can see when we visit our 
+245.439 3.121 application we are gonna see this login 
+247.439 4.0 page 
+248.56 4.64 and also there is a register page and if 
+251.439 4.08 there is a user we are gonna see the 
+253.2 5.2 home page but before let's create this 
+255.519 4.96 register and login page as you can see 
+258.4 4.56 it's ready 
+260.479 4.881 and if you check inside as you can see 
+262.96 5.92 it's really clean there is nothing 
+265.36 6.16 unnecessary it's perfect for beginning 
+268.88 5.52 i will say yarn start 
+271.52 4.16 and this is our application let's create 
+274.4 2.799 here 
+275.68 3.68 pages 
+277.199 3.641 and inside we are gonna have 
+279.36 5.839 login 
+280.84 7.4 page register page 
+285.199 5.681 and home page 
+288.24 4.959 let's close this and create register 
+290.88 2.319 page 
+293.6 4.24 i'm gonna call this component here 
+300.32 4.64 okay it's here perfect let's see what we 
+303.039 4.081 are gonna have firstly we are gonna have 
+304.96 4.0 a container here we are gonna give this 
+307.12 4.16 background color and after that we are 
+308.96 4.32 gonna create this dropper we will give 
+311.28 5.6 some padding it's gonna be white 
+313.28 5.12 backgrounds and other elements inside 
+316.88 6.08 let's do that 
+318.4 7.44 let me close this sidebar and terminal 
+322.96 6.64 okay let's come here i will say class 
+325.84 6.16 name is gonna be form container 
+329.6 5.76 actually let's use it like that and 
+332.0 3.36 inside one more div 
+335.68 5.359 and it's gonna be form wrapper 
+339.039 3.281 and inside this we are going to create 
+341.039 2.961 our form 
+342.32 3.76 let's check 
+344.0 3.6 it's going to include of course it's a 
+346.08 3.839 register page 
+347.6 5.439 it's going to include four inputs three 
+349.919 6.0 of them are text inputs and this one is 
+353.039 5.681 file input when we click this as you can 
+355.919 5.521 see it's opening folders 
+358.72 2.72 let's do that 
+362.479 8.401 input text input email input password 
+368.16 5.039 and input file let's give some 
+370.88 5.68 placeholder 
+373.199 3.361 it's gonna be display name 
+376.8 3.0 email 
+380.8 5.119 and password 
+382.8 5.839 and there is a logo here and a title 
+385.919 5.521 small title i forgot them before this 
+388.639 4.4 form i'm gonna add them so i will say 
+391.44 4.4 spam 
+393.039 6.88 let's say llama chat 
+395.84 6.639 and one more and it's gonna be register 
+399.919 4.321 and let's say title for example and 
+402.479 4.16 after this input 
+404.24 4.56 i'm gonna create a button 
+406.639 5.201 and it's going to say sign up 
+408.8 3.92 and finally there is a text here let's 
+411.84 3.84 say 
+412.72 4.8 p tag and this text 
+415.68 4.0 of course we are going to use link here 
+417.52 4.48 but we are not going to use anchor tag 
+419.68 4.48 after when we install react rather than 
+422.0 3.84 we are gonna see this link here let's 
+424.16 3.68 check our app 
+425.84 3.68 okay they are here by the way there is 
+427.84 3.6 no button 
+429.52 5.28 i didn't save 
+431.44 6.08 okay it's here and it's here let's give 
+434.8 5.119 background color for the container and 
+437.52 7.119 and center this wrapper to do that you 
+439.919 7.201 can use css but i want to use sas here 
+444.639 4.801 our application is not that big i think 
+447.12 5.28 we can write everything inside one css 
+449.44 6.479 file and using sas is the better option 
+452.4 4.88 here i think i'll say yarn add or npm 
+455.919 3.68 install 
+457.28 2.319 sass 
+460.0 3.919 let's create our file here 
+462.8 3.28 i will say 
+463.919 3.68 style.scss 
+466.08 5.679 and we are going to use this fire 
+467.599 4.16 everywhere so i can import this here 
+472.319 3.0 style.scss 
+476.479 5.921 okay 
+477.52 4.88 what was our cast name container 
+483.28 4.72 firstly let's give our background color 
+485.599 3.44 it's gonna be this blue color 
+488.0 4.0 like that 
+489.039 5.921 i want to make this a hundred percent 
+492.0 5.199 i'll say h 103h 
+494.96 5.28 so it's going to be full screen and to 
+497.199 5.601 center them i'm going to use flexbox i 
+500.24 4.72 will say display flex 
+502.8 5.44 align item center 
+504.96 6.0 is gonna center vertically and 
+508.24 5.76 just fly content center is gonna center 
+510.96 5.36 horizontally okay perfect i can do the 
+514.0 4.88 same thing for this form but this time 
+516.32 5.68 i'm gonna use flex direction column that 
+518.88 6.719 because they are going to be vertical 
+522.0 3.599 let's say wrapper first 
+525.92 5.039 and this is the best feature of sas you 
+528.72 4.559 can write your children inside your 
+530.959 4.721 parents and it prevents a lot of 
+533.279 4.081 conflict i highly recommend you to use 
+535.68 5.279 it and 
+537.36 6.32 what i was saying okay form 
+540.959 5.601 i will say display flex again but the 
+543.68 5.279 extraction will be called 
+546.56 6.64 let's give some space between them 
+548.959 6.241 i will say gap 15 pixels like that 
+553.2 4.56 let's give background color for this 
+555.2 4.4 wrapper and some padding inside 
+557.76 3.68 i will say background color it's going 
+559.6 4.56 to be white 
+561.44 6.0 and padding will be 20 from top and 
+564.16 5.76 bottom 60 from left and right 
+567.44 4.8 like that i can give some border radius 
+569.92 4.64 here and again for the xbox and give 
+572.24 4.56 some space between them firstly i will 
+574.56 4.0 say border radius is going to be 10 
+576.8 4.88 pixels 
+578.56 7.44 display flags flag extraction column 
+581.68 7.52 and gap will be 10 pixels 
+586.0 5.12 like that perfect but let's center them 
+589.2 4.8 align item center 
+591.12 6.399 okay awesome what about this logo and 
+594.0 6.48 this title i will say logo 
+597.519 5.921 color will be this dark blue 
+600.48 6.64 font fade will be bold and font size 
+603.44 5.519 will be a little bit bigger like that 
+607.12 3.839 and for this one 
+608.959 6.201 i'm gonna give exactly the same color 
+610.959 4.201 but font size will be smaller 
+619.12 4.24 okay let's give some padding inside 
+621.44 5.28 those inputs 
+623.36 6.96 inside form this is our parent 
+626.72 6.16 i'll say input padding 15 pixels like 
+630.32 4.32 that but i want to delete this border 
+632.88 2.959 instead i'm just gonna give bottom 
+634.64 4.8 border 
+635.839 6.641 it's gonna be none but border bottom 
+639.44 5.2 it's gonna be the main background color 
+642.48 4.16 let's close them again 
+644.64 4.56 actually i can separate them and you can 
+646.64 2.56 see better 
+649.6 6.799 okay and 
+651.36 7.36 i didn't give here size one pixel solid 
+656.399 4.401 and this color 
+658.72 5.119 like that if you want to you can give 
+660.8 3.039 here any beat 
+665.2 5.52 like that those placeholder texts are 
+668.32 4.32 really dark i didn't like them let's 
+670.72 4.799 change it 
+672.64 6.56 i'll say placeholder 
+675.519 3.681 color will be rgb 
+679.839 4.801 and a little bit softer like that and 
+682.399 4.56 what about this button again i will 
+684.64 5.199 delete border and change the background 
+686.959 5.281 color it's inside our form 
+689.839 5.68 let's check okay it's ending here so i 
+692.24 5.52 can write like that 
+695.519 4.721 i'll say background color 
+697.76 5.12 and text color will be right i will give 
+700.24 4.32 some padding inside and front fit will 
+702.88 5.199 be bolt 
+704.56 6.48 like that i forgot relating border and 
+708.079 2.961 cursor pointer 
+712.8 6.24 okay awesome for this p tag this is the 
+716.16 4.32 form it's outside the form so i'm gonna 
+719.04 3.52 write it here 
+720.48 3.28 it's gonna be 
+722.56 3.68 blue color 
+723.76 5.6 font size will be small and i'm gonna 
+726.24 7.52 give margin between this text and this 
+729.36 4.4 button let's say time pixels 
+734.0 6.079 okay perfect but as you realize in the 
+736.959 4.481 real app we are using this image and 
+740.079 3.921 this text 
+741.44 5.6 instead of this ugly button what i'm 
+744.0 5.839 gonna do is to hide this input and 
+747.04 4.239 create a label which represents this 
+749.839 3.041 file input 
+751.279 5.68 what i mean by that 
+752.88 7.199 let's come here i will say label 
+756.959 6.961 as you can see it says html4 basically 
+760.079 6.641 we can create here any id let's say file 
+763.92 6.08 or whatever you say and if i say file 
+766.72 6.239 here same id whatever i write here any 
+770.0 6.639 text any image doesn't matter it's gonna 
+772.959 6.401 represent this file input let's test i'm 
+776.639 5.281 gonna click and as you can see it opens 
+779.36 2.56 my folder 
+782.24 4.399 so if i come here and say 
+784.56 5.6 inner style 
+786.639 3.521 and display none 
+791.44 5.28 as you can see it's not here anymore but 
+793.76 4.879 i can use this as a file input 
+796.72 4.4 of course you can give here any class 
+798.639 5.841 name and write it here but i just want 
+801.12 6.719 to show you how you can use inner style 
+804.48 5.76 okay so instead of this text i will say 
+807.839 2.401 image 
+811.6 4.72 we are gonna use this image and this 
+813.839 2.481 text 
+816.959 3.921 let's create here image folder 
+821.44 6.079 and i'm gonna push here all my images 
+825.12 4.719 we are gonna use this one 
+827.519 4.721 okay this one 
+829.839 3.68 let's import this 
+832.24 3.2 import 
+833.519 3.201 add 
+835.44 5.12 from 
+836.72 3.84 images and add 
+840.839 4.12 avatar.png let's use it here 
+846.24 5.599 span 
+848.32 3.519 add and avatar 
+851.92 3.919 like that 
+853.36 5.12 but i want to center them to do that i'm 
+855.839 3.921 gonna give here display flex and align 
+858.48 3.039 item center 
+859.76 4.96 let's come back 
+861.519 4.961 after this button i'm gonna say 
+864.72 4.559 label 
+866.48 3.919 display flex align item center 
+869.279 3.281 like that 
+870.399 5.201 and i will give some space here and 
+872.56 5.519 change this font size and color so let's 
+875.6 5.28 see gap 10 pixels 
+878.079 4.961 color will be light color font size will 
+880.88 4.24 be smaller 
+883.04 4.799 like that 
+885.12 5.44 and that's a cursor pointer 
+887.839 5.921 that we can click okay perfect what 
+890.56 6.24 about this image it's too big 
+893.76 6.24 it's inside label i'm gonna say 
+896.8 6.479 with 32 pixels 
+900.0 5.279 like that what about this login page 
+903.279 4.641 let's check here 
+905.279 6.0 as you can see it uses exactly the same 
+907.92 5.599 template so it's going to be much easier 
+911.279 5.521 let me shrink this i will copy 
+913.519 6.801 everything here and paste inside login 
+916.8 3.52 of course i'm gonna change here 
+920.88 5.519 my component name will be login and we 
+923.68 5.519 are gonna need only email and password 
+926.399 5.12 so i'm gonna do it here 
+929.199 3.44 and it's gonna be signing 
+931.519 3.44 and 
+932.639 5.041 you don't have an account 
+934.959 4.641 so register 
+937.68 4.56 i'm gonna come here and call my 
+939.6 5.44 component to see 
+942.24 2.8 like that 
+948.8 5.36 as you can see perfect that's all so 
+951.759 3.76 what about the home page let me close 
+954.16 3.679 this one 
+955.519 4.401 and close everything here 
+957.839 4.401 i'm gonna open home page 
+959.92 3.52 of course to see changes i'm gonna call 
+962.24 6.12 it here 
+963.44 4.92 of course we don't have any function yet 
+971.759 4.961 okay it's here 
+973.6 3.12 let me log in here 
+978.639 6.401 what was the email i forgot 
+982.8 5.92 okay this one as you can see we have 
+985.04 6.4 many components here our sidebar 
+988.72 5.2 this chat panel inside this chat panel 
+991.44 5.6 we are gonna have our messages this 
+993.92 5.52 input so basically writing all those 
+997.04 5.52 components inside inside only this 
+999.44 6.319 component is not a good idea it's better 
+1002.56 6.16 to separate them into small components 
+1005.759 5.361 so i will come here and say 
+1008.72 5.2 components 
+1011.12 4.959 firstly we are gonna have this sidebar 
+1013.92 5.56 this chat 
+1016.079 3.401 let's create 
+1024.799 5.601 inside this sidebar we are going to have 
+1026.88 6.0 this nerve bar this search bar and those 
+1030.4 2.48 chats 
+1033.039 4.52 let's see 
+1034.559 3.0 never 
+1038.16 2.399 search 
+1042.16 4.24 and chats 
+1044.24 8.2 and what about here we are going to have 
+1046.4 6.04 individual messages and this input panel 
+1056.88 4.159 of course you can separate more 
+1058.4 5.04 components but it's enough i think it's 
+1061.039 5.041 not a big application we don't need to 
+1063.44 4.32 worry about performance that much of 
+1066.08 4.0 course we should but 
+1067.76 4.64 it's just couple components we are just 
+1070.08 5.44 gonna refresh those chats 
+1072.4 6.08 and those messages that's all okay let's 
+1075.52 5.44 get started firstly inside home page i'm 
+1078.48 4.319 gonna create this container let's come 
+1080.96 3.12 back 
+1082.799 2.641 let's say 
+1084.08 2.32 class name 
+1085.44 4.0 home 
+1086.4 5.12 and here i will say container 
+1089.44 5.28 and inside we are gonna have this 
+1091.52 5.6 sidebar and this chat panel of course we 
+1094.72 5.88 didn't create functions for them let's 
+1097.12 3.48 do that quickly 
+1117.039 2.321 okay 
+1120.32 3.52 that's a sidebar 
+1124.0 5.039 and chat components 
+1126.64 4.64 let's see 
+1129.039 4.64 okay as you can see they are here let's 
+1131.28 3.92 give some style for this component i'm 
+1133.679 2.961 going to open again 
+1135.2 2.24 style file 
+1136.64 4.0 and 
+1137.44 5.92 create here home page 
+1140.64 3.76 again background color exactly the same 
+1143.36 4.0 color 
+1144.4 6.8 it will be 100 vh 
+1147.36 5.12 i'm gonna do exactly the same thing here 
+1151.2 4.24 like that 
+1152.48 5.36 and after i will create container inside 
+1155.44 4.4 this home 
+1157.84 4.32 we are not going to have any border or 
+1159.84 5.199 background but for now to just see 
+1162.16 6.399 better i will give border 
+1165.039 6.481 one pixel solute and let's say white and 
+1168.559 5.201 let's give some border radius 
+1171.52 4.88 10 pixels 
+1173.76 5.76 and right now i will give some width and 
+1176.4 6.639 height you can arrange this for yourself 
+1179.52 4.88 it really doesn't matter i just gave 65 
+1183.039 4.081 percent 
+1184.4 5.44 and height 80 percent 
+1187.12 5.12 you can make it full screen or smaller 
+1189.84 4.8 or bigger whatever you want and right 
+1192.24 4.88 now i want to separate this sidebar and 
+1194.64 5.44 chat they are going to be horizontal but 
+1197.12 4.64 sidebar will be smaller chat space will 
+1200.08 3.839 be bigger 
+1201.76 5.12 like that as you can see this is one 
+1203.919 5.841 unit this is two units we can do this 
+1206.88 4.08 using flexbox easily 
+1209.76 3.12 let's say 
+1210.96 4.32 display flex 
+1212.88 5.52 as you can see they are horizontal let's 
+1215.28 5.6 go to sidebar 
+1218.4 4.72 i'll say class name it's gonna be 
+1220.88 5.44 sidebar 
+1223.12 3.2 and for this chat 
+1228.0 4.24 and i'm gonna say 
+1229.679 2.561 sidebar 
+1232.88 5.36 and chat 
+1235.52 5.76 as i said it's gonna be one unit so i 
+1238.24 4.559 can use flex here 
+1241.28 3.759 and it's gonna be 
+1242.799 2.24 two 
+1245.36 5.199 as you can see it's twice bigger than 
+1247.44 5.44 sidebar perfect let's give a border here 
+1250.559 4.721 and you can see better 
+1252.88 5.84 i will say border but it's going to be 
+1255.28 3.44 only border right 
+1258.96 4.959 one pixel solid and 
+1261.84 5.12 this dark color 
+1263.919 4.161 like that actually i can give background 
+1266.96 4.079 color here 
+1268.08 5.36 it's going to be exactly the same color 
+1271.039 5.841 so we can delete this border 
+1273.44 6.32 okay perfect but as you realize 
+1276.88 4.72 this corner is still sharp that because 
+1279.76 4.32 it's overflowing 
+1281.6 4.0 if you remember our container has a 
+1284.08 3.68 border radius 
+1285.6 4.16 to prevent this overflow i will say 
+1287.76 4.48 overflow heater 
+1289.76 4.08 like that okay 
+1292.24 3.679 before this chat 
+1293.84 5.12 let's take care of this sidebar i'm 
+1295.919 6.401 gonna open up navbar 
+1298.96 7.44 let's call it here first 
+1302.32 4.08 okay it's not coming let's import 
+1309.2 4.24 okay it's here let's open up 
+1314.0 5.2 and let's see what we are gonna have 
+1316.48 4.96 firstly we are gonna have our logo and 
+1319.2 5.44 after that we are gonna have a div here 
+1321.44 5.84 which includes this author username and 
+1324.64 4.96 logout button let's say class name 
+1327.28 5.279 number 
+1329.6 5.52 let's say span logo 
+1332.559 5.921 it's gonna be your application name 
+1335.12 6.48 after that let's create userdiv 
+1338.48 6.72 and it's gonna include image span 
+1341.6 5.68 let's say john and a button 
+1345.2 3.359 going to be block out 
+1347.28 3.04 like that 
+1348.559 3.441 let's make them horizontal i'm going to 
+1350.32 5.12 go to style 
+1352.0 5.44 inside sidebar we have a navbar host 
+1355.44 5.28 it's a container and it's going to be 
+1357.44 5.599 display flags align item center 
+1360.72 4.48 let's make this background color darker 
+1363.039 4.961 and you can see better 
+1365.2 2.8 background color 
+1368.159 3.841 like that 
+1369.28 5.84 and i want to give a height here 
+1372.0 4.0 it's going to be 50 pixels 
+1375.12 3.36 okay 
+1376.0 5.12 and some padding because it's really 
+1378.48 2.64 close here 
+1381.919 4.24 and i want to separate this 
+1384.159 4.64 logo and this div 
+1386.159 4.801 so i will say justify content space 
+1388.799 4.801 between 
+1390.96 5.599 as you can see it separated them by the 
+1393.6 2.959 way let's change 
+1396.64 4.24 color 
+1398.159 4.721 actually i regret that i didn't create 
+1400.88 4.32 color variables 
+1402.88 4.88 but 
+1405.2 4.8 okay it can stay we don't have that much 
+1407.76 5.2 component and if i update this 
+1410.0 5.919 repository or if someone send them to me 
+1412.96 5.52 i can update them and it will be better 
+1415.919 3.601 but anyway as i said it's not a huge 
+1418.48 3.76 design 
+1419.52 5.759 for this logo it's gonna be bold 
+1422.24 3.039 i'll say logo 
+1425.84 3.199 like that 
+1428.159 2.241 and 
+1429.039 3.681 music 
+1430.4 4.879 again display flex and i'm gonna give 
+1432.72 5.439 some gap between them 
+1435.279 5.601 like that and for this image we don't 
+1438.159 4.88 have yet but 
+1440.88 5.12 let's give background color for now it 
+1443.039 6.161 can be this light color and i will say 
+1446.0 6.08 i24 with 24 
+1449.2 4.56 and border radius will be 50 
+1452.08 3.36 like that 
+1453.76 4.08 and of course 
+1455.44 4.32 to crop this image properly i'm going to 
+1457.84 3.439 say object fit 
+1459.76 3.6 and color 
+1461.279 4.241 okay what about this button 
+1463.36 5.439 after image 
+1465.52 6.159 again background color 
+1468.799 5.921 color will be this light color font size 
+1471.679 4.961 will be really small i want to delete 
+1474.72 3.199 all those borders 
+1476.64 2.48 like that 
+1477.919 3.441 and 
+1479.12 7.08 it's going to be clickable 
+1481.36 4.84 so it's going to be cursor pointer 
+1486.64 5.84 okay perfect 
+1488.24 4.24 let's find here quickly an image 
+1492.64 5.519 let's use this woman here 
+1496.48 4.559 now bar 
+1498.159 5.52 in which 
+1501.039 4.961 okay perfect 
+1503.679 4.401 so what about this part 
+1506.0 3.36 as you remember there is a search bar 
+1508.08 4.0 here 
+1509.36 2.72 let's create 
+1512.159 3.681 i'm gonna close this number and inside 
+1514.72 3.04 sidebar 
+1515.84 4.88 i will say 
+1517.76 5.2 search components 
+1520.72 4.88 okay it's not coming again 
+1522.96 6.28 something is wrong 
+1525.6 3.64 i'll say search 
+1529.679 4.88 and it's here so what we are gonna have 
+1532.64 4.639 here let's check 
+1534.559 4.641 as you can see there's an input and when 
+1537.279 4.961 we search for something we are gonna 
+1539.2 4.64 show this user something like that i'm 
+1542.24 5.76 gonna open 
+1543.84 4.16 search let's give class name 
+1548.4 5.6 firstly we are gonna have search form 
+1551.6 5.199 and inside we are gonna have our input 
+1554.0 3.679 and after this form i'm gonna create a 
+1556.799 2.0 div 
+1557.679 4.081 it's gonna be 
+1558.799 5.281 user chat let's say image i'm gonna 
+1561.76 4.72 paste exactly the same image 
+1564.08 3.76 and user chat 
+1566.48 3.6 info 
+1567.84 4.959 and one more span and it's gonna be 
+1570.08 4.079 display name let's say j okay it's 
+1572.799 3.681 really huge 
+1574.159 4.801 let's take care about this 
+1576.48 4.72 inside now bar 
+1578.96 4.64 i will say search 
+1581.2 4.0 folder but it's gonna be only border 
+1583.6 5.6 bottom 
+1585.2 4.8 one pixel solid and gray and inside we 
+1589.2 2.64 have 
+1590.0 4.159 search form 
+1591.84 4.64 inside we have an input 
+1594.159 5.441 and i will not write this 
+1596.48 5.6 user chat here that because it's common 
+1599.6 4.079 instead i'm gonna come here and write it 
+1602.08 4.4 here 
+1603.679 5.201 outside of search but it's still inside 
+1606.48 3.84 sidebar let's take care about this image 
+1608.88 3.6 first 
+1610.32 3.92 and we can see better after that i will 
+1612.48 3.84 say 50 
+1614.24 4.4 height 50 
+1616.32 5.599 for the radius 
+1618.64 3.279 okay it's still the same 
+1622.24 5.6 oh i'm writing inside number of course 
+1624.559 3.281 it should be sidebar 
+1629.2 4.64 so i'm gonna move them 
+1631.84 4.56 like that 
+1633.84 4.48 okay perfect as you can see this image 
+1636.4 5.44 is pretty weird 
+1638.32 3.52 let's give object fit 
+1643.12 5.919 like that okay awesome let's give some 
+1646.159 5.361 padding for this search form 
+1649.039 5.041 and inside this input i'm gonna say 
+1651.52 5.039 background color 
+1654.08 5.199 transparent 
+1656.559 6.161 as you can see like that 
+1659.279 7.52 let's delete this border here 
+1662.72 4.079 and color will be white 
+1667.36 4.08 so when we write something we are going 
+1669.6 5.12 to see it like that but i want to get 
+1671.44 3.28 rid of this outline 
+1675.84 3.52 like that 
+1677.279 4.161 and 
+1679.36 4.24 let's give here placeholder 
+1681.44 4.479 i will say placeholder 
+1683.6 6.24 find a user 
+1685.919 3.921 and i want to change this color also 
+1691.44 6.4 placeholder 
+1693.679 4.161 color will be light gray 
+1699.679 5.521 okay it's much better i think so what 
+1702.32 6.0 about this user chat let's keep heading 
+1705.2 6.64 again display flags align item center 
+1708.32 4.88 i'm gonna give a gap between them 
+1711.84 2.959 like that 
+1713.2 5.359 color will be white 
+1714.799 3.76 and cursor will be pointer 
+1722.799 5.12 like that and when i hover over this 
+1726.08 5.04 user chat i'm gonna change the 
+1727.919 4.24 background color so let's say 
+1731.12 3.2 our 
+1732.159 4.481 background color will be 
+1734.32 4.479 our dark color 
+1736.64 5.6 let's check 
+1738.799 5.6 okay perfect and in our application as 
+1742.24 4.559 you can see we have many users here 
+1744.399 3.76 let's create them i'm going to open up 
+1746.799 2.561 sidebar again 
+1748.159 3.361 and 
+1749.36 5.28 chats component 
+1751.52 3.12 let's create here 
+1754.88 4.0 i'm not writing those users here 
+1756.88 3.679 directly that because whenever we 
+1758.88 4.399 refresh these 
+1760.559 5.441 users that's because when we add here 
+1763.279 5.841 some message or when we receive any 
+1766.0 5.12 message this list will be refreshed so i 
+1769.12 5.12 don't want to re-render this search 
+1771.12 5.919 component and never component that's why 
+1774.24 4.48 we are using different components 
+1777.039 6.321 so i'm gonna open up 
+1778.72 4.64 chat component and let's give class name 
+1784.96 4.24 and i'm gonna 
+1786.559 2.641 copy here 
+1790.0 4.72 and paste inside 
+1793.039 4.24 but there's a difference here that 
+1794.72 5.36 because when we search for any user 
+1797.279 5.28 there will be no message here 
+1800.08 5.52 but in our conversations 
+1802.559 5.36 we are gonna have latest message 
+1805.6 3.92 so i'm gonna add one more thing and it's 
+1807.919 3.76 gonna be let's say 
+1809.52 6.399 p tag 
+1811.679 6.801 hello let's open up style again 
+1815.919 5.201 and let's change this by the way this is 
+1818.48 5.52 gonna be bold 
+1821.12 5.039 i forgot that so what was the parent 
+1824.0 6.72 user chat info 
+1826.159 6.64 after this image i will say span 
+1830.72 4.24 and p tag 
+1832.799 5.041 this is gonna be username 
+1834.96 4.88 font size a little bit bigger 
+1837.84 4.959 and front width will be 
+1839.84 7.76 bolder and for this one font size will 
+1842.799 7.76 be 14 and color will be light gray 
+1847.6 5.439 like that let's create some more 
+1850.559 4.321 users here 
+1853.039 4.0 it's just the design of course we are 
+1854.88 4.48 gonna delete them later 
+1857.039 2.321 okay 
+1860.72 4.76 okay this is capital this is capital 
+1869.279 4.481 it's not that much important but anyway 
+1874.32 4.079 okay perfect so what about this chat 
+1877.039 4.0 component 
+1878.399 4.801 again we are gonna have this topper of 
+1881.039 4.88 course we don't have any video calling 
+1883.2 4.56 feature or friendship feature but it 
+1885.919 3.921 looks nice 
+1887.76 4.639 and maybe in the future we are gonna 
+1889.84 4.4 create so let's come here i'm gonna 
+1892.399 4.64 close everything 
+1894.24 5.919 and open up chat 
+1897.039 3.12 and style 
+1901.12 6.0 let's create here chat info 
+1904.72 6.0 it's gonna be top bar 
+1907.12 5.36 i'm gonna create here span it's gonna be 
+1910.72 4.24 user name 
+1912.48 5.919 and we are gonna have some icons let's 
+1914.96 3.439 say chat icons 
+1919.44 4.4 and inside we are gonna have three 
+1921.36 2.48 images 
+1924.96 3.52 i will import them quickly 
+1929.039 5.12 first one will be 
+1931.36 5.36 camera second one will be add friend 
+1934.159 4.64 icon and 
+1936.72 5.92 more icon 
+1938.799 8.72 like that okay let's give some style 
+1942.64 6.48 chat is here and i will say chat info 
+1947.519 5.841 again height will be 
+1949.12 6.559 50 pixels let's give background color 
+1953.36 5.36 display will be flex 
+1955.679 5.041 a line item center like that and again 
+1958.72 4.64 i'm going to separate them jane will be 
+1960.72 6.799 here and d will be here 
+1963.36 4.159 so i'm gonna say justify content 
+1968.159 3.76 space between 
+1970.399 4.88 like that 
+1971.919 7.76 of course i can give some padding 
+1975.279 4.4 and text color will be light gray 
+1980.159 4.721 and what about those icons 
+1982.88 5.2 chat icons 
+1984.88 6.639 display flags i'm going to give some gap 
+1988.08 6.8 and for each icon i'm gonna limit their 
+1991.519 5.601 heights it's gonna be 24 pixels 
+1994.88 5.6 and cursor pointer 
+1997.12 7.039 like that okay so far so good so what 
+2000.48 5.52 about messages we have a topper here and 
+2004.159 4.4 input component 
+2006.0 4.559 and when we refresh our messages 
+2008.559 4.48 we don't want to re-render those 
+2010.559 4.641 components so let's create messages 
+2013.039 5.161 component 
+2015.2 3.0 messages 
+2019.279 3.841 class name 
+2020.88 4.0 i will say messages 
+2023.12 3.84 and it's going to include couple of 
+2024.88 4.32 message 
+2026.96 4.079 if you remember 
+2029.2 4.16 we have a component here we are going to 
+2031.039 5.201 call it here couple times 
+2033.36 2.88 let's import 
+2037.12 5.0 okay 
+2038.159 3.961 i want to call it here 
+2047.519 2.321 oops 
+2050.48 4.399 sorry i forgot here our folder 
+2055.119 5.96 and it's gonna be inside chat not chat 
+2058.079 3.0 info 
+2061.119 7.52 okay perfect and finally 
+2064.399 4.24 we are gonna have here input component 
+2071.76 3.599 like that let's change this background 
+2074.159 4.24 color 
+2075.359 3.04 here is the chat 
+2079.44 4.32 it's gonna be here 
+2081.599 4.641 messages 
+2083.76 6.56 and background color will be our light 
+2086.24 6.0 color and again let's keep padding 
+2090.32 3.759 okay we are gonna take care of those 
+2092.24 3.919 messages but before 
+2094.079 5.121 i want to show you how we can arrange 
+2096.159 5.92 this message's height to do that firstly 
+2099.2 5.68 i want to create this input 
+2102.079 6.481 let's open up input 
+2104.88 3.68 and give a class name 
+2108.8 5.84 okay it can stay like that and here i 
+2111.839 5.841 will just say input 
+2114.64 5.84 height will be 50 pixels and background 
+2117.68 4.8 color will be white 
+2120.48 5.2 okay it can stay like that we are gonna 
+2122.48 6.16 handle this later but before 
+2125.68 5.52 let's calculate these messages height as 
+2128.64 5.36 you can see this is 50 pixels 
+2131.2 6.24 but if you remember it has 10 pixels 
+2134.0 7.839 padding time for on top down from bottom 
+2137.44 6.639 it means this top bar is 70 pixels 
+2141.839 5.041 it's gonna be exactly the same thing for 
+2144.079 4.961 this input it's going to have padding 10 
+2146.88 5.199 pixels also 
+2149.04 5.68 so height 50 pixels 10 pixels paid in 
+2152.079 3.841 here 10 pixels speeding here it's 70 
+2154.72 4.96 pixels 
+2155.92 6.0 so if i come here and say height 
+2159.68 7.28 calculate 
+2161.92 7.84 100 percent minus 160 pixels 
+2166.96 3.879 that's because we have 20 pixels padding 
+2169.76 2.8 here 
+2170.839 4.121 also 
+2172.56 4.4 it's gonna give this full screen of 
+2174.96 4.0 course there are other ways to do that 
+2176.96 4.879 but i just want to show you how you can 
+2178.96 6.0 use calculate properly and i want you to 
+2181.839 5.361 be careful about paddings and margins 
+2184.96 4.879 you have to calculate them 
+2187.2 4.8 okay let's take care of this input it's 
+2189.839 4.721 easier i think 
+2192.0 5.92 as you can see we have an input here two 
+2194.56 6.08 icons and one button but again it's 
+2197.92 4.8 going to open up our folder so basically 
+2200.64 5.28 we are gonna do exactly the same thing 
+2202.72 4.639 here i'm gonna go to input 
+2205.92 4.88 input text 
+2207.359 5.441 placeholder type something 
+2210.8 4.72 and i'm gonna create a div here it's 
+2212.8 5.68 gonna be send and it's gonna include our 
+2215.52 5.28 icons and send button 
+2218.48 5.44 i'll say image 
+2220.8 5.12 it's gonna be our first image 
+2223.92 3.36 and i'm gonna create here 
+2225.92 3.76 an input 
+2227.28 4.079 and it's going to be file i will say 
+2229.68 4.32 style 
+2231.359 6.161 display no 
+2234.0 6.079 and remember we are giving an id here 
+2237.52 7.44 to use it inside label 
+2240.079 7.361 html4 file and inside another image 
+2244.96 5.04 and finally we are gonna have a button 
+2247.44 5.12 and it's gonna say send let's import 
+2250.0 6.32 those images 
+2252.56 6.559 and use them here 
+2256.32 4.32 and this one will be 
+2259.119 3.681 this one 
+2260.64 5.28 like that okay 
+2262.8 4.88 let's make them horizontal and center 
+2265.92 3.6 all those items 
+2267.68 4.8 i'm gonna come here and say display 
+2269.52 6.72 flags align item center and justify 
+2272.48 3.76 content will be spaced between 
+2276.4 4.08 like that let's delete this border and 
+2279.359 4.081 outline 
+2280.48 5.2 i will say input remember this is our 
+2283.44 3.76 class name 
+2285.68 4.56 here 
+2287.2 5.6 and this is the html element 
+2290.24 4.96 i'm not writing dot here let's make this 
+2292.8 4.96 a hundred percent 
+2295.2 4.48 so we can click it everywhere inside 
+2297.76 5.28 this long area 
+2299.68 5.439 and i will say border none 
+2303.04 5.36 outline known 
+2305.119 6.081 and i'm gonna change to font color 
+2308.4 4.0 and font size will be bigger 
+2311.2 3.68 like that 
+2312.4 4.959 let's change this color also 
+2314.88 6.4 i'm going to say placeholder 
+2317.359 3.921 color will be light gray 
+2322.0 5.2 okay what about this div 
+2324.96 4.8 if you remember we have a incentive here 
+2327.2 5.44 we can use it 
+2329.76 4.48 after these inputs i'm going to say 
+2332.64 3.84 set class 
+2334.24 5.2 again it's going to be 
+2336.48 4.96 centered and i will give some 
+2339.44 4.8 space between them 
+2341.44 6.399 like that and for those images let's 
+2344.24 8.64 reduce their sizes i will say 
+2347.839 8.801 24 pixels and cursor pointer 
+2352.88 6.0 like that and for this button 
+2356.64 4.0 there will be no border i'm going to 
+2358.88 4.08 give some padding 
+2360.64 6.0 it's going to be 10 from top and bottom 
+2362.96 5.84 15 from left and right 
+2366.64 4.56 color will be white that because we are 
+2368.8 3.76 going to change background color 
+2371.2 3.28 and it's going to be 
+2372.56 4.72 let's say this color 
+2374.48 4.16 okay awesome so let's take care of those 
+2377.28 4.48 messages 
+2378.64 5.52 i'm going to open up message component 
+2381.76 4.96 and i will say 
+2384.16 4.959 message but there is something important 
+2386.72 5.44 here that because as you can see there 
+2389.119 6.081 are two types of messages first one will 
+2392.16 5.12 be this white one and second one is this 
+2395.2 4.399 blue one so basically i'm gonna need 
+2397.28 3.44 here a condition but i'm gonna make this 
+2399.599 3.201 later 
+2400.72 4.399 that's because we don't have any user we 
+2402.8 4.799 don't have any data so inside this 
+2405.119 5.681 message we are gonna have message info 
+2407.599 6.081 which includes this avatar and this date 
+2410.8 5.12 and secondly will be message content and 
+2413.68 4.159 it's going to include this text 
+2415.92 5.28 and if there is an image we are going to 
+2417.839 3.361 show it inside this div 
+2421.359 4.881 so i will say 
+2423.2 3.04 message info 
+2426.319 3.201 message content 
+2429.92 4.399 inside this info we are going to have an 
+2432.0 2.319 image 
+2435.599 6.24 let's use the same image 
+2438.64 4.719 and i will say span just now 
+2441.839 4.161 and here 
+2443.359 4.96 we are gonna have a p tag i will say 
+2446.0 4.64 hello and if there is an image we are 
+2448.319 7.121 gonna show it here again i'm gonna paste 
+2450.64 4.8 this image okay let's take care of them 
+2456.48 4.4 inside messages 
+2458.48 5.119 i will say message 
+2460.88 5.84 it's gonna be display flags and gap 
+2463.599 4.72 between user information and message 
+2466.72 4.0 content 
+2468.319 5.841 and first one will be 
+2470.72 5.52 user information which is message info 
+2474.16 3.84 and second form will be 
+2476.24 4.64 content 
+2478.0 5.2 and inside we have an image 
+2480.88 4.88 i want to quickly change those image 
+2483.2 7.119 sizes that because as you can see they 
+2485.76 4.559 are really big let's say 40 pixels 
+2492.0 5.2 and object fit 
+2494.64 4.719 and for other image 
+2497.2 4.72 it will be 50 
+2499.359 5.361 so it's not gonna be full screen like 
+2501.92 3.919 that okay of course it's a really big 
+2504.72 4.56 image 
+2505.839 6.081 what i want to do is to delete this 
+2509.28 5.28 image for now 
+2511.92 5.76 to see our messages better after that we 
+2514.56 5.519 can activate so what about this message 
+2517.68 4.96 info as you can see they are horizontal 
+2520.079 4.561 i want to change this 
+2522.64 4.959 this is message info 
+2524.64 4.64 i'm gonna go there and say display flags 
+2527.599 4.48 flex direction 
+2529.28 4.559 column and i want to change the color 
+2532.079 3.601 it's gonna be gray 
+2533.839 4.961 font way it will be 
+2535.68 5.84 a little bit thinner 
+2538.8 6.96 like that and there is no space between 
+2541.52 4.24 them let's say margin bottom 
+2546.16 5.439 like that and as you can see it's 
+2548.64 6.8 overflowing here so what i want to do is 
+2551.599 5.361 to go to parent here and 
+2555.44 3.679 overflow 
+2556.96 4.96 screw 
+2559.119 6.72 so if doesn't fit inside this component 
+2561.92 6.64 we will be able to scroll like that 
+2565.839 5.361 okay so what about this content 
+2568.56 5.2 i just want to give here a limit that 
+2571.2 4.48 because we can write really long message 
+2573.76 3.599 here so i will say 
+2575.68 5.04 maximum with 
+2577.359 5.361 is going to be let's say 80 percent 
+2580.72 4.72 again display flags 
+2582.72 5.2 flex direction column remember it 
+2585.44 4.08 includes text and image i'm gonna give 
+2587.92 5.199 space between them 
+2589.52 5.52 and for the p tag which is our text 
+2593.119 3.681 i'm gonna give background color it's 
+2595.04 4.24 gonna be white 
+2596.8 5.519 let's give some padding 
+2599.28 6.079 and i want to change this border radius 
+2602.319 5.681 this side will be really sharp but for 
+2605.359 5.121 other ages i'm gonna give some radius to 
+2608.0 4.64 do that i will say border radius top 
+2610.48 3.76 left will be zero we are not going to 
+2612.64 5.679 have any 
+2614.24 4.079 but others will be 10 pixels 
+2619.2 4.159 like that 
+2620.64 5.84 but if i add here 
+2623.359 5.841 one more class name let's say owner i 
+2626.48 5.52 want to change their style 
+2629.2 2.8 message here 
+2632.88 5.28 inside this message i'm gonna say if 
+2635.04 4.559 it's message but at the same time it's 
+2638.16 3.679 owner 
+2639.599 5.76 i'm gonna change to direction 
+2641.839 5.601 to do that i'm gonna use display flex 
+2645.359 3.681 but this time i'm gonna change only 
+2647.44 4.48 direction 
+2649.04 5.36 flex traction it's gonna be row again 
+2651.92 5.12 it's gonna be horizontal but this time 
+2654.4 6.48 it's gonna be reverse 
+2657.04 5.68 like that for this text 
+2660.88 4.32 we'll say p tag 
+2662.72 4.0 background color will be let's say this 
+2665.2 4.399 color and 
+2666.72 4.08 text color will be white 
+2669.599 4.321 like that 
+2670.8 7.36 border radius and pixels 
+2673.92 6.159 zero pixel 10 and 10. 
+2678.16 5.04 like that 
+2680.079 5.921 it looks pretty good but if we add our 
+2683.2 4.56 images back 
+2686.0 4.64 as you can see 
+2687.76 5.2 we have a problem here to prevent this i 
+2690.64 5.12 will go to p tag again 
+2692.96 4.24 actually let's come here and i will say 
+2695.76 4.4 maximum width 
+2697.2 6.32 it's gonna be maximum content so it's 
+2700.16 5.679 gonna be maximum the length of this text 
+2703.52 4.16 not bigger and to move all those 
+2705.839 4.081 elements here 
+2707.68 7.2 i'm going to come here by the way of 
+2709.92 4.96 course this p tag inside message content 
+2716.319 5.76 and i will say line items 
+2719.76 5.12 flex and 
+2722.079 3.841 so it's gonna be end of the screen like 
+2724.88 3.52 that 
+2725.92 2.48 perfect 
+2730.24 6.0 it looks pretty nice 
+2733.839 4.321 so we finished our design 
+2736.24 4.8 right now we are gonna need an 
+2738.16 4.88 authentication first 
+2741.04 4.48 by the way before starting i want to 
+2743.04 4.72 show you how you can create responsive 
+2745.52 4.72 styles of course this is not gonna be 
+2747.76 5.839 fully responsive i just want to show you 
+2750.24 6.4 how you can do this i'm gonna come here 
+2753.599 6.48 and create a sas function 
+2756.64 7.28 to do that we are gonna be using mixing 
+2760.079 6.641 and for example for mobile devices 
+2763.92 5.04 we are going to be using media query and 
+2766.72 3.76 i'm going to write here my condition 
+2768.96 5.04 and it's going to be 
+2770.48 5.839 maximum width 480 pixels and inside we 
+2774.0 4.319 are gonna write our contents 
+2776.319 3.361 i can do the same thing for others for 
+2778.319 2.961 example 
+2779.68 2.8 for tablets 
+2781.28 6.68 and for 
+2782.48 5.48 laptops for example let's change here 
+2789.28 4.079 like that 
+2790.96 5.2 of course you can give more 
+2793.359 5.521 and let me show you how you can do this 
+2796.16 4.56 i will come here and say 
+2798.88 4.479 include tablet 
+2800.72 5.68 and inside i'm gonna write my style and 
+2803.359 5.441 it's gonna be display no 
+2806.4 6.88 let's see 
+2808.8 4.48 i'm gonna open my console i will shrink 
+2815.359 4.641 okay 
+2817.04 5.84 ah this is form 
+2820.0 7.119 of course it's gonna be 
+2822.88 7.719 inside homepage our container navbar and 
+2827.119 3.48 logo here 
+2830.72 5.119 and right now as you can see there is no 
+2832.64 5.12 logo anymore like that it's that easy 
+2835.839 4.161 what else we can do here 
+2837.76 5.12 for example we can move this logo to 
+2840.0 5.28 here but before we can maybe make this 
+2842.88 5.36 container larger 
+2845.28 2.96 let's copy this 
+2848.48 6.079 and if you remember we have a container 
+2850.72 7.28 here and it was 65 percent but this time 
+2854.559 5.361 let's say 90 percent 
+2858.0 5.2 as you can see it looks much better what 
+2859.92 3.28 about this logo button 
+2863.359 5.921 here 
+2864.64 4.64 i will just say position absolute 
+2869.44 5.84 and i'm gonna give its position bottom 
+2872.24 5.359 time pixels but if you do that as you 
+2875.28 4.559 can see it appears here but it's 
+2877.599 4.881 supposed to be here to prevent this 
+2879.839 6.72 problem the parent should be position 
+2882.48 6.48 relative what's our parent this sidebar 
+2886.559 6.241 so i'm gonna go to sidebar 
+2888.96 6.159 and i will say position relative 
+2892.8 4.4 as you can see it's here and you can do 
+2895.119 4.881 the same thing for mobile devices for 
+2897.2 4.639 example you can only show those images 
+2900.0 4.64 you can delete this text and its 
+2901.839 5.441 username whatever you want i just want 
+2904.64 5.6 to show you how you can do this 
+2907.28 5.52 maybe one more thing i can show and it 
+2910.24 4.96 says variables you can create your 
+2912.8 4.799 variables basically like that 
+2915.2 5.76 dollar sign and 
+2917.599 3.361 for example dark color 
+2922.24 7.119 and this color for example and i can use 
+2925.2 5.44 this color wherever i want 
+2929.359 4.161 like that 
+2930.64 2.88 it's that easy 
+2933.92 4.32 okay it's not that important i don't 
+2936.0 4.8 want to waste time with this design 
+2938.24 4.64 let's take care of authentication of 
+2940.8 4.48 course to do that we should create a 
+2942.88 4.32 firebase application to do that i'm 
+2945.28 4.0 gonna go to firebase 
+2947.2 4.32 get started 
+2949.28 4.88 let's create a project this is our 
+2951.52 6.319 previous project if you remember and i 
+2954.16 3.679 will say just chat 
+2960.319 4.641 i'm gonna create my project it's gonna 
+2962.64 5.6 take a while and after that we are gonna 
+2964.96 6.879 initialize our firebase application to 
+2968.24 3.599 do that let's create here 
+2973.16 5.0 firebase.js and also i'm going to open 
+2976.0 3.68 my console and i'm going to install 
+2978.16 3.52 firebase 
+2979.68 5.0 i'm at 
+2981.68 3.0 firebase 
+2986.64 5.04 okay it's ready 
+2988.96 7.119 right now let's create our web app it's 
+2991.68 6.159 gonna be chat again or whatever you want 
+2996.079 4.801 and as you can see npm installed 
+2997.839 6.161 firebase we have already done that 
+3000.88 5.439 and this is our configuration i'm gonna 
+3004.0 5.04 copy here 
+3006.319 5.52 and paste inside firebase let me close 
+3009.04 6.319 this terminal and sidebar 
+3011.839 3.52 okay i'm gonna clear here 
+3016.96 5.2 okay as you can see it initialize our 
+3019.92 5.76 app like that of course if you want to 
+3022.16 6.64 you can store your api key or any other 
+3025.68 5.84 ids inside an emv file but i'm not gonna 
+3028.8 4.559 do that it can stay let's export this 
+3031.52 4.079 app 
+3033.359 5.361 and i'm gonna export one more thing and 
+3035.599 6.081 it's gonna be both we are gonna call 
+3038.72 3.92 get all function from firebase let's 
+3041.68 3.679 import 
+3042.64 3.6 it comes from firebase alt 
+3045.359 3.121 and 
+3046.24 6.16 get alt function 
+3048.48 3.92 let's see actually how we can do this 
+3052.96 5.92 i'm gonna go to documentation 
+3055.44 6.639 and right here sign in 
+3058.88 3.199 email password 
+3063.92 4.08 okay here 
+3066.16 5.439 as you can see we are gonna create a 
+3068.0 5.839 user using an email and password to do 
+3071.599 4.321 that we are gonna need this function we 
+3073.839 4.48 have already created here we are gonna 
+3075.92 5.36 call it and after that we are gonna use 
+3078.319 6.401 this function and send our email and 
+3081.28 7.68 password let's do that i'm gonna open 
+3084.72 7.28 app chess and let's call register again 
+3088.96 6.24 and open up register page so what you 
+3092.0 6.319 can do here let's open up our app here 
+3095.2 5.44 as you remember we have four inputs here 
+3098.319 4.8 you can create use state for each of 
+3100.64 5.84 them or there is one more option you can 
+3103.119 6.24 create on submit event for this form and 
+3106.48 4.8 you can reach every single input inside 
+3109.359 5.841 what i mean by that 
+3111.28 7.76 i'm going to come here and say on submit 
+3115.2 3.84 and let's say handle submit 
+3119.119 3.2 let's create this function 
+3123.2 2.879 handle submit 
+3126.8 4.08 and when we click on this button we 
+3128.72 4.639 don't want to refresh this page 
+3130.88 5.439 to prevent this i'm going to say event 
+3133.359 2.96 prevent default 
+3136.64 4.479 let's try to see what's inside this 
+3139.119 4.96 input for example i'm gonna say 
+3141.119 4.561 console.log event target but we have 
+3144.079 4.24 four targets here 
+3145.68 5.6 i'm gonna take only first one 
+3148.319 4.641 first one and value i'm gonna open my 
+3151.28 3.76 console 
+3152.96 4.8 write here something 
+3155.04 5.36 sign up and as you can see it's here it 
+3157.76 6.4 means we can reach every input here 
+3160.4 6.64 let's copy this and i'm gonna say const 
+3164.16 6.8 display name 
+3167.04 3.92 email password and file 
+3173.359 4.401 of course it's gonna be 
+3175.2 5.2 second item 
+3177.76 3.68 third item and fourth item and it's 
+3180.4 3.679 gonna be 
+3181.44 5.119 files and we are gonna take the first 
+3184.079 4.24 file it's gonna be a single image right 
+3186.559 4.56 now we can use them 
+3188.319 5.201 but if you remember it says we can use 
+3191.119 5.361 only email and password 
+3193.52 5.52 we cannot send our picture or display 
+3196.48 4.72 name directly let's copy this 
+3199.04 4.799 and paste here 
+3201.2 7.8 i'm gonna import like that but we are 
+3203.839 5.161 gonna take this function from our file 
+3209.119 3.44 i will say 
+3210.24 2.319 alt 
+3212.8 3.68 and i can delete here 
+3214.72 4.16 let's see 
+3216.48 4.32 i will say user 
+3218.88 5.28 gmail.com 
+3220.8 6.0 some password here i will sign up and it 
+3224.16 5.199 doesn't allow us that because we didn't 
+3226.8 4.88 initialize our authentication let's come 
+3229.359 4.0 here 
+3231.68 4.08 and as you can see there are many 
+3233.359 4.801 methods here we are going to use email 
+3235.76 3.52 and password i'm gonna enable i will 
+3238.16 4.399 save 
+3239.28 3.279 and let's try again 
+3243.119 4.24 of course we didn't write any console 
+3245.04 4.079 log or something let's console.log this 
+3247.359 3.521 user 
+3249.119 4.24 if i click again it's going to be an 
+3250.88 6.16 error that because we already have our 
+3253.359 3.681 user i'm going to change here 
+3257.599 5.76 and as you can see this is our user and 
+3260.8 5.44 it has display name email there's a 
+3263.359 5.361 phone number here photo url so basically 
+3266.24 4.64 we can update them later let's see how 
+3268.72 4.24 we can do this 
+3270.88 3.439 actually i'm gonna delete everything 
+3272.96 3.119 here 
+3274.319 3.28 and i will say const 
+3276.079 4.24 response 
+3277.599 4.641 of course it's an async function so 
+3280.319 3.601 let's write here 
+3282.24 4.4 async 
+3283.92 5.12 and we are going to wait our user here 
+3286.64 3.199 of course we can write here try catch 
+3289.04 4.519 block 
+3289.839 3.72 if there is an error 
+3293.839 4.72 we can console.log or we can basically 
+3296.319 4.881 create here 
+3298.559 5.201 error set error 
+3301.2 3.84 view state at the beginning it can be 
+3303.76 5.599 false 
+3305.04 4.319 if there is an error we can make it true 
+3309.52 5.36 and we can show it somewhere here let's 
+3312.16 5.52 say if there is an error 
+3314.88 6.16 right here s pen 
+3317.68 5.679 something went wrong or of course you 
+3321.04 5.12 can specify your error 
+3323.359 3.921 and after that we can update our profile 
+3326.16 3.76 picture 
+3327.28 5.36 and display name to do that we should be 
+3329.92 5.04 able to upload an image 
+3332.64 5.04 let's come here and check for that i 
+3334.96 4.879 will say upload image 
+3337.68 5.119 and as you can see we can use cloud 
+3339.839 6.881 storage to do that i'm gonna come here 
+3342.799 7.52 build and i'm gonna open this storage 
+3346.72 6.399 get started it can be test for now later 
+3350.319 4.561 we are gonna change it 
+3353.119 4.24 it's gonna be ready 
+3354.88 5.04 but let's see how we can do this as you 
+3357.359 4.96 can see we are gonna need this function 
+3359.92 6.879 let's copy this 
+3362.319 6.721 and paste inside our firebase file again 
+3366.799 5.361 and i will say export 
+3369.04 5.84 we are gonna use it and let's call this 
+3372.16 2.72 function here 
+3375.2 5.119 like that and after that as you can see 
+3378.079 4.641 we need to create a reference 
+3380.319 5.121 and we are going to pass in our storage 
+3382.72 5.359 and a file name and after that we are 
+3385.44 5.6 going to upload it like that 
+3388.079 5.601 but there is a better example here let's 
+3391.04 2.64 check for it 
+3393.76 4.16 okay here as you can see after creating 
+3396.48 3.28 our reference 
+3397.92 4.879 we are gonna use this function we are 
+3399.76 5.44 gonna send our reference and our file 
+3402.799 6.0 and after that we will be able to see 
+3405.2 5.76 the uploading percentage or any error 
+3408.799 5.841 and at the end of the process we will be 
+3410.96 7.32 able to see our url image url 
+3414.64 3.64 let's copy this 
+3421.359 7.041 and i'm gonna paste here 
+3424.88 3.52 let's take this tool here 
+3430.319 3.201 on top 
+3431.52 5.92 of course we are gonna get our storage 
+3433.52 7.44 from our firebase file let's say storage 
+3437.44 6.24 in this case we don't need here 
+3440.96 6.24 okay so as you can see we should name 
+3443.68 6.24 our image in this storage what we can do 
+3447.2 5.44 we can just use username for example 
+3449.92 6.04 so i will say display name so if we 
+3452.64 6.8 create a user name john it's going to be 
+3455.96 6.04 john.png or whatever and after that 
+3459.44 5.04 let's clear here as i said we can see 
+3462.0 5.52 our percentage but we don't need that i 
+3464.48 5.2 think i'm gonna delete we can make our 
+3467.52 5.36 error handling let's say if there's an 
+3469.68 6.639 error again set error is gonna be true 
+3472.88 6.479 and finally if everything is okay 
+3476.319 6.0 it's gonna return this downloadable url 
+3479.359 5.921 okay right now we have a user here and 
+3482.319 5.361 we are able to upload any image 
+3485.28 7.039 and i'm gonna come here and update my 
+3487.68 6.24 user i will say await update profile 
+3492.319 4.48 and it comes from 
+3493.92 5.36 firebase authentication 
+3496.799 4.8 and if you are using firebase you should 
+3499.28 5.68 get used to this because you are gonna 
+3501.599 5.52 import a lot of function like that 
+3504.96 3.119 by the way of course it should be async 
+3507.119 3.361 function 
+3508.079 6.0 and i'm gonna pass here my user is gonna 
+3510.48 4.8 be response and user and what i'm gonna 
+3514.079 2.321 update 
+3515.28 3.6 if you remember 
+3516.4 4.32 there is a display name here 
+3518.88 3.76 and photo url 
+3520.72 3.359 we can update them 
+3522.64 4.24 i will say 
+3524.079 4.161 display name is gonna be our display 
+3526.88 6.239 name here 
+3528.24 6.24 photo url will be this download url 
+3533.119 4.321 let's say 
+3534.48 2.96 photo url 
+3538.319 4.641 download url 
+3539.92 5.84 but it's not enough that because this 
+3542.96 4.639 user belongs only authentication 
+3545.76 4.4 database 
+3547.599 5.361 as you can see they are here but how we 
+3550.16 4.959 can reach other people it's not about 
+3552.96 5.68 authentication anymore we should be able 
+3555.119 6.72 to find our friends and chat with them 
+3558.64 6.0 to do that after registering this user 
+3561.839 5.28 i'm gonna save this user into another 
+3564.64 5.28 database again this is only 
+3567.119 5.601 authentication we can login we can 
+3569.92 5.6 register we can update our user 
+3572.72 7.04 but we cannot reach other people to do 
+3575.52 4.24 that we are gonna use firebase database 
+3579.839 5.28 let's create 
+3582.0 3.119 again test mode 
+3585.52 5.2 okay it's ready basically we are gonna 
+3588.0 5.44 create users collection here 
+3590.72 5.359 and we are gonna add our users 
+3593.44 5.76 let's see how we can do this 
+3596.079 6.321 set a document 
+3599.2 5.359 a data to cloud firestore 
+3602.4 4.159 as you can see we are gonna use this 
+3604.559 3.201 function it comes from firebase 
+3606.559 3.441 firestore 
+3607.76 4.24 and after that we are gonna write here 
+3610.0 3.04 our collection name and it's gonna be 
+3612.0 3.44 users 
+3613.04 5.84 and we are gonna write here any unique 
+3615.44 5.6 id so which id we are gonna use 
+3618.88 5.76 if you come here as you can see there is 
+3621.04 5.12 a uid here we can use it let's do that 
+3624.64 4.8 let's copy this 
+3626.16 5.04 and paste here i know there are a lot of 
+3629.44 3.84 functions but 
+3631.2 4.56 there is nothing to do 
+3633.28 3.519 and i will come here and say 
+3635.76 2.88 wait 
+3636.799 3.28 set document 
+3638.64 4.24 document 
+3640.079 5.76 and as you can see there is a db here 
+3642.88 5.439 but we haven't created yet let's go to 
+3645.839 5.601 firebase and i'm going to come here and 
+3648.319 4.0 say export const 
+3651.44 3.52 db 
+3652.319 5.04 and get firestore 
+3654.96 6.399 let's import 
+3657.359 4.0 it comes from firebase firestore 
+3662.72 6.24 like that okay we can use it here 
+3665.92 4.96 i'll say db and our collection name is 
+3668.96 5.399 going to be users 
+3670.88 7.28 and unique id remember we have a user 
+3674.359 6.121 response.user and we can use its uid and 
+3678.16 4.159 after that we will write here what we 
+3680.48 4.16 are going to store 
+3682.319 4.8 as you can see it stores name state and 
+3684.64 3.919 country we are gonna store our 
+3687.119 3.841 display name 
+3688.559 5.76 email 
+3690.96 5.839 and photo url i'm not storing password 
+3694.319 5.04 that because we are gonna use this users 
+3696.799 5.441 collection to see other users 
+3699.359 4.96 and it's going to be download url oops 
+3702.24 5.359 of course it should be inside this 
+3704.319 5.76 function like that and also we can write 
+3707.599 5.041 here user id it's going to be much 
+3710.079 4.801 easier to use it 
+3712.64 4.88 like that then we've hatched this user 
+3714.88 5.36 we are going to say only user dot uid 
+3717.52 4.559 okay let's see again 
+3720.24 4.72 i'm gonna refresh 
+3722.079 2.881 let's say john 
+3725.119 3.761 any password here i'm gonna choose an 
+3727.52 5.2 image 
+3728.88 6.08 let's choose this one and sign up 
+3732.72 5.2 of course we cannot see anything but if 
+3734.96 6.159 we check here i'm gonna refresh 
+3737.92 7.36 and as you can see it's here perfect 
+3741.119 4.161 and this is our image let's check 
+3745.52 4.559 okay perfect 
+3747.2 5.44 it works properly so what else we are 
+3750.079 5.28 gonna need here 
+3752.64 5.679 and we are gonna need chat collection 
+3755.359 5.2 and also i want to create user chats 
+3758.319 4.401 collection it's gonna include the all 
+3760.559 4.321 conversations we have 
+3762.72 4.96 it's gonna be easier that because 
+3764.88 5.439 otherwise when we create here a chat 
+3767.68 5.76 collection it's gonna include maybe 
+3770.319 6.0 thousands of chats and we are gonna make 
+3773.44 6.32 a query sending our username to search 
+3776.319 6.24 for all chats belong us 
+3779.76 6.88 instead of that we can basically create 
+3782.559 6.24 users chat and its id can be our user id 
+3786.64 4.479 and we can take the list of our 
+3788.799 4.881 conversations using that collection it's 
+3791.119 5.521 gonna be much easier so what i'm gonna 
+3793.68 6.0 do here when we register any user we are 
+3796.64 5.04 going to create its users chat document 
+3799.68 4.24 here let's do this and you are going to 
+3801.68 4.159 understand better i will say 
+3803.92 5.28 more await 
+3805.839 4.881 and set documents 
+3809.2 3.44 and i will say 
+3810.72 4.8 user chats 
+3812.64 4.32 and again we are gonna pass here our 
+3815.52 3.839 user id 
+3816.96 3.599 and it's gonna be an empty object for 
+3819.359 2.881 now 
+3820.559 4.56 that's because we don't have any 
+3822.24 5.2 conversation yet when we register we are 
+3825.119 5.521 not going to have any friends here 
+3827.44 6.159 but after when we search for anyone and 
+3830.64 5.679 when we click on his user card here we 
+3833.599 3.841 are going to add this user inside this 
+3836.319 4.081 collection 
+3837.44 5.52 and finally if everything is okay 
+3840.4 5.12 we are gonna go to home page to do that 
+3842.96 5.839 we will be using react router dom let's 
+3845.52 8.12 open up our terminal and i will say 
+3848.799 4.841 and add react rather though 
+3853.839 4.96 let's see how we can use it 
+3856.559 5.361 as you can see we should wrap our app 
+3858.799 5.201 using this browser router and after that 
+3861.92 4.72 we are gonna write each individual 
+3864.0 5.28 router for example for home page for 
+3866.64 6.24 login page for register page so i'm 
+3869.28 4.4 gonna copy here and i'm gonna come here 
+3872.88 2.8 and 
+3873.68 5.439 let's delete this actually 
+3875.68 8.0 and i'm gonna paste my router like that 
+3879.119 4.561 and we are gonna wrap our app 
+3884.559 4.961 like that and we can create our roots 
+3890.64 5.04 and inside we are gonna write our roots 
+3894.319 4.401 first one will be 
+3895.68 4.32 our home page and whenever we visit our 
+3898.72 3.2 home page 
+3900.0 6.48 which is index page 
+3901.92 4.56 we are gonna call the home component 
+3907.039 5.601 and when we try to visit login url let's 
+3910.319 5.28 say path login 
+3912.64 6.32 we are gonna call login page 
+3915.599 3.361 and for the register 
+3920.24 6.559 let's try as you can see this is home 
+3923.599 3.2 page i'm gonna go to 
+3927.599 6.72 login 
+3928.96 5.359 perfect and if i want to go to register 
+3934.559 5.201 it's gonna be register component it's 
+3937.039 4.481 that easy so let's write here 
+3939.76 3.92 our navigation 
+3941.52 3.68 to do that we are going to be using use 
+3943.68 4.399 navigate hook 
+3945.2 5.359 let's say const navigate 
+3948.079 6.681 use navigate hoop 
+3950.559 4.201 and it comes from reactgradual 
+3959.2 3.119 okay 
+3960.16 4.399 so we can use this function 
+3962.319 4.961 and after successful operation 
+3964.559 4.881 we can go to home page 
+3967.28 4.319 like that 
+3969.44 6.119 let's see 
+3971.599 3.96 i will say user2 
+3978.88 4.959 let's choose this image 
+3981.28 2.559 sign up 
+3984.24 5.359 and home page perfect 
+3986.799 5.681 it works but there's a problem here if 
+3989.599 5.52 we don't have any user we can still see 
+3992.48 5.2 this home page to prevent this we should 
+3995.119 5.121 check if we are logged in or not of 
+3997.68 4.399 course you can do this inside this app 
+4000.24 4.0 but we are going to need this user 
+4002.079 5.04 everywhere for example 
+4004.24 5.04 in this number when we send any message 
+4007.119 4.72 in this chats component that because we 
+4009.28 4.0 are gonna fetch this data using our user 
+4011.839 4.48 id 
+4013.28 5.68 basically creating here user and sending 
+4016.319 4.561 this user everywhere is not a good idea 
+4018.96 4.639 we don't want to make prop drilling 
+4020.88 5.199 instead we are gonna use context api 
+4023.599 5.44 let's come here and create 
+4026.079 2.96 contacts folder 
+4029.2 6.159 and it's gonna be 
+4031.44 5.76 authentication context 
+4035.359 5.521 now i will say export 
+4037.2 4.48 const auth context 
+4040.88 2.959 and 
+4041.68 4.639 create context 
+4043.839 4.561 it comes from react and after that we 
+4046.319 4.321 are gonna create an authentication 
+4048.4 4.719 provider and we are gonna create our 
+4050.64 5.6 user there and we will be able to use 
+4053.119 4.72 that user inside every component in our 
+4056.24 3.68 app 
+4057.839 4.081 let's do that if you are watching my 
+4059.92 5.199 channel you already know how to use 
+4061.92 5.6 context api i'm not gonna explain again 
+4065.119 4.561 but in the future i want to create a 
+4067.52 5.039 video and in that video we are gonna 
+4069.68 5.84 deep dive into this context api let's 
+4072.559 7.201 create our provider i will say exports 
+4075.52 4.24 const alt context provider 
+4081.599 5.121 and i'm gonna pass here children it 
+4084.319 5.601 represents our components 
+4086.72 5.92 and let's create our current user using 
+4089.92 4.639 use state i will say const 
+4092.64 4.8 current user 
+4094.559 5.2 set current user 
+4097.44 4.08 i will say use state 
+4099.759 4.881 and at the beginning we are not going to 
+4101.52 6.319 have any usage but if we are logged in 
+4104.64 5.44 it means there is an authenticated user 
+4107.839 4.88 so how we are gonna check it it's really 
+4110.08 5.759 easy to do this using firebase i think 
+4112.719 4.881 it's the strongest feature of firebase 
+4115.839 4.161 you don't have to worry about your 
+4117.6 4.239 authentication firebase is doing 
+4120.0 3.199 everything for you you are gonna see 
+4121.839 4.561 right now 
+4123.199 5.12 i'm gonna create here a use effect 
+4126.4 3.839 and i'm gonna check whether we have a 
+4128.319 4.4 user or not 
+4130.239 7.201 to do that we are going to use again a 
+4132.719 4.721 firebase function on all state change 
+4138.159 4.401 and we are going to pass in our off 
+4140.4 4.959 function and after that we are going to 
+4142.56 4.88 check whether there is a user or not and 
+4145.359 5.121 if there is a user we are going to set 
+4147.44 3.04 our current user 
+4151.759 6.08 let's import this okay it's not coming 
+4154.64 5.92 i'll say import this function 
+4157.839 4.241 and it comes from firebase 
+4160.56 4.08 authentication 
+4162.08 2.56 let's see 
+4164.96 4.96 okay 
+4165.839 7.041 and finally i will say all context 
+4169.92 5.279 and provider and we are gonna wrap our 
+4172.88 4.959 children which is the component 
+4175.199 5.441 and in this case these children will be 
+4177.839 5.84 our application and we can send anything 
+4180.64 5.36 here value and we are gonna send current 
+4183.679 2.321 user 
+4186.08 5.84 it means this component can reach this 
+4188.799 5.681 current user so any component that we 
+4191.92 5.68 wrap with this auth context provider 
+4194.48 5.92 will be able to reach this current user 
+4197.6 7.92 so basically we can wrap our entire 
+4200.4 7.839 application or you can go to index file 
+4205.52 5.92 here and you can wrap your app using 
+4208.239 5.841 this provider i will say auth context 
+4211.44 2.64 provider 
+4215.04 3.76 and i'm gonna wrap it like that let's 
+4217.679 4.081 test 
+4218.8 5.28 i'm gonna come here and say 
+4221.76 4.399 const 
+4224.08 4.639 current user 
+4226.159 4.241 use context hook 
+4228.719 3.201 each context we are going to use we are 
+4230.4 3.52 going to use 
+4231.92 5.279 auth context 
+4233.92 5.279 which we have created here 
+4237.199 5.201 i'm going to save 
+4239.199 5.841 let's console.log first 
+4242.4 4.64 and as you can see it's here so even if 
+4245.04 4.32 i refresh the page it's going to be 
+4247.04 5.84 still here you don't have to worry about 
+4249.36 5.44 cookies tokens local storages firebase 
+4252.88 4.48 handles everything 
+4254.8 5.76 okay but there is something important 
+4257.36 5.68 remember my use effect video 
+4260.56 4.96 if you are listening in a real time 
+4263.04 4.32 operation you should use a cleanup 
+4265.52 4.08 function 
+4267.36 3.839 otherwise it's gonna cause some memory 
+4269.6 3.52 leaking 
+4271.199 4.241 if you didn't watch that video i highly 
+4273.12 4.32 recommend to watch it it contains 
+4275.44 5.44 everything you need to know about use 
+4277.44 6.96 effect so i will say closed ansep 
+4280.88 4.799 and we are going to call it here 
+4284.4 3.52 by the way 
+4285.679 6.321 there is a white screen here 
+4287.92 4.08 now okay i didn't return here 
+4296.08 5.52 okay perfect so how we can log out there 
+4299.12 4.64 is a button here let's do this quickly 
+4301.6 5.28 it's really easy i'm going to open up 
+4303.76 5.2 nabar and i'm going to create here on 
+4306.88 4.56 click event 
+4308.96 3.88 and i'm just going to call firebase sign 
+4311.44 3.84 out 
+4312.84 6.839 function and of course it comes from 
+4315.28 5.68 firebase authentication let's say import 
+4319.679 3.601 sign out 
+4320.96 2.32 from 
+4323.679 6.48 like that and here i'm gonna pass my 
+4327.199 5.761 firebase authentication like that and 
+4330.159 6.0 let's see okay this user is here i'm 
+4332.96 5.199 gonna log out and perfect we don't have 
+4336.159 5.601 any user right now 
+4338.159 6.08 so how we can prevent seeing this page 
+4341.76 5.2 i'm going to go to app.js again i can 
+4344.239 4.881 write here a condition i can say if 
+4346.96 3.759 there is a current user 
+4349.12 4.64 show home page 
+4350.719 4.96 if there is no show login page but there 
+4353.76 3.2 is a better option it's more 
+4355.679 3.441 professional 
+4356.96 4.719 basically i'm gonna create here a 
+4359.12 4.8 protected route and we are gonna check 
+4361.679 4.401 if there is a user or not if there is 
+4363.92 4.72 not it's gonna navigate to 
+4366.08 4.639 login page if there is we are gonna show 
+4368.64 7.68 any component in this case it's gonna be 
+4370.719 5.601 homepage let's say const protected root 
+4377.52 4.159 again we are gonna take any children 
+4382.08 5.44 i will say if there is a current user 
+4384.719 6.321 sorry if there is no current user just 
+4387.52 5.679 navigate to login page i will say return 
+4391.04 4.56 and we are going to use we are crowded 
+4393.199 7.681 on navigate component 
+4395.6 5.28 and it's gonna redirect us to login page 
+4401.36 4.08 like that 
+4402.48 2.96 let's import this 
+4405.84 7.879 like that and i'm gonna wrap my home 
+4408.8 4.919 component with this protected root 
+4417.04 4.639 like that as you can see 
+4419.36 4.56 even if we try to go to home page it's 
+4421.679 4.801 going to login page what about this 
+4423.92 5.759 login operation let's make this quick 
+4426.48 6.08 also i'm gonna go to login page i'm 
+4429.679 5.601 gonna do a similar thing 
+4432.56 4.96 they are gonna have error navigation 
+4435.28 5.72 handle submit actually i'm gonna copy 
+4437.52 3.48 everything here 
+4441.76 4.959 and paste and let's delete here 
+4448.48 4.16 and of course we are gonna have only 
+4450.48 5.199 email and password 
+4452.64 6.48 so it's gonna be zero is gonna be 
+4455.679 6.081 one we are not gonna have any file 
+4459.12 4.8 and that's right here our event 
+4461.76 6.24 on submit 
+4463.92 7.759 is gonna be handle submit 
+4468.0 4.64 okay let's import those react hooks like 
+4471.679 2.961 that 
+4472.64 4.8 and we are going to be using firebase 
+4474.64 4.96 signing with email and password let's 
+4477.44 6.4 see 
+4479.6 4.24 sign in email password 
+4487.12 4.4 we already created our user 
+4489.6 3.44 and as you can see we are going to use 
+4491.52 4.639 this function 
+4493.04 5.199 let's copy this 
+4496.159 5.201 and paste here of course we are going to 
+4498.239 5.121 use our own authentication function 
+4501.36 3.6 and after that 
+4503.36 4.24 we are going to assign it 
+4504.96 2.64 like that 
+4507.84 4.72 i will say 
+4508.84 5.319 await let's import this 
+4512.56 4.4 and that's all 
+4514.159 4.801 and if everything is okay 
+4516.96 4.719 navigate to 
+4518.96 2.719 login page 
+4523.04 6.24 i'm gonna refresh and let's try 
+4525.84 8.839 actually i forgot my password 
+4529.28 5.399 it was one two six i think let's try 
+4539.76 4.72 okay there is something wrong let's 
+4542.159 4.401 write our error actually 
+4544.48 5.6 i forgot that 
+4546.56 3.52 i'm gonna copy here 
+4551.12 2.72 and paste 
+4554.08 3.68 okay 
+4555.28 5.12 so i'm going to create another user by 
+4557.76 4.8 the way i cannot click here again we are 
+4560.4 4.88 going to be using react router dom and 
+4562.56 3.84 we are going to import link 
+4565.28 4.24 let's come here 
+4566.4 3.12 and i will say link 
+4571.12 2.48 and 
+4573.679 2.801 to register 
+4576.719 6.161 so i can do the same thing 
+4578.84 4.04 for register page 
+4590.32 5.919 like that okay perfect 
+4593.679 3.761 i'm gonna say jane 
+4596.239 4.201 jane 
+4597.44 3.0 gmail.com 
+4602.0 5.04 one two six 
+4604.56 4.32 let's choose this woman 
+4607.04 4.159 and sign up 
+4608.88 2.319 okay 
+4611.52 5.84 there is a user 
+4613.28 4.08 but we cannot see our home page 
+4620.4 5.279 ah if there is a user we are gonna 
+4622.48 5.44 return our home page of course let's say 
+4625.679 5.361 children 
+4627.92 6.4 okay awesome i will log out as you can 
+4631.04 7.76 see we cannot see our homepage anymore 
+4634.32 4.48 i will say jane of course it's an email 
+4642.719 4.321 sign in 
+4644.56 6.2 and it's still here 
+4647.04 3.72 okay we have a user 
+4653.28 4.959 oh of course home page not login 
+4661.12 4.64 okay perfect 
+4662.64 5.599 of course my password is really weak 
+4665.76 4.959 don't worry about that okay awesome 
+4668.239 5.521 right now we have a user let's change 
+4670.719 4.801 this image and this name i'm going to 
+4673.76 3.84 open member 
+4675.52 5.36 and i'm going to call here our current 
+4677.6 5.44 user i will say const 
+4680.88 4.08 current user 
+4683.04 5.76 use context 
+4684.96 7.48 and authentication context 
+4688.8 3.64 let's use it 
+4692.8 6.72 it's gonna be current user dot auto url 
+4697.679 6.121 and it's gonna be 
+4699.52 4.28 current user display name 
+4706.4 4.56 and perfect it's here 
+4708.88 5.52 as you can see it's really easy 
+4710.96 4.88 and if we check our db let's find our 
+4714.4 3.52 user here 
+4715.84 4.56 okay this one 
+4717.92 4.4 this is our user id 
+4720.4 4.4 and if we check here 
+4722.32 5.359 you are gonna see that there is same id 
+4724.8 4.8 here and it's an empty document right 
+4727.679 5.201 now that because we don't have any 
+4729.6 5.36 friend so let's take care of finding a 
+4732.88 4.799 user i'm gonna open up 
+4734.96 5.84 let's close everything actually 
+4737.679 5.201 and i'm gonna open up search 
+4740.8 5.28 so what we are gonna do when we search 
+4742.88 5.2 for any name here any display name and 
+4746.08 4.72 when we enter we are gonna see the 
+4748.08 5.04 result here let's do that so let's 
+4750.8 5.359 create here 
+4753.12 6.079 username for the input 
+4756.159 3.04 set user name 
+4760.0 3.32 use statehook 
+4764.0 5.6 and one more and it's gonna be 
+4766.32 3.28 the actual user 
+4769.92 7.92 we don't have any user yet let's say 
+4772.239 5.601 null and we can create maybe error 
+4778.8 5.359 like that so when we write anything 
+4781.679 6.081 inside this input we are going to change 
+4784.159 7.681 this username let's take this 
+4787.76 4.08 and i will say on change methods 
+4793.199 6.161 set username event target and value 
+4797.12 5.119 and when we enter we are going to search 
+4799.36 5.12 for a user and if there is a user we are 
+4802.239 4.801 going to set this state to do that i'm 
+4804.48 4.08 gonna come here and say one more event 
+4807.04 3.599 and it's gonna be 
+4808.56 5.44 on key down 
+4810.639 6.401 and let's say handle key basically it 
+4814.0 5.12 listens our keyboard actions and when we 
+4817.04 5.36 press on enter we are going to search 
+4819.12 4.88 for user let's create this 
+4822.4 4.239 function first 
+4824.0 4.48 handle key 
+4826.639 5.56 if e code 
+4828.48 3.719 equals enter 
+4832.239 7.201 just search for user we can create here 
+4836.08 6.24 a search function let's say 
+4839.44 2.88 handle search 
+4843.84 6.24 and we can call it here like that so how 
+4847.679 4.641 we can search any user to do that we are 
+4850.08 4.88 going to use firebase query 
+4852.32 2.64 let's check 
+4859.28 3.52 as you can see we are going to need some 
+4861.28 3.919 more functions 
+4862.8 3.919 and after that we are going to say find 
+4865.199 4.161 the collection 
+4866.719 5.841 named steez in our case it's going to be 
+4869.36 5.279 users and create a query and here we are 
+4872.56 4.72 going to write our condition we are 
+4874.639 3.761 gonna say if display name equals 
+4877.28 2.64 username 
+4878.4 2.72 find the user 
+4879.92 3.36 so let's 
+4881.12 5.28 copy this and import them 
+4883.28 6.64 paste and i will say import 
+4886.4 6.799 db from firebase 
+4889.92 5.759 like that so i will say cost 
+4893.199 3.681 query 
+4895.679 3.921 collection 
+4896.88 4.64 we are gonna pass inside our db 
+4899.6 4.24 and which collection we are going to 
+4901.52 5.52 reach is going to be users and i will 
+4903.84 5.52 say where display name 
+4907.04 5.36 equals 
+4909.36 3.04 this username 
+4912.8 6.16 okay and after that using this query 
+4916.4 4.96 we are gonna search for our users like 
+4918.96 5.44 that as you can see we are gonna use get 
+4921.36 4.319 documents and we are gonna use our query 
+4924.4 4.4 and here 
+4925.679 8.241 is gonna return our user here and here 
+4928.8 5.12 we can set our user so let's copy this 
+4936.56 3.44 and i will paste 
+4938.159 3.04 of course it's gonna be an async 
+4940.0 4.239 function 
+4941.199 5.841 and get documents from 
+4944.239 2.801 firestore 
+4948.239 4.081 and if there is a user we are going to 
+4950.56 4.72 set our user 
+4952.32 7.48 documents dot data of course we can 
+4955.28 4.52 write it inside try catch block 
+4961.12 6.48 and if there is an error 
+4963.92 3.68 we can set our error 
+4968.88 2.799 or 
+4970.159 4.56 just true 
+4971.679 5.52 let's use this user here delete this and 
+4974.719 6.0 it's going to be 
+4977.199 7.321 user dot url 
+4980.719 3.801 and its name 
+4986.88 4.48 of course if we don't have any user we 
+4989.04 6.32 are not going to return this div 
+4991.36 4.0 i will say if there is user 
+4995.679 8.801 and here if there is an error we can say 
+4999.52 4.96 user not found or something went wrong 
+5006.32 6.64 okay let's try i'll say john 
+5010.239 5.201 as you can see it's here perfect 
+5012.96 5.279 and after finding we should be able to 
+5015.44 5.199 choose this user so when we click on 
+5018.239 5.281 this user we are going to add this user 
+5020.639 5.52 inside user chats and also we are going 
+5023.52 4.88 to create here chats collection 
+5026.159 4.801 and it's going to include all chat 
+5028.4 5.2 messages between two people so let's 
+5030.96 4.8 create here and one click event i will 
+5033.6 5.119 say one click 
+5035.76 6.8 and handle select 
+5038.719 7.041 so let me click on this user div we are 
+5042.56 3.2 gonna call this function 
+5046.0 5.199 firstly let's see what we are gonna do 
+5048.88 4.4 as i said there will be 
+5051.199 5.201 chats collection here 
+5053.28 6.56 and it's gonna include the chat between 
+5056.4 6.48 two people so how it's gonna know that 
+5059.84 6.64 this is the chat between john and jane 
+5062.88 6.88 basically we can take jane's user id and 
+5066.48 6.719 jones user id we can join them together 
+5069.76 6.24 and write it here as a document id and 
+5073.199 5.841 after that it's gonna include 
+5076.0 3.04 messages array 
+5079.36 3.48 and it's gonna include message details 
+5082.08 2.72 so 
+5082.84 3.08 first 
+5084.8 4.16 check 
+5085.92 3.04 whether the group 
+5089.12 4.079 exists or not 
+5091.04 5.84 i mean this group is 
+5093.199 6.561 chats collection in firestore 
+5096.88 4.4 and if it doesn't exist just create new 
+5099.76 4.479 one 
+5101.28 6.08 and again if it doesn't exist we should 
+5104.239 6.321 create user chats for each user we are 
+5107.36 5.68 gonna add conversation with john inside 
+5110.56 5.36 this user chat 
+5113.04 5.199 i know it sounds complicated but when we 
+5115.92 4.08 create and when we see it on our 
+5118.239 3.761 application you are gonna understand 
+5120.0 3.12 better so i will say 
+5122.0 2.84 create 
+5123.12 5.28 user 
+5124.84 5.72 chats four gene and four draw let's do 
+5128.4 4.72 that it's gonna be an 
+5130.56 4.56 async function 
+5133.12 4.4 and i will say 
+5135.12 6.079 const response 
+5137.52 6.56 and await get document we are gonna call 
+5141.199 5.361 our db and we are gonna look inside 
+5144.08 5.84 chat's collection and we are gonna write 
+5146.56 6.079 here the id of those users we are gonna 
+5149.92 4.48 join them and write it here 
+5152.639 3.361 let's do this 
+5154.4 4.64 i'm gonna write here 
+5156.0 5.84 combined id 
+5159.04 6.159 and we are gonna write here a logic 
+5161.84 6.0 i will say if current users id by the 
+5165.199 6.801 way we should take this current user 
+5167.84 5.92 using auth context so i will say const 
+5172.0 4.88 current user 
+5173.76 4.0 use context hook 
+5176.88 4.279 and 
+5177.76 3.399 alt context 
+5186.639 6.721 context and our context here 
+5190.159 4.241 so we can use this user id 
+5193.36 4.72 i will say 
+5194.4 7.2 current user dot uid if it's bigger than 
+5198.08 8.559 user dot uid we are gonna write here 
+5201.6 8.24 current user dot uid plus user dot uid 
+5206.639 6.56 if user id is bigger than our current 
+5209.84 9.2 user's id it's gonna be do opposite 
+5213.199 5.841 user dot uid plus current user id 
+5220.239 6.641 like that 
+5222.239 4.641 and i'm gonna search for this id here 
+5226.96 3.279 let's say try catch 
+5234.0 4.96 okay and i'm gonna write here a 
+5235.76 6.24 condition i will say if response doesn't 
+5238.96 6.239 exist it means if there is no chat 
+5242.0 5.92 between john and jane inside this chats 
+5245.199 6.401 collection we are gonna create new one 
+5247.92 6.16 so i will say if response exists it's a 
+5251.6 3.84 firebase method by the way if it doesn't 
+5254.08 5.68 exist 
+5255.44 4.32 i will say create chat 
+5259.84 4.72 remember how we are doing this i will 
+5262.0 4.48 say await 
+5264.56 4.88 set document 
+5266.48 6.719 like that and we are gonna send our db 
+5269.44 7.04 here and inside chats collection we are 
+5273.199 7.601 gonna create a document and its id will 
+5276.48 6.0 be combined id by the way i shall drop 
+5280.8 4.32 this 
+5282.48 5.04 and after that it's gonna be empty we 
+5285.12 4.96 are not gonna have any message actually 
+5287.52 5.76 we can say messages 
+5290.08 5.36 and it's gonna be an empty array okay 
+5293.28 4.56 and after that we are gonna create user 
+5295.44 2.4 chats 
+5299.36 4.96 but here there is something we need to 
+5301.6 5.68 know as you remember we are creating 
+5304.32 5.12 user chat when we register this is our 
+5307.28 5.52 user id and we don't have any 
+5309.44 6.56 conversation yet here is empty but when 
+5312.8 6.08 we search for john and when we click on 
+5316.0 5.28 his user card we are gonna add it here 
+5318.88 5.04 but not only the user 
+5321.28 3.439 there will be also this latest message 
+5323.92 5.44 here 
+5324.719 4.641 so basically we have user chats 
+5330.4 4.56 and inside we have jane's id 
+5335.12 3.119 and inside 
+5336.4 4.64 we are gonna have the conversation 
+5338.239 4.881 between john and jane so it's gonna be 
+5341.04 4.32 our combined id 
+5343.12 4.32 and inside this we are gonna need a 
+5345.36 4.56 couple of things 
+5347.44 4.96 we are gonna need user information which 
+5349.92 4.64 includes this image display name and 
+5352.4 5.04 maybe its id 
+5354.56 6.159 and we are gonna need last message and 
+5357.44 5.759 also i'm gonna add a date that because 
+5360.719 4.241 we are gonna sort this chats list so 
+5363.199 4.96 it's gonna be 
+5364.96 6.56 something like that user info 
+5368.159 6.48 is gonna include john's display name 
+5371.52 6.56 jones image his id 
+5374.639 5.121 and we are gonna have last message of 
+5378.08 5.119 course we are not gonna have any last 
+5379.76 6.479 message for now and date and it's gonna 
+5383.199 4.641 be current date so our structure is 
+5386.239 4.641 something like that 
+5387.84 4.72 but how we are gonna update our user 
+5390.88 4.72 chat here 
+5392.56 5.679 let's come here and search for update 
+5395.6 2.639 documents 
+5400.96 7.52 it's here i think 
+5404.08 4.4 okay it's a set function 
+5408.719 3.92 okay update 
+5410.4 3.52 as you can see we are gonna use update 
+5412.639 3.201 talk function 
+5413.92 3.12 and inside we are gonna write our 
+5415.84 4.799 reference 
+5417.04 6.0 and finally we are updating it like that 
+5420.639 4.961 but as you realize we are gonna have 
+5423.04 5.679 some nested objects we are gonna have 
+5425.6 4.88 combined id and inside we are gonna have 
+5428.719 4.48 user info 
+5430.48 4.719 so for those nested objects 
+5433.199 5.601 as you can see it's here 
+5435.199 6.96 only thing we should do is using dot 
+5438.8 8.0 so it's going to be combined id dot user 
+5442.159 6.641 info combined id to update or whatever 
+5446.8 3.919 we are going to use like that 
+5448.8 5.04 let's do that 
+5450.719 5.201 i'm going to delete here 
+5453.84 4.72 and i will say await 
+5455.92 4.719 update document doc 
+5458.56 4.72 and db 
+5460.639 4.721 by the way there is no comma here like 
+5463.28 5.28 that 
+5465.36 7.6 and it's going to be user chats and we 
+5468.56 4.4 are going to look for our users chat 
+5473.679 2.881 and insight 
+5475.44 3.04 i will say 
+5476.56 4.079 combined id 
+5478.48 5.12 dot user info 
+5480.639 7.761 this is how you can use a variable and a 
+5483.6 7.92 string together and it's gonna be uid 
+5488.4 5.759 user dot uid display name 
+5491.52 4.32 user dot display name and 
+5494.159 5.761 photo url 
+5495.84 6.16 is gonna be user dot photo url and i'm 
+5499.92 5.92 gonna add here date 
+5502.0 6.4 again combined id and date and it's 
+5505.84 5.68 gonna be the current date but we are not 
+5508.4 4.64 gonna use date dot now instead we are 
+5511.52 4.56 gonna use 
+5513.04 5.52 firebase server timestamp we are using 
+5516.08 4.96 this because it calculates different 
+5518.56 3.92 time zones and something like that 
+5521.04 3.76 so let's say 
+5522.48 5.04 server timestamp 
+5524.8 5.52 like that okay as you can see i'm not 
+5527.52 4.96 writing combined id and last message 
+5530.32 3.839 that because when we search for any user 
+5532.48 4.08 we are not going to have any latest 
+5534.159 4.641 message we are going to add it here 
+5536.56 4.48 inside this input when we send we are 
+5538.8 4.48 going to send our message to chats 
+5541.04 5.76 collection and also we are going to send 
+5543.28 6.48 it here inside user chats so i'm gonna 
+5546.8 4.32 do the same thing for the other user so 
+5549.76 5.439 it's gonna be 
+5551.12 7.519 user uid again combined id and 
+5555.199 6.801 other details but i'm gonna change here 
+5558.639 5.201 it's gonna be current user 
+5562.0 4.32 when we see them here you are gonna 
+5563.84 5.44 understand better 
+5566.32 5.68 let's see i hope everything is okay 
+5569.28 4.399 i'm gonna search for john 
+5572.0 4.639 i'm gonna click 
+5573.679 6.321 okay something is wrong 
+5576.639 3.361 okay i forgot here 
+5580.239 4.561 talk 
+5582.159 5.121 and this is not talks 
+5584.8 5.68 get talk 
+5587.28 3.2 i'm gonna click again 
+5590.88 6.16 and let's check 
+5593.6 4.72 okay as you can see this is jane's id we 
+5597.04 4.639 added here 
+5598.32 6.56 the combined id we have a date here we 
+5601.679 6.161 have a user info object and later we are 
+5604.88 6.24 gonna have here the latest message and 
+5607.84 4.72 here as you can see this is combined id 
+5611.12 4.48 and inside 
+5612.56 6.159 messages it's empty for now so right now 
+5615.6 7.119 we can fetch all user chat and we can 
+5618.719 6.48 use this to fetch latest conversations 
+5622.719 4.801 let's do that by the way when we click 
+5625.199 4.401 on this user we can close this search 
+5627.52 4.48 bar i mean this user 
+5629.6 4.24 so i will come here and say 
+5632.0 4.48 let's delete this 
+5633.84 5.6 i'm going to say set user 
+5636.48 5.759 it's going to be null ak and also i can 
+5639.44 5.44 delete this input text so it's going to 
+5642.239 4.881 be set user name 
+5644.88 5.359 it's going to be an empty string key 
+5647.12 5.599 let's try i will click ok user has gone 
+5650.239 6.081 but it's still here that because we 
+5652.719 6.801 didn't use this value here 
+5656.32 5.68 it's going to be using me 
+5659.52 5.44 as you can see it's gone perfect 
+5662.0 6.159 right now let's delete those users 
+5664.96 5.759 instead fetch them from our db 
+5668.159 5.52 so let's open up chats 
+5670.719 5.52 and here instead of those users we are 
+5673.679 4.801 going to fetch our conversations 
+5676.239 3.841 so i'm going to create here 
+5678.48 4.48 chats 
+5680.08 2.88 set chats 
+5683.92 2.48 new 
+5684.84 3.48 state 
+5686.4 3.2 at the beginning is gonna be an empty 
+5688.32 6.16 array 
+5689.6 4.88 and we are gonna fetch using use effect 
+5697.36 5.44 but we are not gonna fetch this data 
+5699.52 6.96 only once it's gonna be real time we are 
+5702.8 6.16 gonna actually listen this collection 
+5706.48 5.6 so whenever something changes here we 
+5708.96 5.6 are gonna see it here immediately 
+5712.08 6.8 to do that we are to use firebase on 
+5714.56 7.599 snapshot let's see actually i will say 
+5718.88 3.279 real time cat 
+5726.56 3.84 as you can see we are going to use this 
+5728.32 5.359 method and it's going to return us to 
+5730.4 5.52 real time data this is one of the best 
+5733.679 5.04 features of firebase 
+5735.92 2.799 let's copy this 
+5738.88 7.04 under paste on snapshot 
+5743.44 4.799 document 
+5745.92 5.279 and our db 
+5748.239 8.521 we are going to look inside user chats 
+5751.199 5.561 and here is going to be current users id 
+5758.0 4.159 let's fetch this 
+5760.32 5.52 i will say const 
+5762.159 6.801 current user use context 
+5765.84 5.76 and alt context 
+5768.96 4.8 and after that we can set our data i 
+5771.6 4.0 will say set chats 
+5773.76 3.919 it's going to be 
+5775.6 4.559 documents 
+5777.679 4.801 and data as you can see there is a 
+5780.159 5.281 missing dependency here it's going to be 
+5782.48 5.199 current user dot id 
+5785.44 4.96 and as you realize 
+5787.679 4.801 it gives us unsub here we should clean 
+5790.4 2.08 up 
+5796.56 4.48 so let's see what we have i will say 
+5799.52 3.92 console.log 
+5801.04 4.56 and chats 
+5803.44 3.92 of course we are going to have an error 
+5805.6 3.599 most probably that because at the 
+5807.36 5.799 beginning we are not going to have user 
+5809.199 3.96 id let's see 
+5813.199 3.841 as you can see 
+5814.56 4.8 it's empty to prevent this issue i'm 
+5817.04 6.72 gonna wrap this with a function let's 
+5819.36 4.4 say const get chats 
+5823.92 3.52 like that 
+5825.36 3.12 and i'm gonna write here a condition i 
+5827.44 4.08 will say 
+5828.48 6.719 if there is current user id 
+5831.52 3.679 after call this function 
+5835.76 6.399 like that as you can see this is here 
+5838.88 5.359 and we are gonna use this user info here 
+5842.159 5.201 but there is a problem here that because 
+5844.239 5.761 this is an object not an array but don't 
+5847.36 4.64 worry we are gonna convert this object 
+5850.0 6.719 into an array 
+5852.0 6.8 let's write here objects dot entries 
+5856.719 4.161 and chats 
+5858.8 4.72 and right now as you can see it's an 
+5860.88 5.359 array and this is our chat 
+5863.52 4.0 and inside as you can see there are two 
+5866.239 4.801 elements 
+5867.52 6.88 the first element is the chat id and the 
+5871.04 6.88 second element is object so this is chat 
+5874.4 4.64 id and this is our content so let's do 
+5877.92 3.279 that 
+5879.04 5.679 i'm gonna delete other users here i'm 
+5881.199 6.401 just gonna leave one of them 
+5884.719 5.601 and i will say object 
+5887.6 4.24 dot entries i'm gonna pass here our 
+5890.32 4.0 chats 
+5891.84 6.16 and i will say map 
+5894.32 5.76 for each chat we are gonna return this 
+5898.0 4.239 user 
+5900.08 5.52 of course if you are using a loop give 
+5902.239 6.88 here a unique key and it's gonna be 
+5905.6 6.4 chat and the first element remember 
+5909.119 6.56 this is id and for other informations we 
+5912.0 3.679 are gonna use chat one 
+5916.0 4.0 that's right here 
+5917.92 4.88 chat one 
+5920.0 6.08 dot display name 
+5922.8 6.0 and chat one 
+5926.08 2.72 last message 
+5928.96 6.08 or text of course we don't have yet but 
+5932.56 4.8 we are gonna have 
+5935.04 3.84 okay image is still the same let's 
+5937.36 3.359 change it 
+5938.88 2.72 chat one 
+5940.719 3.281 and 
+5941.6 5.599 photo url 
+5944.0 3.199 user info of course 
+5948.32 5.399 let's choose them 
+5950.159 3.56 user info 
+5954.0 5.679 okay perfect so what i'm gonna do 
+5957.04 7.04 when we click on this user we are gonna 
+5959.679 6.48 see the chat between us and this user 
+5964.08 4.32 basically we are going to store this 
+5966.159 4.241 user information somewhere 
+5968.4 4.64 and we are going to use it here to do 
+5970.4 3.6 that again we are going to use context 
+5973.04 4.4 api 
+5974.0 6.88 otherwise we have to come here 
+5977.44 6.64 and create here users set user we have 
+5980.88 6.48 to send it to sidebar and inside sidebar 
+5984.08 5.2 we are gonna send it to our chat and we 
+5987.36 3.12 are gonna use it inside this chat 
+5989.28 2.72 component 
+5990.48 4.0 to prevent this 
+5992.0 5.44 again we are gonna use context 
+5994.48 6.96 so i will say user context 
+5997.44 4.0 or let's say chat context 
+6006.32 3.52 and let's copy this 
+6010.239 5.601 and paste here 
+6012.8 3.04 i'm gonna change here 
+6018.48 3.44 okay 
+6019.84 4.96 but right now we are gonna do something 
+6021.92 5.68 different we are gonna use use reducer 
+6024.8 4.08 that because we are gonna need this user 
+6027.6 4.639 information 
+6028.88 4.4 and also the combined id to fetch this 
+6032.239 2.321 chat 
+6033.28 3.439 remember 
+6034.56 4.72 in chats collection we are gonna search 
+6036.719 4.96 for a specific chat to do that we are 
+6039.28 6.32 gonna use this combined id 
+6041.679 6.881 so we are gonna need a state like this 
+6045.6 6.96 user and it's gonna include user 
+6048.56 7.119 information and also chat id and since 
+6052.56 6.0 this chat id depends on this user it's 
+6055.679 5.681 better to use use reducer here if you 
+6058.56 4.8 didn't watch my use reducer video i 
+6061.36 3.44 recommend you to watch it first and 
+6063.36 2.879 after you are gonna understand 
+6064.8 3.6 everything better 
+6066.239 6.96 so i'm gonna create here an initial 
+6068.4 4.799 state i'll say const initial state 
+6074.4 4.36 yeah i'm gonna have chat id 
+6079.28 5.52 and we are gonna have a user 
+6082.48 3.679 let's create our reducer i will say 
+6084.8 3.439 const 
+6086.159 6.401 chat reducer 
+6088.239 6.641 we are gonna take a state and action 
+6092.56 4.72 and we are gonna have only one action 
+6094.88 4.56 here and it's gonna be change user when 
+6097.28 4.959 we click on this user we are gonna 
+6099.44 5.759 change this user at the same time we are 
+6102.239 5.761 gonna update this chat id let's say 
+6105.199 5.601 switch action type 
+6108.0 5.44 i'm i'm writing switch because maybe we 
+6110.8 6.08 can add something more here we can block 
+6113.44 5.6 the user or something like that 
+6116.88 5.2 so it can stay like that 
+6119.04 6.48 i will say case 
+6122.08 3.44 let's say change user 
+6125.92 4.0 and we are going to return a different 
+6128.0 4.639 state but there is a warning here that 
+6129.92 4.48 because we don't have default 
+6132.639 5.04 i will say default 
+6134.4 3.279 oops it's going to be here 
+6138.48 3.28 and 
+6139.44 4.64 return state 
+6141.76 4.479 okay what we are going to return here 
+6144.08 5.76 firstly we are going to update our user 
+6146.239 3.601 it's going to be action payload 
+6150.32 4.24 and after that we are gonna update our 
+6152.48 4.159 chat id 
+6154.56 3.2 i'm gonna write exactly the same thing 
+6156.639 3.04 here 
+6157.76 5.2 let's copy this 
+6159.679 5.281 and paste here 
+6162.96 4.8 of course we don't have current user 
+6164.96 2.8 let's import 
+6170.32 2.96 use context 
+6175.44 3.759 it's gonna be inside here that because 
+6177.52 4.48 it's a component 
+6179.199 5.92 and after that we are gonna update this 
+6182.0 5.6 id of course it's gonna be action and 
+6185.119 4.881 payload 
+6187.6 4.559 and finally we are going to get our 
+6190.0 5.44 state and dispatch and we are going to 
+6192.159 4.641 send them here to use in any component 
+6195.44 2.48 so i will say 
+6196.8 2.64 state 
+6197.92 4.319 dispatch 
+6199.44 5.92 i will say use reducer 
+6202.239 4.4 and chat reducer and our initial state 
+6205.36 3.359 here 
+6206.639 4.56 let's set this state 
+6208.719 4.081 actually i will say data 
+6211.199 5.44 equals state 
+6212.8 5.68 and we are gonna send this dispatch 
+6216.639 6.08 so we will be able to dispatch this 
+6218.48 7.52 action and update our user and chat id 
+6222.719 4.321 so we can search for index file 
+6226.0 3.04 and 
+6227.04 3.36 one more context here and it's going to 
+6229.04 4.8 be 
+6230.4 3.44 chat context provider 
+6236.4 2.56 okay 
+6237.28 4.0 let's use it here 
+6238.96 3.44 i'm gonna create one more context and 
+6241.28 3.919 it's gonna be 
+6242.4 5.279 chat context and we are gonna fetch 
+6245.199 5.601 dispatch 
+6247.679 6.161 and when we click on any user here let's 
+6250.8 3.04 say on click 
+6253.92 3.44 and i'll select 
+6256.32 4.399 const 
+6257.36 5.6 and we'll select 
+6260.719 5.761 and we are going to update our user to 
+6262.96 6.64 do that we are going to use dispatch 
+6266.48 3.12 and type will be 
+6270.32 6.72 user change what was the name 
+6274.32 2.72 change user 
+6280.08 5.599 and payload will be 
+6282.639 5.121 our user here of course we should send 
+6285.679 4.241 it here we are going to send user 
+6287.76 5.76 information remember 
+6289.92 6.719 chat one dot user info 
+6293.52 5.44 and it includes its id image and display 
+6296.639 4.801 name of course 
+6298.96 6.8 function like that and we are going to 
+6301.44 4.32 take this user and pass it here 
+6306.719 5.281 like that let's open up 
+6309.199 2.801 chat component 
+6313.679 3.761 and again 
+6315.36 3.92 use this chat context 
+6317.44 4.08 that because we are going to update this 
+6319.28 2.24 name 
+6323.679 4.0 and of course we are going to fetch 
+6325.52 5.04 users 
+6327.679 5.681 let's import them quickly 
+6330.56 5.04 and it's going to be user dot display 
+6333.36 2.24 name 
+6337.76 3.12 okay it's not here 
+6342.48 4.0 now okay we send as a data 
+6348.8 6.08 it's gonna be data dot user 
+6352.96 3.84 of course if there is a user display 
+6354.88 3.92 name 
+6356.8 4.56 i will click and as you can see it's 
+6358.8 6.72 here perfect and what about these 
+6361.36 4.16 messages let's open up messages 
+6365.92 3.199 i'm gonna copy this 
+6370.0 3.639 and paste here 
+6376.08 3.76 and let's create use state 
+6381.119 4.281 messages set messages 
+6387.76 4.16 and this time 
+6389.199 6.241 we are gonna fetch this data here 
+6391.92 7.48 chats combined id and messages 
+6395.44 3.96 i will say use effect 
+6401.44 3.44 post 
+6402.639 3.761 ends up 
+6404.88 5.279 on snapchat 
+6406.4 3.759 documents our db 
+6410.56 6.72 chats and we are gonna pass here the 
+6413.44 6.32 combined id remember it's inside data 
+6417.28 5.2 chat id and after that we are gonna take 
+6419.76 2.72 this document 
+6423.119 2.961 and i'm gonna write here a condition i 
+6425.199 5.04 will say 
+6426.08 5.639 if document exists set our messages and 
+6430.239 3.92 it's going to be 
+6431.719 6.361 document.date oops 
+6434.159 3.921 and of course we are going to clean up 
+6440.639 3.681 and it's gonna be data 
+6442.4 5.279 for chat id 
+6444.32 7.839 so we can map to our messages right now 
+6447.679 4.48 and this time it's an array remember 
+6452.239 5.761 so we can directly use map 
+6454.8 6.08 i will say messages.map 
+6458.0 5.52 for each message 
+6460.88 6.64 just return a message component and 
+6463.52 4.0 message will be this message 
+6467.6 6.0 and i can delete the rest 
+6471.6 4.4 and i'm gonna open 
+6473.6 4.88 message here and take the prop it's 
+6476.0 3.28 gonna be message and let's see what we 
+6478.48 4.159 have 
+6479.28 5.28 console.log and message 
+6482.639 3.361 i'm gonna open my console 
+6484.56 3.84 i will click 
+6486.0 5.679 okay something is wrong 
+6488.4 6.319 messages is not a function let's comment 
+6491.679 6.761 this out for now and check if we have 
+6494.719 3.721 messages or not 
+6504.56 2.4 okay 
+6505.76 5.8 messages 
+6506.96 4.6 yeah of course it's gonna be messages 
+6514.96 5.759 we are fetching this document but we 
+6517.52 3.199 didn't say messages 
+6520.88 4.52 okay 
+6521.92 3.48 i will open 
+6526.0 7.119 okay i can click right now 
+6528.8 4.319 and we are gonna show them here 
+6534.48 6.759 by the way i'm gonna give here a unique 
+6536.8 4.439 key and it's gonna be m.i.d 
+6541.28 7.12 and here is going to be user id remember 
+6545.52 5.119 but it depends on this message 
+6548.4 5.36 if it belongs us we are going to show 
+6550.639 5.281 here our image if it doesn't block us we 
+6553.76 4.72 are going to show user image 
+6555.92 4.88 so we are going to need our current user 
+6558.48 2.32 here 
+6563.199 5.761 use context 
+6565.92 4.56 alt context and one more is gonna be 
+6568.96 3.36 chat context 
+6570.48 4.239 that's because we are gonna need other 
+6572.32 2.399 user 
+6574.96 5.12 and i will say data 
+6577.36 5.04 and i will say if message sender id 
+6580.08 5.599 belongs to us we are gonna show our 
+6582.4 4.319 message actually let's close here for 
+6585.679 4.321 now 
+6586.719 5.201 and first let's type something and after 
+6590.0 4.4 that it's gonna make sense how we are 
+6591.92 5.48 gonna do this i'm gonna open 
+6594.4 3.0 input 
+6598.32 3.04 let's take them 
+6604.8 6.48 and i'm gonna write here two use states 
+6608.239 5.761 we can send a text and we can send an 
+6611.28 3.68 image so i will say cons 
+6614.0 2.8 text 
+6614.96 4.639 set text 
+6616.8 2.799 use state 
+6619.679 4.761 and one more is gonna be image 
+6628.48 8.119 and that's right here on click method 
+6632.56 4.039 i will say handle send 
+6638.32 5.44 firstly let's take our text here i will 
+6640.88 7.04 say own change 
+6643.76 8.399 set text event target and value and for 
+6647.92 6.08 this file i will say on change 
+6652.159 4.241 set file 
+6654.0 6.48 and it's going to be event target 
+6656.4 7.759 and files and the first one 
+6660.48 3.679 it's not file it's image 
+6664.48 5.04 okay right now we can send them firstly 
+6667.04 3.52 i'm gonna check whether there's a file 
+6669.52 3.199 or not 
+6670.56 4.559 if there is no we are gonna send only 
+6672.719 4.321 this text so i will say if there is a 
+6675.119 3.761 file 
+6677.04 4.72 upload and send 
+6678.88 5.279 i said again file is going to be image 
+6681.76 5.439 if there is no image 
+6684.159 6.0 just send text and let's see how we can 
+6687.199 5.281 update arrays 
+6690.159 5.681 i'm going to come here and 
+6692.48 3.36 update array 
+6696.88 5.04 okay here 
+6698.48 5.44 update elements in array 
+6701.92 3.36 as you can see we are choosing our 
+6703.92 4.319 document here 
+6705.28 4.56 and after that our array in this case is 
+6708.239 2.88 gonna be messages 
+6709.84 3.44 and 
+6711.119 3.841 we are using this method 
+6713.28 5.28 array union 
+6714.96 3.6 i will say async function 
+6719.199 4.881 and i'm gonna say 
+6720.639 7.04 await update document 
+6724.08 6.48 db collection name is gonna be chats 
+6727.679 5.681 and here we are gonna use combined id 
+6730.56 4.96 which is data.chat id 
+6733.36 4.64 and inside this we are going to use 
+6735.52 5.84 messages 
+6738.0 5.199 and array union 
+6741.36 4.4 and we are going to pass here our 
+6743.199 3.841 message firstly we should give here any 
+6745.76 5.04 unique id 
+6747.04 7.52 that because we are going to use it here 
+6750.8 6.72 to do that we can use uuid library 
+6754.56 5.92 i will say yarn add 
+6757.52 2.96 uuid 
+6761.44 3.4 let's import 
+6765.92 6.88 we are going to use version 4 let's say 
+6769.599 5.841 as uuid 
+6772.8 5.68 let's use it here and after that we are 
+6775.44 4.4 going to send our text we are gonna send 
+6778.48 5.44 sender id 
+6779.84 7.04 it's gonna be current user.qid 
+6783.92 4.08 because we are sending and finally a 
+6786.88 4.16 date 
+6788.0 5.04 but we cannot use here server timestamp 
+6791.04 4.8 instead we are gonna use 
+6793.04 6.079 normal timestamp and we are gonna choose 
+6795.84 4.64 the current date like that and what if 
+6799.119 4.0 there is an image 
+6800.48 4.639 remember how we are sending image let's 
+6803.119 5.04 open up register 
+6805.119 3.04 i'm gonna copy here 
+6808.32 6.24 let's import them quickly 
+6811.28 6.64 our storage and this name will be again 
+6814.56 5.44 it can be uuid or the current date 
+6817.92 4.0 whatever you want but it should be a 
+6820.0 4.8 unique name 
+6821.92 6.88 i'm gonna import this 
+6824.8 8.04 and our image let's come back 
+6828.8 4.04 i'm gonna copy this 
+6834.32 5.279 and paste it 
+6836.56 6.0 you can handle your error here 
+6839.599 5.201 we are going to take this url and send 
+6842.56 6.599 this message again but this time we are 
+6844.8 4.359 going to send image also 
+6849.199 2.96 i will paste 
+6853.119 4.641 and this time it's going to be image 
+6856.08 3.92 and this image will be 
+6857.76 5.28 download url 
+6860.0 5.36 let's try 
+6863.04 5.04 i hope everything is okay i'm gonna 
+6865.36 5.6 choose this and i will say hello 
+6868.08 2.88 this is a test 
+6871.28 4.319 i'm gonna send 
+6873.119 3.761 okay there is something wrong 
+6875.599 4.961 oops 
+6876.88 3.68 it's going to be a function of course 
+6881.84 2.72 and here 
+6886.4 5.36 okay 
+6888.719 6.081 and as you can see it's here perfect and 
+6891.76 3.04 this is our id 
+6895.76 6.24 i will choose this image and test2 
+6900.08 4.639 and let's see 
+6902.0 4.32 and as you can see it's here perfect it 
+6904.719 3.761 works 
+6906.32 4.799 right now we can take care about 
+6908.48 6.8 our messages by the way after sending we 
+6911.119 4.161 can delete our image and this text 
+6916.96 5.759 it's going to be an empty string and 
+6919.599 3.12 image will be no 
+6925.04 7.36 but of course we should update this site 
+6927.679 6.96 also which is user chats 
+6932.4 4.64 in this case we are gonna add here the 
+6934.639 5.6 latest message and we are gonna send our 
+6937.04 6.0 text and its date and we should do this 
+6940.239 5.44 both for jane and john 
+6943.04 6.0 so i'm gonna come here and say 
+6945.679 6.801 await update document 
+6949.04 6.44 rdb here and user chats 
+6952.48 3.0 currentuser.uid 
+6956.32 4.56 and remember how we are updating nested 
+6959.44 4.88 objects 
+6960.88 5.92 i'm gonna say data dot chat id 
+6964.32 4.56 because remember we are storing them 
+6966.8 3.2 using this combined id 
+6968.88 4.16 and 
+6970.0 4.88 let's say last message 
+6973.04 4.8 and inside this 
+6974.88 4.56 we are going to send text 
+6977.84 5.279 and also 
+6979.44 3.679 we are going to update this date 
+6983.92 3.679 this date 
+6985.84 3.759 that because we are going to sort this 
+6987.599 4.401 list 
+6989.599 3.681 and i'm gonna say 
+6992.0 3.04 data dot 
+6993.28 3.6 chat id 
+6995.04 3.36 dot date 
+6996.88 4.719 and it's gonna be 
+6998.4 6.719 server timestamp we can use it here but 
+7001.599 5.441 we cannot use it in array union 
+7005.119 2.801 comma here 
+7007.04 4.96 okay 
+7007.92 4.08 let's do the same thing for other user 
+7012.48 6.159 data dot user dot user id 
+7017.44 3.199 and 
+7018.639 5.201 exactly the same thing 
+7020.639 5.04 let's see i'm gonna refresh 
+7023.84 4.48 i'm gonna choose john 
+7025.679 2.641 test for 
+7028.84 5.0 sidebar gonna send 
+7031.92 4.719 okay 
+7033.84 4.16 and this is here 
+7036.639 3.841 perfect 
+7038.0 4.56 but we cannot see it here 
+7040.48 4.639 let's check 
+7042.56 5.2 chats 
+7045.119 4.401 okay not user info it's going to be just 
+7047.76 4.72 last message 
+7049.52 4.48 like that perfect by the way we can 
+7052.48 4.92 delete this 
+7054.0 3.4 input text 
+7058.32 4.319 to do that we are gonna use 
+7061.119 5.04 value here 
+7062.639 3.52 and it's gonna be text 
+7066.48 6.48 okay perfect 
+7068.159 8.401 but how we are gonna sort those items 
+7072.96 7.239 i'm going to create one more user 
+7076.56 3.639 let's say adam 
+7086.08 3.039 can be this guy 
+7090.239 3.36 i'm gonna search for john 
+7095.92 5.319 sorry we are jane we should test jane 
+7103.599 7.04 i'm gonna click 
+7106.239 4.4 and as you can see it's here perfect 
+7112.08 4.159 hi jane 
+7113.599 4.961 i'm adam 
+7116.239 4.88 i will send 
+7118.56 4.48 as you can see it's here but this is the 
+7121.119 3.52 latest message it should be at the 
+7123.04 2.8 beginning 
+7124.639 4.0 and here 
+7125.84 5.44 okay it looks correct but it's totally 
+7128.639 4.801 random to prevent this 
+7131.28 5.439 we can go to chats 
+7133.44 5.199 and we can sort this chats array 
+7136.719 4.48 to do that we are gonna use 
+7138.639 4.801 sort methods and we are gonna take two 
+7141.199 5.04 examples 
+7143.44 6.08 and we are gonna compare them remember 
+7146.239 4.88 there is a date here we can use it 
+7149.52 3.36 i'm gonna say 
+7151.119 5.761 dot date 
+7152.88 6.319 minus b dot date if you don't know how 
+7156.88 6.319 to sort items in javascript i recommend 
+7159.199 6.881 you to google it it's not in complex 
+7163.199 6.881 okay it's not correct 
+7166.08 6.48 it should be b minus a 
+7170.08 4.48 okay perfect 
+7172.56 5.52 and it's here also 
+7174.56 3.52 if we write something to john 
+7182.56 3.2 as you can see it's here 
+7184.48 4.32 perfect 
+7185.76 5.28 but we didn't show them here let's open 
+7188.8 2.24 this 
+7192.56 4.96 i'm gonna open like that 
+7194.56 4.0 and i'm gonna write here a condition i 
+7197.52 5.199 will say 
+7198.56 7.52 if message dot sender id 
+7202.719 6.321 equals our id 
+7206.08 5.28 it means it belongs to us 
+7209.04 7.44 so we can show our image so i'm gonna 
+7211.36 5.12 say current user dot photo url 
+7217.04 4.559 if it's not 
+7219.04 7.159 show users 
+7221.599 4.6 of course data dot user 
+7226.56 4.88 and i can do the same thing for our 
+7228.88 6.239 class name here remember we can write 
+7231.44 4.719 here owner so i'm gonna say write here 
+7235.119 2.961 message 
+7236.159 6.401 but also check 
+7238.08 4.48 this message sender id sender 
+7242.639 4.401 if it belongs as right here owner 
+7248.0 5.48 and 
+7249.84 3.64 it's gonna be text 
+7255.52 4.4 and if there is an image we are going to 
+7257.52 5.599 show it here 
+7259.92 5.44 message dot image 
+7263.119 3.281 and of course it should be an condition 
+7265.36 3.12 here 
+7266.4 3.6 if there is no image we shouldn't show 
+7268.48 2.96 it so i will say 
+7270.0 3.599 message 
+7271.44 3.759 dot image 
+7273.599 4.161 like that 
+7275.199 4.641 as you can see it's here perfect 
+7277.76 4.56 but there's a problem here if i write 
+7279.84 5.6 something 
+7282.32 5.76 it still stays here but it should scroll 
+7285.44 6.159 to the latest message to do that we are 
+7288.08 5.76 going to use use left hook 
+7291.599 4.64 i will say post 
+7293.84 4.72 rev 
+7296.239 5.201 ref 
+7298.56 5.52 and i'm gonna use it here 
+7301.44 4.64 and whenever we create a new message we 
+7304.08 5.36 are gonna screw 
+7306.08 5.84 to do that we can use use effect 
+7309.44 5.759 i will say dot current 
+7311.92 3.279 scroll into view 
+7315.28 4.16 and this animation will not be sharp 
+7317.44 4.64 it's going to be smooth so i will say 
+7319.44 2.64 behavior 
+7322.96 4.0 smooth and whenever we receive any 
+7326.0 2.48 message 
+7326.96 4.159 let's import this 
+7328.48 2.639 user fact 
+7334.48 4.48 i'm here 
+7337.04 4.8 will send a message 
+7338.96 6.32 as you can see it's here perfect 
+7341.84 6.24 okay perfect and that's all i think so 
+7345.28 5.839 let's deploy our application so i'm 
+7348.08 4.96 gonna open my terminal and i'm gonna say 
+7351.119 4.241 npm run 
+7353.04 2.32 build 
+7355.92 4.96 and it's gonna create here a build 
+7358.4 5.52 folder as you can see and it's gonna 
+7360.88 5.92 build the necessary files as you can see 
+7363.92 4.48 it's ready let's check and there is a 
+7366.8 5.12 index file here 
+7368.4 6.239 and static files which includes our css 
+7371.92 5.44 and javascript files 
+7374.639 4.96 so it's really easy to handle that let's 
+7377.36 7.04 go to the hostinger panel 
+7379.599 6.721 and here i'm gonna choose file manager 
+7384.4 3.44 as you can see there is a default page 
+7386.32 3.68 here 
+7387.84 4.799 but we are gonna change it let's click 
+7390.0 4.8 here public html and as you can see 
+7392.639 5.201 there is a default file here 
+7394.8 3.04 i'm gonna delete this 
+7400.719 6.281 and let's choose those files and move 
+7404.0 3.0 here 
+7409.52 5.04 as you can see it took just five seconds 
+7412.56 4.48 let's check our website i'm gonna 
+7414.56 2.48 refresh 
+7417.52 5.119 as you can see it's here and as you 
+7419.84 6.0 realize our connection is secure that's 
+7422.639 5.761 because we have an ssl certificate let's 
+7425.84 2.56 register 
+7432.239 3.96 i'm gonna choose an image 
+7437.36 3.2 and it's here 
+7440.639 3.361 let's find a user 
+7449.119 4.08 okay perfect 
+7450.4 2.799 and others 
+7460.159 3.0 okay 
+7467.599 3.281 as you can see it's here 
+7473.199 3.96 let's send this cat 
+7483.199 4.96 and this is our website and it's here 
+7487.04 4.32 awesome 
+7488.159 5.361 it works so that's all guys i hope you 
+7491.36 5.12 liked it don't forget it's just a 
+7493.52 5.119 tutorial i'm not providing any complete 
+7496.48 4.08 application of course you are gonna find 
+7498.639 4.321 some errors that because we are not 
+7500.56 5.599 testing anything here but don't worry 
+7502.96 6.239 just use our social media groups and ask 
+7506.159 5.44 your questions and as always if you 
+7509.199 4.801 learned something new today please like 
+7511.599 4.801 the video you can support lamadev using 
+7514.0 4.8 the link in the description below or by 
+7516.4 7.08 joining the channel i hope i will see 
+7518.8 4.68 you in the next tutorial goodbye 
