@@ -1,215 +1,1107 @@
-hey how the hell do you protect your API
-routes I'm not sure to make sure I don't
-leak vulnerable information to make sure
-the endpoints don't get spammed to make
-sure everything goes right and they are
-properly secured I always take five
-steps and here they are step number one
-is by far the easiest and nowadays you
-barely have to worry about it except you
-do everything yourself but that is use
-https make sure the connection between
-client and server is encrypted so nobody
-can do a man in the middle attack and
-read your data that is passed from the
-client to the server and Back Again
-nowadays you don't really have to think
-about it it's mostly done automatically
-for you number two is really important
-it's authentication and authorization
-those are two different things
-authentication means ensuring the user
-is who they claim to be either through
-or through Google or through GitHub or
-through a password authentication with
-email and password you know and in
-return for those credentials the user
-gets a token that is either a Json web
-token or it can be a session token that
-you also store in a database those are
-the two different approaches to
-authentication now the important thing
-is whenever that user makes a request to
-your API that HTTP only cookie meaning
-it can't be changed by JavaScript or red
-but JavaScript is going to be
-automatically sent along in the request
-to your server and then either you
-validate the signature of the Json web
-token in your API route or you go ahead
-and fetch that session cookie in the
-database and see if that is a valid
-session and that is the authentication
-part done now you know the user is who
-they claim to be for example their email
-and then authorization is the question
-of well we now know who the user is but
-what are they allowed to do if we have
-something like role-based authentication
-are they an admin are they a user or if
-we don't have that well what is any user
-allowed to do are they allowed to change
-their name in the database how can they
-interact with the database that is what
-authorization is about so usually what
-you do is logical checks you before you
-perform a certain action that is linked
-to an API endpoint like for example the
-goal of one API endpoint is to change a
-username in a database before doing that
-in regards of authorization an example
-would be has the user changed their
-username more than three times in the
-past hour and if they did well then they
-are not authorized to do that same
-action in the same hour again okay so
-now we're sending encrypted data traffic
-know who the user is and what they're
-allowed to do but anyone even without
-being logged in could totally spam your
-API endpoint and force you to make so
-many requests back and forth to your
-database costing you money so step
-number three is rate limit your API
-endpoints don't allow anybody to spam
-the hell out of them rate limit them for
-example what I usually do is use upstash
-for this just full disclosure I am
-sponsored by upstash but I used them
-before they sponsored me I use them in
-personal projects that they are not
-sponsoring at all they're not public I
-just personally use them and that's why
-I stand behind their product in the
-agree to being sponsored by them so I
-think personally upstage makes this
-really easy to protect your API
-endpoints especially in a serverless
-environment for example next JS that is
-mainly what up stash is used for if
-you're using server full technology like
-node.js for example and express there
-are packages just for that that rate
-limit your API endpoints even easier
-than in serverless environments okay now
-nobody can spam our API anymore we know
-who is trying to make a request and we
-know what that person is allowed to do
-but we cannot ensure that person is
-trying to make a malicious request
-because just knowing who the user is
-doesn't mean that they're friendly or
-not trying to inject something really
-harmful into or API rods and that's why
-we do the next step and that step is
-input validation it is so so so
-important you need to validate client
-input anyone can make any request to any
-of your API rods with any data that they
-want so you need to make sure that the
-data you get on your server and then
-process process in the request is
-actually what you expect and not
-malicious input and I personally do a
-lot of work in the node.js express nexjs
-environment so just in the JavaScript
-typescript environment and therefore I
-like to use schema validation libraries
-for this in typescript you can use
-something called yup or you could use
-something called zot essentially they
-allow you to do the same thing you
-define a certain schema a type of data
-that you're expecting on your back end
-that you can then parse against so you
-can parse any data no matter what it is
-against that schema and if that data
-that you're parsing does not match the
-schema your server will throw an error
-because you cannot handle the request
-with data that you're not expecting and
-only if the data that is passed into
-your API endpoint is of the certain
-schema type and by the way in this
-schema you can literally Define
-everything you can Define you want a
-string that is a maximum of 100
-characters that matches a certain regex
-you can refine that even if you want to
-you can make really sure the data that
-you're receiving on the server is
-precisely what you're getting and if
-that parses correctly then you know okay
-the data is fine we can actually work
-with it all right we've ensured there is
-encrypted traffic we know who is making
-a request what they're allowed to do and
-nobody can spam our API endpoints and we
-even know that the data that we're
-getting is exactly what we want but what
-we haven't done yet is super crucial and
-step number five really important error
-handling we can never ensure that
-everything works smoothly in our API
-chances are you're also relying on some
-third-party API it's just an API to API
-there's a lot of communication there's a
-lot of stuff that could go wrong servers
-not responding you never know and
-therefore you want a very solid error
-handling the way you do that at least in
-the environment that I'm familiar with
-is in a try catch block I think it's the
-same in Java where you can try a certain
-function and then catch any errors that
-should occur and then the secret to good
-error handling is sending back the
-proper HTTP status codes of what's
-happening because then you can check
-those on the client display an according
-error message to the user like a 400 bed
-request or a four or nine there's a
-conflict in the naming for example so
-you want to make sure you're checking
-the error in the catch block if it
-matches a certain type for example if
-you're using axios then you might check
-if it's an axial's error and if it is
-then you know the structure of the error
-similarly if you're using a certain
-schema validation library to validate
-the input remember when the parsing
-fails there's an error being thrown and
-in the catch block you can check if the
-error is of that type if it was created
-by Zod or by yup and if it turns out the
-error is in the shape of a Zod or yup
-arrow and caused by them that allows you
-to really easily handle how you send
-back your HTTP status codes to the
-client and then finally if you have no
-idea what the error is if it's neither
-an axial error or a result error or
-whatever tools you're using in your app
-then in the worst case you can always
-send back a generic 5 100 error message
-you know you don't know what's wrong so
-just send back an internal server error
-and those are my steps to properly
-securing your API endpoints if I missed
-anything be sure to let me know and also
-this video was inspired by a Twitter
-post by this user right here and I'm
-gonna link them in the description
-that's where the inspiration for this
-video came from on how to secure your
-rest API routes but with my own twist to
-it for example the authorization was not
-mentioned in that thread at all which I
-feel like is really important to
-properly secure your API endpoints as
-well thanks very much for watching I
-really hope you learned something new on
-how to properly protect your API
-endpoints and then I'm gonna see in the
-next video have a good one and bye bye
+are you ready to level up your coding
+skills by creating something that's
+never existed before utilizing both
+front end and back-end state-of-the-art
+technology in this video we're going to
+be creating a real world application and
+unraveling the magic of full stack
+development so if you're ready to build
+an application using react and fast API
+and let's dive into this video together
+alright so in this application we are
+going to be building a react in fast API
+application so react on our front end
+and fast API for our back end so the
+very first thing we need to do is let's
+go ahead and just create two directories
+so one we're going to name react and the
+other one we are going to name fast API
+now as always let's open up a new
+terminal and make sure you're in our
+fast API react app and the very first
+thing we're going to do here is create a
+siled environment so a virtual
+environment for our python code and our
+fast API application
+so let's start by saying python3 Dash m
+v e and V EnV to create the virtual
+environment for this project
+let's then go ahead and say Source bin
+slash
+e and V
+slash bin slash activate
+this will activate our virtual
+environment and now inside here we want
+to say pip install
+fast API
+uvicorn and SQL Alchemy
+we want to make sure that we install
+fast API unicorn and SQL Alchemy because
+those are the three dependencies we need
+for this application
+so after that let's go inside our fast
+API directory and let's right click and
+say new file
+here we're going to create a main.pi
+file
+we are going to create a database.pi
+file
+and we're going to be creating a
+models.pi file
+now our models are going to be the table
+for sqlite application so we're going to
+be using sqlite as our relational
+database
+our database is going to be the
+connection Port from our sqlite
+application to our fast API application
+and then our main.pi file is going to be
+like the bread and butter of our fast
+API application
+so let's start by going into our
+database and let's say from SQL Alchemy
+we want to import our create engine
+we want to say from SQL Alchemy dot orm
+we want to import our
+session maker
+and then we want to say from SQL Alchemy
+dot EXT
+dot declarative
+import our declarative base all right
+now after this let's go ahead and just
+say URL underscore database and now this
+is going to be the string for sqlite
+database
+now if you want to use postgres database
+or a mySQL database or even a mongodb
+nosql database go ahead and check out
+one of these videos
+um but for the meantime for this
+application we are going to be using SQL
+Lite and to connect with sqlite database
+we're just going to say sqlite colon
+slash slash dot slash and here I'm just
+going to name this our finance DB all
+right and now let's go ahead and just
+say engine
+equals our create engine and inside here
+we need to pass in our URL database and
+then we want to say connect arguments
+and we need this done object and we're
+going to say check same thread as false
+we then need to create our session local
+which is going to be equal to our
+session maker
+where we pass in Auto commit
+is equal to False auto flush
+is equal to false
+and bind equals our engine that we just
+created and then lastly we want to say
+our base is equal to our declarative
+base all right so this is everything we
+need to connect our fast API application
+to our sqlite database now the next
+thing we want to do is hop into our
+models where now we're going to be
+creating our table for sqlite database
+so we want to say from database we need
+to import our base we want to say from
+SQL Alchemy we want to import column
+integer
+string
+Boolean
+and float
+so the column means in our database
+we're going to be creating columns for
+the tables and then the integer string
+Boolean and Float are the data types for
+each column
+so now we need to go ahead and create
+our model so we're going to call this
+model a class transaction
+where we inherit our base that we
+created from our database and we want to
+name the table so we can say underscore
+underscore table name equals and we're
+going to name this table
+transactions so the underscore
+underscore table name underscore
+underscore for SQL Alchemy it'll now
+create a table in the sqlite database
+called transactions and now we're about
+to create the columns and the data types
+for each record in the table
+transactions so here we want to create a
+new ID of column which is going to be an
+integer that's going to be the primary
+key so we can say primary key equals
+true and then we want this to be
+indexable which means it performs a
+little bit better in the database we
+want to create an amount which is going
+to be a column of float we want a
+category which is going to be equal to a
+column
+of string we want a description which is
+going to be equal to a column also of
+string is income so we'll be able to say
+like is this income coming in is this a
+true or false so we can say Boolean so
+we can say column of Boolean and then
+lastly we're going to say date but we're
+just going to have the date as a type of
+string so we can say date equals column
+of string week so so we can say date
+equals column of string so we don't have
+to deal with any kind of date formatting
+between our JavaScript react application
+our python fast API application and then
+our SQL database so all three of those
+could handle dates differently so we're
+just going to say it as a string so it's
+a smooth process and a smooth and a
+smooth flow from the front end all the
+way to the database all right so now
+that we got our models our database
+let's go ahead and just jump into our
+main.pi fast API application so let's go
+ahead and say from Fast API we want to
+import our fast API we want to import
+our HTTP exception and our depends we
+then want to say from typing let's
+import our annotated we want to say from
+SQL
+alchemy.orm we want to import our
+session from our database we want to say
+from pedantic for data validation import
+base model from our database import our
+session local and our database engine
+and then we want to say import models
+okay and now one more thing that we're
+going to run into is something called
+cores and cores is a way for our
+application to automatically defend
+against cross origin requests and that
+means something other than the
+application is calling the application
+and since our react application is going
+to be a completely different application
+than our fast API application we need to
+enable cores and we can enable course by
+saying from fastapi dot middleware dot
+cores import our cores middleware
+alright now as always we want to say app
+equals fast API
+and then we want to implement our cores
+Origins so
+our react application is going to be
+sitting on our local host of Port 3000
+so what we want to say is we want to
+create a new variable of Origins which
+is equal to a list because we can add
+more than one origin and we want to say
+that this origin is going to be HTTP
+colon slash
+localhost of Port 3000 so what this
+really means is a port or a different
+application is allowed to call our fast
+API application
+only if it is running on our local host
+on Port 3000 so then we can say app dot
+add middleware where we can pass in our
+cores
+middleware and we want to allow
+Origins
+that is equal to our Origins that we
+just created
+so we have our Origins list where we're
+only allowing one URL
+and then we're adding it to our
+application
+all right so now let's go ahead and
+let's create our pedantic and we can do
+this by saying class
+transaction base
+and we want to pass in our base model
+from pedantic where we're going to pass
+in our amount
+of type float or category of type string
+and we don't need this comma description
+of type string is income of type Boolean
+and date of type string so right here
+we're creating our pedantic model which
+is going to validate the requests from
+our react application and based on if
+the data is valid or not we'll either
+accept it into our fast API application
+or we'll reject the request from our
+react application let's also create one
+more which is going to be our
+transaction model which also takes in
+our TR which takes in our transaction
+base
+where our ID is going to be of type int
+and then our class config is going to be
+orm mode
+equals true all right perfect we now
+need to create our database dependency
+so we can say def get underscore DB
+where we say DB is equal to our session
+local we want to try
+and yield our DB
+and then always make sure that we close
+our DB at the end so right here we're
+saying get DB which is going to be our
+dependency injection for our application
+which says we're going to try and create
+a database connection and if we don't
+create a database connection well we're
+still going to close the database and if
+we do we're also going to close it so we
+always want to make sure that our
+connection string only opens up when a
+request comes in and then we close it
+when request is complete okay
+and now what we want to do is say DB
+dependency so we're going to create our
+dependency injection right here
+equals annotated where we pass in our
+session
+and then we say depends
+where we pass in our git DB
+we then want to say models
+dot base dot metadata dot create all
+where we pass in our bind that is equal
+to our engine so what we're saying here
+is we are creating our database and our
+database is going to create our table
+and our columns automatically when this
+fast API application is created all
+right so now let's go ahead and create
+our first endpoint for our transactions
+application we can do this by saying at
+app.post and inside here we want to say
+slash transaction slash transactions and
+we can verify it by saying our response
+model
+should be equal to our transaction model
+I'm going to make a space right there
+and let's go ahead and say async def
+create
+transaction where we pass in a
+transaction of type transaction base
+with our DB of DB dependency and then
+let's go ahead and say DB
+transaction
+equals a new transaction
+for more models so models.transaction
+and inside here we can say transaction
+dot dictionary and what this will do is
+based on everything in our transaction
+base
+we're going to map all of the variables
+from our transaction base to our table
+transaction to save into our sqlite
+database we then want to say DB dot add
+and add our DB transaction
+DB dot commit DB dot refresh so we can
+get this DB transaction back into us so
+we can now use the new one and we can
+return this DB transaction so with that
+let's go ahead and just run our
+application because now we have our
+sqlite installed our database connection
+installed and we now have a full
+functioning API endpoint
+now to run this application we need to
+jump into our fast API directory so
+let's first go into CD fast API and now
+let's go ahead and say uvicorn main
+colon app dash dash reload
+all right so here we can see our
+transaction API endpoint if we open this
+up we can try it out we can say amount
+of 100 the category is learning our
+description will be online course
+income will say false and we'll say a
+date in the future so we'll say like
+2030
+um
+1004.
+and then execute
+when we scroll down we can see that we
+get a response of 200 and we saved
+something to our database
+awesome stuff
+if we go back to our application we can
+see that there's a new
+file called finance.db and that is our
+sqlite database our sqlite database is a
+file structure database that sits within
+the application so it's not external
+like postgres or MySQL
+it sits within the application so right
+here this is our database
+so to show you that we can retrieve data
+from the database let's go ahead and
+just create a new git API endpoint we
+can do this by saying at app dot get
+and inside here let's call this
+transactions as well where we want this
+response model to be a list of
+transaction models
+and up here in the top we need to make
+sure that we import list
+so we can say annotated in list and now
+that will remove the error that we were
+getting right here with list and now
+let's go ahead and just say async def we
+want to read our transactions we're
+going to pass in our DB of DB dependency
+we're going to pass in our skip of
+integer equals zero and then we're going
+to pass in limit of type int which is
+equal to 100. so here we're adding some
+query parameters that will allow us to
+be able to fetch a certain amount of
+transactions for our application all
+right so so far we are doing awesome
+let's go ahead and now say transactions
+equals DB dot query where we pass in a
+transaction
+from our models
+dot offset and here we're going to pass
+in our skip dot limit and here we're
+going to pass in our limit dot all and
+then let's go ahead and just return the
+transactions
+so now if we go back to our application
+and we refresh we can see that we're
+going to have another API endpoint
+called transactions or we can try it out
+and we'll just pass in zero and we'll
+say 100 is the limit for this API
+request
+and when we click execute we can now see
+a list of all of our expenses
+which we only have one so far so just
+moving right along we have created our
+fast API application which now shows
+everything from our database
+well now let's go ahead and jump into
+our react application
+for react application we want to use a
+different terminal so let's go ahead and
+say new terminal and the reason being is
+it's going to be sitting on a different
+port so we want one terminal to handle
+our fast API application that is going
+to be running
+and now on the other terminal we're
+going to be using our react
+so let's go ahead and just CD and do our
+react directory
+and now to be able to use react we need
+to go ahead and install node.js so if
+you've never used node.js before you
+need to go to
+nodejs.org en and download your
+respective node.js
+version and I'm using this one right now
+which is recommended for most users but
+make sure you download node.js because
+react will rely on it
+now once you download node.js we'll be
+able to say MPX
+create react app and we'll name this our
+finance app
+and now click enter
+this will create a new app in our
+directory called finance app and this is
+a react application and you need node.js
+because npx is part of the node.js and
+it's now downloading all the
+dependencies we need for a react
+application automagically right in our
+directory and then from here we can
+customize it now to fit our application
+needs alright so the next thing we need
+to do is get bootstrap 5 in our
+application
+bootstrap is a popular CSS and
+JavaScript library slash framework that
+comes with a lot of JavaScript and CSS
+automatically so it'll save us so much
+time in making our application look
+elegant and modern in everything so so
+the very first thing we want to do is
+right here it's going to give us a CSS
+some JavaScript links that we need to
+add in our application and it'll give us
+a starting template now right here where
+it says bootstrap CSS we want to make
+sure we copy this entire line now
+now make sure you copy the entire entire
+line this line is long so let's go ahead
+and copy this
+let's go back to our Visual Studio
+and inside our react application let's
+go to public index.html
+now this is kind of like the entire
+beginning header and body and ending of
+a react application
+so right under this meta and before this
+first link let's go ahead and just paste
+in that CSS bootstrap that we just
+grabbed from the website now let's go
+back and this option one bootstrap
+bundle with popper let's go ahead and
+grab this entire thing as well
+and now let's go back to our visual
+studio now let's scroll all the way down
+to where you see body
+and right before this second body which
+is a carrot slash body slash
+let's go ahead and paste that bootstrap
+bundle with poperlink now this is all we
+need to set up bootstrap 5 CSS and
+JavaScript within our application so
+we'll be able to add some animations and
+JavaScript and CSS all super easy
+there'll be so much to find CSS already
+which will just save us so much time
+with implementation
+now I'm not going to dive too much into
+everything react but let's go ahead and
+just open up our source directory now
+our source directory is where all of our
+CSS and now the source directory is
+where all of our code is going to go
+so if we open up our app.js we can see
+that there's already some code here and
+now app.js is our main react file that
+we're going to be working in this
+project
+so we can see that when you install a
+react application
+there's already some react that comes
+automatically pre-built with the app
+so if we go back to our terminal
+and right here we say npm start which is
+our node package manager and then we
+call the start
+and that's coming from our package Json
+where we can see that there are some
+scripts inside
+and that we are able to call these
+scripts by saying MPN and then it's
+calling the start functionality which
+kicks off a react script start and it's
+kind of like a which is kind of like a
+flow of getting the application started
+so if we click this and we're getting an
+error because I actually have to jump in
+one level deeper so it's inside our
+finance app so let's go CD into our
+finance app from a react from our react
+directory so there's a react directory
+and then our finance app directory in
+dimness so we can now say npm start here
+and boom we can see that just like that
+we now have our react application
+running
+and it's running on our Port 3000 our
+fast API runs on Port 8000
+and this
+127.0.0.1 is your Local Host so I can
+actually change that to localhost and
+it's going to show the exact same thing
+so our react application is running on
+Port 3000 of our local machine and our
+fast API application is running on Port
+8000.
+now this spinning logo in this
+editsource app.js to save and reload
+learn react all comes automatically from
+react
+and that is the exact same thing as
+inside our source directory our app.js
+file so to show that if we delete
+everything but this div I'm also going
+to delete this class name so we just
+have all of this code and then we have
+this div
+and we say an H1 tag
+by doing
+brat doing carrot H1 our end carrot
+Visual Studio will automatically create
+the ending carrot
+and here if we just say hello
+and we save it's going to automatically
+recompile so now if we go back to our
+Chrome
+we can see Hollow in the top left hand
+corner pretty cool so the next thing we
+need to do here is now create a react
+piece of code that'll send API endpoints
+and be able to communicate with our fast
+API application now like I said this is
+not like a super introductory to react
+because we are going to be calling API
+endpoints to our fast API application
+but what we can do here is I'm going to
+delete everything right here where it
+talks about function app and what I'm
+going to say first is right here where
+it says import logo and importer app.css
+I am going to remove all of this so all
+that we see right here is our export
+default app I am also inside our source
+directory gonna right click new file and
+here I'm going to say API dot Js
+now inside our api.js we need to go
+ahead and add our connection to our fast
+API application
+but before that we need to First
+download a new dependency
+so we can say MP at npm so node package
+manager install
+axios now axios is a popular API
+connection Library so we can connect our
+react application to our fast API
+application so now that we installed
+that we can close out of this terminal
+for right now and we can say import
+axios
+from
+axios
+we then want to say const API equals
+axios
+dot create
+and now inside here we want to say base
+URL colon
+HTTP colon slash
+localhost Port 8000 and then we want to
+say export default
+API so what we're saying right here is
+we know our fast API application is
+going to be at our Port of 8 000 so
+we're creating a base URL of HTTP colon
+slash logo host Port 8000
+so now on our app.js we can call our
+fast API application pretty easily using
+a static string of Base URLs so we don't
+have to recreate this every time or use
+these axios creates it'll automatically
+do all of that for us so all we have to
+focus on is calling the right API for
+fast API application alright so now from
+here we can say import react
+and then we want to say comma brackets
+where we say you state
+use effect
+from
+react
+and react and import react that comes
+with a lot of just global dependencies
+and then use date and use effect are
+hook hooks they're called react Hooks
+and they're used for us to call these
+API endpoints all right and now we can
+say import API
+from
+slash dot slash API
+and you might be wondering why is this a
+double quote and why is this a single
+quote well that's just personal
+preference so we can actually make this
+a single quote as well all right now
+let's go ahead and create our app.js our
+react application for our fast API
+application
+so what we can do here is we can say
+const app equals parentheses
+Arrow function brackets or we can say
+const
+and we're going to create pieces of
+State here
+where we say transactions
+set transactions
+equals use state or we're going to say
+brackets with a list inside and then
+const brackets form data comma
+set form data equals use state where
+inside here we want to say parentheses
+brackets
+and we want to say amount
+is going to be equal to an empty string
+category
+is going to be empty is going to be
+equal to an empty string
+description
+is going to be equal to an empty string
+is income
+is going to start off as false
+and date is going to be just an empty
+string because remember we're using a
+string for date not anything else all
+right now the next thing we want to say
+is we want to create some functions
+within our app.js file
+so we can say const fetch
+transactions which is equal to async
+parentheses Arrow function
+brackets
+and now inside here we can say our
+response
+is going to be equal to a weight
+and then API which is our API that comes
+with all of our axio stuff
+dot get
+where we can pass in our transactions
+endpoint
+where I'm going to say slash
+transactions slash and then we want to
+set it to our piece of state so set
+transactions to our response dot data
+we then want to have a use effect
+which
+is going to have a parenthesis and then
+a set of parentheses inside with an
+arrow function brackets
+which is our fetch transactions
+with nothing at the end to re-kick off a
+new
+um use effect hook so we're using two
+hooks here we're using
+um our U State and our use effect use
+state allows us to keep state within
+react so we know when state champ when
+State changes so we know when to shift
+and change pieces of data and then our
+use effect which means when this
+component loads which is our app.js we
+are going to fetch our fetch
+transactions which gets all of our
+transactions from our fast API
+application all right now let's go ahead
+and now create our handle input change
+so we want to say const handle input
+change which equals a new event on the
+screen
+with an arrow function brackets where we
+can say our value so const value is
+going to be equal to an event dot Target
+DOT type three equal signs dot checkbox
+question mark event dot Target Dot
+checked
+event dot Target
+dot value
+so we're creating a new function of cons
+to handle input change where we're
+expecting an inute where we're expecting
+an event and then we're creating a new
+variable based on the event of a check
+box getting clicked or not and the check
+box is going to be the Boolean for our
+is income for our form that we're going
+to be working on here in a little bit
+and then we can just say set form data
+to a set of parentheses with a bracket
+inside
+or we can use dot dot dot form data all
+right and then once we get this form
+data let's go ahead and just say event
+dot Target dot name
+colon value
+and let's add semicolons at the end of
+line 28 and 29 all right and now let's
+go ahead and create one more handle form
+submit and this is going to be the way
+that we can submit a form and we can
+create this function by saying const
+handle form submit equals async where we
+can pass in the event
+Arrow function brackets
+and here we want to say event dot
+prevent default
+and what this will do is when we submit
+a form the normal event is to submit the
+form we're going to say we don't want
+that to do we do not want that to happen
+so we're going to prevent it from
+defaulting to submitting the form
+because we want to handle the action of
+submitting the form
+so here we want to say await.api which
+is our fast API URL where we're going to
+create a post call
+to our transactions
+comma form data
+we then want to fetch our transactions
+so if we add a new transaction we want
+to refetch all the transactions so when
+we show a table of all the transactions
+we can see all of them there so every
+time we submit a new transaction we're
+going to recall all the transactions
+from the database so the application is
+always up to date on the front and side
+so we want to then fetch all of the
+transactions
+and then we want to set the form data so
+kind of like we did up here we can grab
+all of this because that's setting the
+state we want to then say set form data
+to
+all of this
+and then close out of these so these are
+the pieces of state so we're going to
+have a form where we can type in the
+transaction the transaction date and
+once a user fills all those form Fields
+up those input forms and they click
+submit
+well all of those will still stay with
+data so if you type in 100 and you click
+submit it'll still say 100 and that's
+because we're preventing the default
+action of removing all of that because
+we're overriding the form submission
+with our Fetch and submit apis
+well what we need to do then because
+they're pieces of State on the react
+application we need to set the amount
+category description is data and default
+is income and date back to the original
+pieces of state which is just empty
+strings all right so now let's start
+writing some actual HTML code to show
+our application is
+um doing something right so the first
+thing that we have to do is create a
+return statement so we can say return
+parentheses now one thing to note is
+react can only return one element so for
+example for outside this div and we say
+we want to return to H1 well we're going
+to get an error because it can only
+return one thing that we need as the
+parent and that's okay we'll just use a
+div as the parent
+well the very first thing we're going to
+do is create a nav bar so let's go ahead
+and just say carrot nav and inside here
+we're going to say class name equals
+navbar
+navbar Dash dark and then b g
+primary
+inside here let's create another div
+[Music]
+where this class name
+is going to be equal to container Dash
+fluid and vcss now this CSS is all from
+bootstrap so if you have any questions
+about what this is doing feel free to
+look it up on bootstrap this is
+bootstrap 5 and in react these are
+called class names not just class
+all right and then inside here we are
+going to create an a tag where this has
+a class name that is going to be equal
+to our nav bar Dash brand
+we want an href
+that really is not doing anything so
+we'll just have it set to a default
+pound
+and then outside of this we want this to
+say our finance app all right let's open
+this up and let's type in npm start this
+will actually fetch our API endpoints
+and stuff but we're not currently using
+that anywhere so let's just open up our
+browser okay so we're getting an error
+if we right click and we just go over
+and we re-click this and we go to
+console
+we'll be able to see what's going on so
+we're getting an HTTP error from a bad
+request to our fast API application so
+it's saying localhost colon 8000 slash
+transaction is not allowed so let's go
+back to our API and see what could be
+the issue here
+well it looks like this is only a slash
+so if we go back into our fast API
+application
+and we look at our main dot file and our
+main.pi file we can see that we have our
+slash transactions as just one slash no
+slash at the end let's just add another
+slash here at the end just so it matches
+perfectly with our API endpoint that our
+request is calling on a react
+application
+so now if we go back to our Google
+Chrome now if we go back to our browser
+and go back to our react app and we
+refresh we can see that we just fixed
+the API endpoint error
+and we now have a beautiful nav bar at
+the top of our screen where we can
+shrink it and make it bigger and it says
+finance app all using react okay and now
+let's go back into our Visual Studio
+let's get out of our fast API
+application
+and let's go back to our code here for
+react
+so let's jump out of this nav so this is
+going to be our nav right here
+let's now go ahead and say
+div and this div is going to have a
+class name that is equal to container
+inside this div we want to create a form
+[Music]
+where this form has an on submit
+event call
+that is going to be equal
+to our handle form submit function
+and now inside this form we want to
+create another div
+where this div is going to have a class
+name
+that is equal to
+mb-3 and mt-3 which means margin bottom
+three and margin top three so we're
+going to make some space between the nav
+bar and the beginning of our form we
+then want to have a label
+and our label is going to have a html4
+and we're going to say for amount
+our class name is going to have a form
+colon or Dash label and we are going to
+say this is for amount
+so if we save this and we go back into
+our arouser we can see that we now have
+a label of amount which has a margin
+from the top of the nav bar and now we
+need to have an input inside the same
+diff and this is where a user will be
+able to type in something so we can say
+input and here we actually just want it
+to be just a open carrot input and then
+on the same line we're going to say
+slash carob or we can say type equals
+Tex
+because we want a user to type in text
+class name
+is going to be equal to form control ID
+is going to be equal to amount
+name is going to be equal to amount we
+can say on change is going to be equal
+to our handle input change and then
+value will equal
+our form
+data dot amount
+all right so if we save this now and we
+go back to our browser we can see that
+there is now a input field under our
+amount where a user can type stuff in
+all right
+now for this now for this div let's go
+ahead and just copy this a few more
+times so I'm going to make some spaces
+just so it's easier to see but I'm going
+to do another div here where we're going
+to remove this margin top so it's only
+going to be margin bottom because the
+margin bottom of this will push the next
+input down
+and this will be for category not for
+amount
+it's going to be a form label
+we want this to now say category
+we wanted to be of type text we want to
+be a form control this is going to be
+for category the name is category
+and form data dot category we now want
+to do the exact same thing for our
+description
+we can say for description
+description
+we want to be text for description
+I'm just going to copy and paste this
+whoa
+I'm gonna copy and paste this in here
+and it's going to be for our form data
+of description let's now do it for our
+check box so we can say div class name
+of mb3 this is going to have a label for
+is income with a form Ladle label where
+we'll say income question mark
+and now our input for this is going to
+be of type check box class name is going
+to be form control we do not need a
+class name for our check box our ID is
+going to be is income our name
+our name is going to be is income we
+want our on change to be the handle
+input change or form data is going to be
+dot is income and then lastly let's do
+it one more time and this will be for
+our date so we'll do it just as it was
+for the other strings whether it's going
+to be date this will be date
+um type text form control ID is date
+description name is date and then form
+data is date all right and then right
+before the end of our form we want to
+create a button
+so we can say carrot button where type
+is equal to submit and our class name is
+going to be button button Dash primary
+and we'll just name this button submit
+so now if we go back to our browser
+we're gonna see that there is an entire
+form and we'll be able to type into it
+so we can say 50 category is react
+description
+learning react we'll say it's false and
+we'll also say it's in the future so
+we'll say 2030-07-09
+when we click submit we will get an
+error for right now and if we look at
+our console we can see that it's having
+an issue calling our localhost 8000 due
+to course
+hmm well if we remember we thought we
+did cores earlier
+if we go into here and we look up our
+fast API application and we look into
+our main we can see that we do have HTTP
+colon slash 3000 allowed
+so I'm going to add I'm going to change
+those single quotes to double quotes and
+then I'm going to add a comma all right
+so right here in our cores middleware
+we also need to go ahead and add
+allow underscore credentials
+which we're going to make equal to true
+we are going to say allow underscore
+methods which is going to be equal to an
+array of strings which we're going to
+say star so that'll accept everything
+and then we want to say allow underscore
+headers
+which is going to be equal to an array
+of also Stars
+allow methods
+equals a string of stars
+and allow underscore headers
+equals a list
+of stars
+all right so now if we go back to our
+browser and we refresh our screen let's
+see if it gets submitted so we can say
+amount is equal to one thousand category
+is react description is react learning
+and for the date we'll say it's in the
+future
+of 2030 April 5th if we click submit
+it just goes away and all the fields are
+empty and our submission worked if we go
+back to our code we can see that we had
+a successful post request and a
+successful get request from our fast API
+application so it is working we just are
+not currently showing any of the
+transactions so let's hop back into our
+app.js and let's write the last bit of
+code we need to show all of the
+transactions for this application
+so right under this form let's go ahead
+and create a table
+now this table is going to show us all
+of our transactions that we've built so
+far so let's get a table class name
+is going to be equal to table
+striped
+table Dash bordered
+and table slash hover
+let's create a t head and inside here
+let's create a table row and now we're
+going to create a couple table headers
+where this is going to say amount
+this is going to say category
+this is going to say description
+this one's going to say
+income question mark
+and this one's going to say date and
+let's remove this random slash up here
+oops there we go all right and now right
+under our table header let's create a
+table body where we're just going to
+show all of our transactions so we're
+already fetching all of them from Fast
+API
+we can now say brackets
+[Music]
+transactions dot map where we can say
+parentheses with another set of
+parentheses inside where we can say
+transaction
+Arrow function
+more parentheses open that up and inside
+here let's create a new table row for
+each transaction so we can say right
+here we want this key to equal a
+transaction dot ID and what a key means
+in react is its reacts way of knowing
+that this this transaction is different
+than any other transaction so a lot of
+times you'll use a transaction ID as the
+key okay and now let's go ahead and just
+create a couple table data and that's
+each piece of data inside the table row
+where we can say transaction amount
+and I'm going to copy this for each item
+so there's five items so I'm just going
+to copy this five times
+where it's dot amount
+dot category
+dot description
+dot is income
+and lastly dot is
+date
+now the only difference is we don't want
+to say true or false we want to say yes
+or no so since is income is a Boolean we
+can literally
+say
+space question mark
+yes
+or no so this is a Boolean way of
+printing two different types of strings
+so if is income is true we'll print yes
+instead and if it's false we will say no
+all right so let's go ahead and save our
+application and let's go back to our
+browser
+and right here we can see both of our
+transactions we can see amount category
+description income and date if we pass
+in a new item so category
+um we'll say a puzzle for our brain I
+don't know it's part of our income and
+we'll say 20 90 0 4 23 we click submit
+this is saved in our fast API database
+so what we did was we called our fast
+API database with this information for a
+post request and then we refetched all
+of the information from our fast API
+application
+all right so if you enjoyed this course
+all right so if you enjoyed this please
+like and comment below and I'll see you
+in the next video

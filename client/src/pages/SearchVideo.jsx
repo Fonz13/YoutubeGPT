@@ -8,7 +8,6 @@ const SearchVideo = () => {
   const [videoURL, setVideoURL] = useState("");
 
   const handleVideoURLSubmit = async (event) => {
-    if (event.key === 'Enter') {
       event.preventDefault();
       api.post("/create-transcript/", {
           URL: videoURL
@@ -17,7 +16,7 @@ const SearchVideo = () => {
         setTranscript(response.data);
         setVideoURL("");
       });
-    }
+    
   };
 
   return (
@@ -25,13 +24,14 @@ const SearchVideo = () => {
       <div className="search-bar-container">
         <span className="logo">YoutubeGTP</span>
         <span className="title">Welcome! </span>
-        <input
-          value={videoURL}
-          onChange={(event) => setVideoURL(event.target.value)}
-          onKeyDown={handleVideoURLSubmit}
-          placeholder="Enter video URL"
-          type="text"
-        />
+        <form onSubmit={handleVideoURLSubmit}>
+          <input
+            value={videoURL}
+            onChange={(event) => setVideoURL(event.target.value)}
+            placeholder="Enter video URL"
+            type="text"
+          />
+        </form>
         <span>{JSON.stringify(transcript, null, 2)}</span>
       </div>
       
