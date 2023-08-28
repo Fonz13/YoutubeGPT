@@ -13,6 +13,11 @@ origins = ["http://localhost:3000",]
 
 class VideoURL(BaseModel):
     URL: str
+    
+class postResponse(BaseModel):
+    Status: str
+    Message: str
+    videoID: Optional[str] = None
 
 app.add_middleware(CORSMiddleware,
                    allow_origins=origins,
@@ -27,8 +32,8 @@ def home():
 
 @app.post("/create-transcript/")
 def create_transcipt(video_url: VideoURL):
-    transcript = get_transcript(video_url.URL)
-    return transcript
+    return_message = get_transcript(video_url.URL)
+    return postResponse(**return_message)
 
 
 
