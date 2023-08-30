@@ -4,7 +4,6 @@ import YoutubeEmbed from './YoutubeEmbed'
 /*sidebar* */
 
 const Videviewer = (props) => {
-  console.log(props);
   return (
     <div className='Videviewer'>
         <Navbar/>

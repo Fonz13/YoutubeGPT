@@ -8,6 +8,10 @@ const Chatpage = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
+    /*
+    * If the user tries to access the chat page without going through the home page,
+    * they will be redirected to the home page.
+    */
     useEffect(() => {
         if(location.state === null){
             navigate("/");

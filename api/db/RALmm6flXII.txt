@@ -1,0 +1,325 @@
+hey hi everyone recently we got emails
+that you know open AI has released the
+chat GPT and Whisper API that's an
+amazing thing because everyone is
+waiting for let's say charge GPT API and
+they have given some details like how
+people are using it one of the important
+thing is actually you know this is how
+we call now we got new endpoint called
+chat completions so we could use this
+chart completion and you know it will be
+better than let's have existing chat
+whatever sorry the existing gpd3 model
+because chart gpt3 can remember the
+history of the conversation that what we
+have right and that's what I wanted to
+test now so I have you know I will show
+you what exactly and how to use that
+particular thing so definitely first
+thing you know we're going to need an
+open end it's to be installed you need
+to have your own key
+and this is how the syntax that you
+could see for the uh you know chat GPT
+for completion the first of all the
+model name is you know GPT 3.5 turbo
+model and then
+as this is going to be a chat model we
+need to give a set of messages or the
+list of messages as input to the model
+and that will tell you know the
+conversation history with the model the
+interesting thing is it has three roles
+one is the system role then the user
+role like you and me who going to
+interact with and then the assistant
+this is something the more role the
+model is going to play and we're going
+to decide you know uh what role the
+model is going to play so the system
+role the content is actually the text
+that we want to send to the model so
+here we are saying that hey you need to
+behave like a helpful assistant so
+system role is actually uh you know kind
+of a setting some behavior for the
+models and character some kind of you
+know personality to the model these are
+the base instruction you can give to the
+model so that it can follow throughout
+the conversation and then subsequent
+messages are as per the user or the
+assistant so user is what we're going to
+say to the model and this will represent
+the whatever the response from the model
+and this way we will you know uh
+continue that conversation I will show
+you how to do that particular thing so
+let's say here we took uh one
+conversation here again we're going to
+use that chat completion endpoint model
+will be gpt3 you know 3.5 turbo now see
+what is our message history looks like
+we have a role now we are saying that
+hey this is the system role we are
+setting some you know expectation we are
+saying that you are a helpful AIT tone
+that's the expectation from the model
+and then this is the user we're going to
+say if we say something like this the
+content is what we're going to say I am
+saying that hey whatever I am pradeep
+and I want to learn Ai and then you know
+this is a response from the model and
+this is what model is saying and we can
+continue now you know
+this whole thing we can continue
+actually you know throughout our
+conversation maybe we can uh let's say
+let me remove this particular partly
+actually we have only this kind of
+conversation and see what happens
+actually or you know if you want to see
+maybe we can put some question to the
+model here
+right now the user is asking what is NLP
+we have said some pre uh conversation
+now let's see what happens if you hit
+that API
+now you could see this is how API
+response object looks like you have a
+choices
+and inside the choices there is a list
+so definitely we're going to care about
+the first choice because there is only
+one uh element in that list and if you
+see
+that list has a element called message
+and inside that message you get actually
+the role and the content and that's what
+we want to extract so we're going to use
+inner choices and this is the message
+that we can extract from the model and
+you could see the model is explaining me
+what is NLP and all this thing so this
+is like similar to let's say what you
+will use a gpt3 but now what we want to
+test we want to test the model
+capability of having a conversation uh
+you know uh the way it can remember
+things and that's what we're going to
+test actually so let's do one thing I
+created small small functions so that we
+can test you know our model the first
+thing we set some initial conversation
+that we had with the model that
+conversation is simple thing that we are
+saying that model that you will be an
+AIT tour and then I'm you know telling
+who I am and what is my interest and
+then this is some kind of a model
+response so this is like initial chat
+history that what we want to start with
+then I created some helper function this
+function is actually updates our chat
+chat is nothing but this messages what
+it does it simply take the you know
+messages that what we had the role
+because whether we want to know whether
+it's a you know a system that is a model
+or is it the user message that we want
+to update in the chat history so this is
+what it is taking role and then the
+content the actual message that want to
+add here so this is what uh you know
+that particular function does and it
+simply append one dictionary in this
+particular setting right that's what it
+does it simply a paint a new you know
+record in this particular thing now then
+we create a new function to get a
+response from the model so we have
+function gate response what it takes it
+simply take this message I should have
+called it messages actually it would
+have make more sense so let's call it
+actually the messages so that there is
+no confusion actually right these are
+the messages that uh you know it's going
+to
+update and it's going to say in that
+particular messages so let's maybe you
+know
+run these functions which is actually a
+helper function for updating chat this
+is the helper function to get response
+from the
+model given our uh you know chat if you
+want to test what exactly uh they are
+doing we can test it actually for
+example let's call this function gate
+response from the model
+because we know that in our chat okay we
+might want to let's take this outside
+while testing and we could see you know
+how it reacts so let's take this
+messages here
+maybe and then now we are asking what is
+NLP we are giving that message to let's
+say the model let's call this thing and
+let's see what model uh this function
+will do
+let's run this thing and let's run this
+we came to know that you know sorry this
+is what response we got that NLP is and
+all this thing so we know how this
+helper function is working the similarly
+we have the update chat function so
+maybe uh we can go and look at the more
+uh you know particular example actually
+what we want to achieve
+so we start with some basic history this
+is like full example what we want to do
+with those particular helper function
+what we have we don't need this thing
+now because this is just I wanted to
+show you uh about it so we only care
+about updating chat then getting
+response from the model
+again we don't need this thing we just
+tested it
+and this is where we're going to start
+our fresh messages it's same thing what
+we hear now we want to have some kind of
+a loop which runs continuously it prints
+whatever our initial conversation we had
+till the point and then we asked for our
+input because we want to have some kind
+of a chat conversation then it takes our
+input and update the chart history so it
+will obtain one record after this
+and then once we it get that final
+updated chat then it will ask model for
+response based on our input and whenever
+we get the model response we want to
+again update the chat so that that cycle
+continues right so let's see what
+happens and how it remembers things
+let me run this thing now see we want to
+ask let's say what is NLP so I try to
+you know type those all things here
+because I don't want to you know keep
+typing so let's say I ask what is NLP
+and now you could see our history got
+updated here you could see this is what
+our current states looks like this was
+earlier and this is what the new thing
+model uh you know responded so you could
+see everything it has the earlier
+conversation what we ask and what model
+has responded now we can ask the new
+thing let's see what I can ask next
+thing
+let's say I want to ask you know can you
+tell me some few use cases or the three
+use cases for the NLP so this is like a
+chat thing happening right again if you
+would see
+it has given response so whole history
+got updated maybe you know I tell can
+you tell me three use cases and now it
+is giving me three use cases one two and
+three use cases right now let's say I
+want to see whether the model remembers
+what I said right so let's ask that
+thing I want to see whether it can
+repeat my name because I have given name
+in the conversation earlier so let's see
+whether model can remember my name
+and we should see and it is responses of
+course your name is pradeep because
+that's what I told uh you know uh model
+earlier so you could see it is able to
+actually you know
+uh kind of you know uh it is able to
+remember what we are saying right and
+that's what we could say but I say there
+is a mistake okay you see our chat is
+not correct because there is a mistake
+this when while updating the model
+this is not the user this actually an
+assistant okay so this is something I
+just came to know because in rush I
+created something but but you got no
+right this is kind of mistake even you
+can do so let's do one thing let's read
+and I know that there was no mistake
+from the model but let's run it again
+because we saw that it has to be
+assistant while updating right so this
+is something you also need to make sure
+that while you are updating conversation
+make sure the conversations are actually
+tagged to the say you know uh the
+appropriate role whether it's a user or
+whether it's a model now let's start
+again fresh uh so that we see that again
+ask us what is NLP
+and then you know up to this point you
+could see is it now correct that I ask
+it is a user and the response from the
+model now it is correct
+let's see now I ask you know what are
+those
+three use cases of NL key that it can
+tell me
+and you could see we got a response it
+is pretty fast actually you could see
+this is what I ask and then this is what
+response from the model the three use
+cases now we want to ask whether it can
+remember my name and that's what we want
+to see whether it can remember my name
+yes is this saying that my name is
+pradeep this is good thing because this
+was not possible with the earlier gpt3
+model right but this is now happening
+with the chat chipity kind of thing now
+we can again see whether it can remember
+now it said that these are the three use
+cases now I want to ask can you tell me
+more about let's say any particular use
+case let's say about the second positive
+or maybe I would say Second Use case
+now let's see whether it can you know
+take that context that I am actually I
+actually have asked about you know three
+use cases and then see whether it can
+remember and give us Second Use case
+which is the language translation let's
+see what happens
+so okay let's let's go through and we
+asked you know can you talk more about
+the Second Use case and it started
+talking about the language translation
+can we check yes because when it said
+last name the language translation was
+the Second Use case so see this is
+really powerful it can remember what we
+said earlier the same kind of interface
+we had here in you know this chat
+uh let's say GPT interface now we have
+that same power using programming and
+you know we can do a lot of amazing
+things so I just wanted to quickly
+record the video because I just saw in
+half an hour before you know we got
+something so I created this helper
+function and I just wanted to quickly
+experiment it and show you you know how
+to use this particular thing I will you
+know share this notebook also so that
+you guys can experiment modify those
+functions okay I hope you will find this
+video useful right thank you very much

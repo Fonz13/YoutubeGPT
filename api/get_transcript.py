@@ -21,4 +21,4 @@ def get_transcript(video_url):
         for i in srt:
             file.write(i["text"] + "\n")
 
-    return {"Status":"OK", "Message": "Transcript created", "videoID" : video_id}
+    return {"Status":"OK", "Message": "Transcript created", "VideoID" : video_id}

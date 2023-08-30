@@ -9,31 +9,31 @@ const SearchVideo = () => {
 
   const [errorMessage, setErrorMessage] = useState("");
   const [videoURL, setVideoURL] = useState("");
-  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
-
+  /*
+  * This function is called when the user submits the video URL to the api.
+  * If the response status is OK, the user is redirected to the chat page.
+  * Otherwise, the user is shown an error message from the api.
+  */
   const handleVideoURLSubmit = async (event) => {
       event.preventDefault();
       setErrorMessage("")
-      ///delete delay
       setIsLoading(true);
-          setTimeout(() => {
-           setIsLoading(false);
-          }, 3000);
 
-      ///
 
-      api.post("/create-transcript/", {
+      api.post("/create-summary/", {
           URL: videoURL
         })
         .then((response) => {
           if (response.data.Status === "OK") { 
-            navigate("/chat", { state: { videoID: response.data.videoID }});
+            navigate("/chat", { state: { videoID: response.data.VideoID }});
           } else {
             setVideoURL("");
-            setErrorMessage(response.data.Message)
+            setErrorMessage(response.data.Message);
           }
+          setIsLoading(false);
       });
     
   };
@@ -49,17 +49,16 @@ const SearchVideo = () => {
 
       {!isLoading &&
       <div className="search-bar-container">
-        <span className="logo">YoutubeGTP</span>
-        <span className="title">Welcome! </span>
+        <span className="logo">YoutubeGPT</span>
         <form onSubmit={handleVideoURLSubmit}>
           <input
             value={videoURL}
             onChange={(event) => setVideoURL(event.target.value)}
-            placeholder="Enter video URL"
+            placeholder="Enter Youtube URL"
             type="text"
           />
         </form>
-        <span>{errorMessage}</span>
+        <p>{errorMessage}</p>
       </div>
       }
       

@@ -1,0 +1,869 @@
+hi everyone
+today we will see how to integrate you
+know a chat CPT or open AI API into you
+know fast API so basically how can we
+build let's say the backend web
+application or you know a GPT powered
+backend API that's what we're going to
+you know see in this particular video so
+what is exactly the agenda so first of
+all you know we will see how to install
+and run fast APM you know we will be
+using vs code for that purpose I just
+put some you know notes some code
+snippet here so that I can copy them
+whenever I need it and I don't waste
+time you know typing those things so
+we're going to see how to install and
+run fast API then we will see how to
+create you know gate and post endpoints
+in our API then we will see how to pass
+the query parameters or let's say the or
+the body parameters into the fast API
+endpoints and then we will see how can
+we access our own API that we created in
+a first API using the python request
+library and we will understand the
+identic models which is there to you
+know add some data validation or data
+parsing for our request data and
+eventually finally we will see you know
+how to integrate the chat GPT open AI
+into the fast API so you know in this
+particular tutorial I assume that you
+know you are familiar with what is API
+and you know that kind of stuff but you
+might not have let's say uh you know
+experience with the first API so that's
+perfectly fine if you haven't tried fast
+API because I am treating this as a
+beginner friendly kind of a tutorial and
+we will go through you know step by step
+as I said I have put some code here so
+this might feel overwhelming but no need
+to worry because you know I'm just going
+to pick up whatever we needed for that
+particular step and we're going to go
+you know step by step so let's do one
+thing here first let's you know um we
+need to install first of all you know
+what what we're going to require we're
+going to require fast API and if you go
+to the first API website you can see no
+exactly you know uh what we want to get
+it start with right so we need a fast
+API and we need a you know ubcon server
+so that you know we can run our API
+right so we require fast API we require
+ubicon you know open AI definitely and
+let's say by identic identity should be
+the dependency of this but let's try you
+know so what we will do first let's
+create first virtual environment right
+uh for our project so let's do that
+thing so maybe what I can do you know
+you can see you know we don't have
+anything here
+okay
+we don't have anything here so what we
+will do first let's create a working
+environment let me call it you know
+let's call uh you know five tone hyper
+name what we're going to create we want
+to create the virtual environment and we
+can give name to it let's say we can
+call it like a fast environment
+right and this will take some time maybe
+a couple of seconds and we should see
+our environment getting created so you
+could see we got this file right so we
+have virtual environment so that
+whatever we install it will not let's
+say interfere with my existing libraries
+or something what I have right on
+Windows how do you how can we you know
+activate so first of all you know I can
+go to this first API so usually I am
+typing this like a and then I'm pressing
+tab so that it is auto completing right
+and then I know we need to go to the
+script folders and then we have to call
+activate so you know you could see once
+it is activated we could see we are in
+our environment now we can install you
+know whatever thing we want to install
+so let's create you know
+now maybe let's create uh one folder
+let's create one folder called app
+and inside that folder we will you know
+create our requirement.phxt
+requirements.txt okay and there we can
+put our uh you know requirement let's
+first try only this three and see
+whether it works
+okay I'm going to copy this thing
+first API ubicon and you know open AI
+that's what we're going to require how
+do we install requirement file so we use
+let's say peep peep install
+to give the requirement file path again
+I'm typing something and I'm you know
+pressing Tab and it should okay we are
+not in that directory so let's go to the
+app directory now
+and now let's install the new install
+hyphen R and the requirements.txt
+okay invalid okay the flag is not proper
+stole this thing okay so it started
+collecting and you know it will uh
+eventually you know
+right one more thing we will require
+let's create you know uh minimal it is
+you know let's create something called
+main dot py which is usually let's say
+you know fast API application so it has
+installed completely let me clear this
+thing you know
+so let's create the basic you know uh
+fast API application what we require so
+let's import you know fast API from the
+first API so you can import it
+and then we can simply create you know
+one single endpoint I will explain what
+exactly we are doing
+right to be imported fast API and then
+we you know initialize or create the
+object of that first API and then using
+that object we can declare the end
+points you know uh so endpoint means
+like for example let's say you have a
+website called xyz.com then slash after
+whatever you can view that is what your
+endpoint let's say you're hosting your
+end pointer right so let's see so this
+is how uh you know you declare the gate
+endpoint and then you define the you
+know whatever the URL after your main
+domain right and then you define what
+function should be called when someone
+visited this particular you know URL so
+let's run this thing and uh that will be
+clear for us so whenever someone going
+to visit slash OK for our URL you know
+we're going to make a get request to
+this particular endpoint slash okay we
+want to execute this function and that
+function will simply return this
+dictionary right so how do we run to run
+the uh you know first API as we have
+installed uicon so we use let's say
+ubicon command to run which is a server
+and then we have to specify the name of
+the file where our app is there so name
+of the file is this main colon and where
+what is the name of our instance which
+is actually the app so that's what we do
+right and then we can provide one more
+flag called reload so whenever you make
+any changes and you do Ctrl s controls
+like when you save it it will reload
+right so let's run this thing and you
+could see uh here that you know it
+started running on Port 8000 right
+so let's go here and you see there is
+nothing running on our home uh you know
+uh Slash there is nothing running on our
+main uh let's say endpoint so let's but
+what endpoint we have declared this is
+what I'm telling so we have declared
+slash okay this is the URL that they
+should visit right and you could see if
+they visit they will see messages okay
+so this is nothing but our end point you
+know whatever we have declared which is
+the gate endpoint that's why we are able
+to visit via you know our browser also
+but the best thing about the fast API is
+actually you can access it's a Swagger
+docs which is our actual docs slash doc
+so you can think of this as one of kind
+of an infant and you could see our all
+the endpoints whatever we're going to
+declare they are here you could see it's
+a get request and the good thing is you
+can try it out all right and you'd see
+it doesn't require any parameters
+because you know if you look at our
+request it doesn't have any parameters
+right and you can execute and see what's
+coming and you could see you've got the
+you know body uh simply whatever the
+message is equal to okay what we have
+right so this is like you can think of
+in a hello world you know fast API
+application where we simply declared you
+know one endpoint and eventually you
+know we are able to get so how do we
+pass let's say let's say we want to pass
+some kind of a gate parameter and and
+right so let's try one more request you
+know let's say this request we can try
+we clear one more end point
+right and let's say if I do Ctrl yes now
+so it's it's C it has detected that I
+change something and it restarted again
+this application right now I declared
+one more endpoint called this hello what
+it does you know so it's going to
+trigger this particular function but if
+you could see this function cannot take
+one parameter the parameter is called
+name right this is like a specified data
+type that name is going to be a string
+and this is the default value if no one
+if you know let's say we didn't get any
+parameter name in the request you know
+this is going to be it's a default value
+and eventually we're going to return
+let's say hello world or hello that
+particular thing right very basic thing
+you know what we have done again this
+async parameter is there because you
+know you can run thing asynchronously
+you can read more about it so basically
+when server receives this request let's
+say to fulfill this request you know it
+has to do some extra thing like it might
+have to you know make a database called
+some other network call or making an
+let's say gpd3 kind of request right by
+making it async means since what when it
+is going to receive this request Right
+This Server instance or whatever the
+threader process is not going to wait
+till the database operation is complete
+or till the you know API responsible
+rather it will go and serve the next
+request coming to the server right so
+you can read more about it right that
+you know this way it can handle actually
+more requests simultaneously right and
+let's go and check this new endpoint
+what we have just added right so let's
+go here and refresh this you know docs
+and we should see our new endpoint
+coming both are the gate requests right
+now let's try it out and you could see
+it takes one parameter now called name
+and it has a default Value World right
+so if you execute it you could see it is
+telling you the hello world and if if
+you could pass let's say your name
+and execute it will say you know hello
+pradeep because that's what the
+parameter so pretty simple you know uh
+very easy to specify the what parameter
+is going to take which is nothing but
+the whatever the end point you have
+declared and whatever the function
+associated with that endpoint you can
+declare that what parameter it is going
+to receive and this way you can also
+declare the default uh you know
+parameter now let's see you know let's
+make a post request now okay this is
+what you know we have been doing you
+know kind of
+so I think you know since it is a gate
+request we should be able to do
+similarly what we did earlier right
+let's see uh if you could visit not this
+one you know what is our 120
+7 write this and we can put this you
+know slash hello and then we can pass
+the name as well because it's a gate
+request we should be able to do it with
+the browser and we get the same result
+right now let's try the post request
+let me copy this one post request here
+and then we you know go through it so
+let's see I created one more endpoint
+called orders okay it's a dummy endpoint
+what it does actually it takes two
+parameter one is the product you know
+other is the let's say the uh units it's
+like you know how many uh uh let's say
+we single like you know like order for
+one laptop so that kind of things we can
+you know are displaying here now let's
+see if we declare the post you know kind
+of pain Point like what you see on the
+here let's look at this thing
+now we have so you can see it's a post
+request we are passing the orders and
+again it's the same thing you know we
+have declared two parameter one is the
+product and the other is the units right
+so if you look here here it's it was an
+optional so default there was a default
+value for it right here you could see it
+was compulsory because we haven't
+declarated an option you could also see
+one of them is a string other one is the
+integer right so um
+this is you know uh the Swagger docs are
+really good actually and everything
+remain the same right everything
+remained the same what you did you just
+changed from you know gate to post and
+see uh look at this curve equation if
+you know how things has changed if you
+fire any equation no let's let's try it
+out and see what happens right so let's
+say product I would say laptop
+and you know one unit
+so this is what it will be order for one
+unit of laptop Place successfully maybe
+this is not that good but yeah this is
+what uh you will get into the response
+look at the
+curled fish right this is interesting
+thing so
+when we are you using the post request
+right and when we are declare this
+parameter even those those parameters
+are going like a URL or what you call
+the query parameters right this is
+called the you know query parameters now
+will we will be able to access this with
+the same uh what we did here do you
+think
+no this is not the gate request that you
+can simply type in url this is the post
+request right so you know we can't make
+like this at least as per my
+understanding so
+though it is passing as a query
+parameter right we can't make so let's
+make that request using uh let's say
+python so we know that you know python
+we have a request library right so let's
+take something record snippet
+that how to make a request in a python
+here you go the documentation so we can
+use the request Library we specify where
+we want to make a request we can pass
+header that you know we're going to
+accept you know response as a Json and
+then this is the parameters we want to
+do this you need to focus because you
+know as I mentioned earlier that you
+know we want we're going to see what's
+the difference between passing the
+parameters and passing actually the body
+uh you know information so let's copy
+this thing and we will make a request
+and we will see what happens
+maybe uh you know I create here one more
+uh file maybe I call it like request.p1
+this is not actually part of our you
+know trust okay this is just we created
+so that we can make a request right so
+you could see we're going to make
+request our own API which is the slash
+orders right headers because we're going
+to accept the application you know Json
+as a response since we saw that when you
+declare something like this you know
+this parameters they actually come as a
+query parameters right so we want to
+make sure we pass them as a query
+parameters when we are making the
+request form let's say this is what any
+other developer or you are making a
+request to your own API so we pass
+parameters as a product uh you know
+laptop and the units is one and uh you
+know request libraries like easy and
+very interview like replace dot post
+which you really want to make any Header
+information you want to pass and then
+finally the parameters and ideally we
+should be able to
+you know get the same response so let's
+see
+if I go to the Powershell
+right and let's run this file the python
+request
+is the name yeah yeah we need to go into
+the CD app first right and then we do
+the python
+request.py and you could see we got the
+same response so this is how you can
+connect with your own API I know most of
+them you're already familiar with how to
+make a request I just wanted to show the
+difference between this thing because
+the next step what we're going to see
+you will see the clear difference right
+so here this is nothing but the passing
+you know data as a query parameter right
+let's go to the documentation for a
+minute
+where is the documentation I think yeah
+I had a link here right let's go there
+okay so in the request Library when you
+make a request right you can pass the
+method whether it's a gate post and all
+of this thing I want to highlight here
+so when you want to pass something as a
+query parameter as you pass it like this
+using something called parameters right
+which can take an additional readables
+whatever in a python right as a query
+string parameter that is an important
+thing it is going as a query string
+that's what we just saw here right going
+something like this versus you know post
+method but then you can pass not as a
+query parameter of the query string but
+actually the body of your request inside
+the body then you have to pass you know
+data so let's see how do we make sure in
+fast API we accept the data as a bar you
+know body of the request and not as a
+query parameter that also we can going
+to see that's where this identic you
+know those models are going to come into
+picture
+so let me go to our code again here
+right we saw this thing right now let's
+do one thing how how do we make sure you
+know that we force it to uh kind of
+what I say pass it as a body request
+body this data and not in the query
+parameters did we even tested on here
+order yes yes we did tested right we did
+tested this thing now the next thing we
+want to do in our thing is is actually
+this you know this spider antique model
+this is where they're going to bring
+some kind of a validation to our data
+you know what we're going to you know
+receive so let's copy this thing and we
+will Define some structure to our
+let's say we want to make sure orders uh
+we're going to you know receive it as
+some kind of object or a you know body
+maybe I'm repeating a lot of stuff let's
+go and you know what we want yeah we
+want to Define this identic model so we
+need to import it you know from Identity
+import this space model you know this is
+where we can specify hey if we're going
+to you know take input as a you know
+class product so the I'm going to
+receive a you know data called Product
+which is going to have a name which is a
+string and the notes right so in our
+case what we are using so we we don't
+want name we want a product and then you
+know we want to receive the units which
+is actually the end
+so let's make it in so the product unit
+maybe we can call it as let's call it as
+an order why we call it let's call it as
+an order and then maybe we declare one
+more data point here
+this we call maybe you know the order of
+height integers to you know right here
+and here I want to receive it as a kind
+of you know order so you see rather than
+saying that it is a product and then you
+need and something like that I am saying
+that hey I'm going to receive a order
+what is its data type the data type is
+order which is nothing but so it knows
+that it is going to receive is some
+incidence of order which is going to
+have a product and the units Associated
+right so again simply our messaging will
+also change that how we access it right
+so now this time
+we should be able to you know uh
+access as the order dot units because it
+is going to be part of order now so it
+should be order.units and similarly
+it should be ordered at product
+because it's an object that we're going
+to receive
+and we will see now what's the
+difference in terms of you know that
+request structure you know the thing
+that I was talking about this is the
+query parameters this is actually the
+request body so now let's see you know
+let's run this let's refresh
+our app
+so that we see one more data point now
+you see there is one more posting coming
+right and
+right let's try it out so again it is
+also going to ask for the product and a
+string let's say product again same
+thing that laptop
+and maybe ic2 and let me submit the
+request I got the same like order for
+two units of laptop is successfully now
+we look at the difference between the
+you know this is not going as a query
+parameters you see here rather it is
+going as a request body so iPhone D in
+the curl statement is actually passing
+this data inside the request part right
+now let's access our own API you know
+passing this information inside the body
+of a request and not as a query
+parameter how do we do that thing
+just little modification to our you know
+let's meet break this thing
+and it modify its names
+let's go to the request again
+maybe you know
+it's the same thing only okay maybe I
+can do this like no it writes a
+parameter instead of parameter this
+needs to go at the data because we just
+saw in the API documentation if you want
+to pass data right again we can say you
+know we can we are passing let's say
+content application content type is an
+application Json only
+we yeah let's see you know we want to
+accept as a Json we also want to pass it
+as a Json only this parameter right so
+the data now here these are the
+parameters what we have we need to uh
+maybe you know we have to
+import the Json
+and then let's pass it so you know Json
+term so this was let's say the
+dictionary right the python object so we
+use Json dot terms method so that this
+goes as a Json so I hope it works
+wrapped up units and instead of
+parameters we're going to pass it as a
+you know Json
+right and let's see
+and we should see something is missing
+what it is saying okay we need to change
+the you know say this is good thing
+um now it was missing that particular
+parameter right so
+it was missing a parameter in the query
+because we are calling the orders but we
+need to call our new API that we just
+created which is the orders by identity
+so let's use this thing
+order expert in Click and it should not
+work
+okay so you could see it's working now
+so this how but this this is the
+difference right when you declare
+something as a pi identic here
+then it is go it needs to be passed
+inside the request body and not as a
+query parameter so ideally this is what
+the you know we should prefer we should
+always declare it as a kind of a identic
+model you know which is also kind of
+intuitive while reading right so what
+this endpoint is going to receive this
+endpoint is going to receive order what
+does order means order is going to have
+a product and it's going to have let's
+say the units right this is what it is
+going to receive what will happen if I
+you know remove that Json dumb thing
+let's remove the Json accounting so
+right and just pass the plane
+information
+right so Xbox because anyway we are
+still passing the parameter product and
+unit inside the body right let's see
+what happens
+attribute body input should be
+validationary object to extract field
+from but it's a valid dictionary right
+application Json
+identified request detail type model
+attribute type body so it is actually
+looking not information in the body that
+is fine
+input should be validationary object to
+extract fields from
+maybe we can go and check this more but
+yeah this is what that's why I think um
+better we pass this as a you know what I
+say better we pass it as a
+Json
+rather than passing but I think
+dictionary should have been you know
+work
+this is something interesting to check
+later but yeah so if you want to pass
+you can pass it as a Json object just
+like what we are real plus let's see
+whether it works or yeah it works
+so you can try maybe I need to debug it
+in a bit uh so it's better to pass when
+you are passing something in the body of
+the request pass it as a Json object and
+you know that's what we did and it
+worked okay enough so this was all about
+you know fast API as I told you you know
+it's like a beginner friendly fast API
+you know tutorial where I just wanted to
+show the difference between the query
+parameter this this thing you know how
+do we declare gate and post request how
+do we pass let's say you know parameter
+how do we integrate it's an optional and
+all sorts of things right now let's
+actually go and you know integrate
+or chart GPT into this right so we will
+create one more post API endpoint right
+let's go and let me take the one more
+endpoint what we have right so let's say
+I want to generate the product
+description using chat typically so let
+me declare my main point here
+right so I declared one endpoint here
+called the product description and I'm
+going to declare what exactly the
+product means so this is where I'm using
+the byte intake right so let me not this
+what is this okay
+we had already opened this thing
+let's copy the uh you know model right
+declaring Pi didn't take very easy just
+simply declaring the class and you know
+it's actually uh whatever the variables
+are going to be the parameter that we
+want to just like we declared the orders
+now if you want to declare the product
+so it is going to receive the product
+which is going to have a name which is
+also going to be string and the nodes is
+also going to be string so that's what
+it is going to do is you know it is not
+able to find the generate description so
+generate description is a function that
+you know we're going to have so that we
+make a request to GPD so let's call the
+UTS Dot py and we will declare that you
+know that function there
+so let me copy this thing now if you
+haven't uh you know
+that I will explain what exactly we are
+doing here but I would suggest you know
+you can go and watch my you know a
+beginner friendly tutorial on you know
+chat chipity API that you know I had
+created you know there you can go and
+maybe you know watch how do we integrate
+chat GPT API and build the conversation
+right there I explain things in detail
+but still to you know if you're still a
+beginner and not sure this is what it
+does so we're going to use actually
+something called chat completion
+endpoint right we're going to specify
+what model we want to use we can specify
+GPT 3.5 or GPT 4 yet
+since these are the chat models right
+they take input as a sequence of you
+know some kind of a conversation or the
+message history right so you could see
+the messages is nothing but the array of
+objects what does each object has each
+objects has one message
+okay now uh each of this message has a
+role associated with it you know here
+role is a system Your Role is a user the
+role is assistant right usually system
+role is something when you want to
+provide some instruction you know
+overall instruction we set the character
+of your chatbot here it is saying that
+you know you're a helpful assistant
+right some kind of an instruction
+setting right then you can provide
+example in the form of what user says
+and what bot replied you know bot is the
+assistant right so you are saying that
+you know user asked this bot said this
+thing now again user asking this thing
+now what should be the part reply that's
+what it is going to produce right in our
+case we don't require any conversation
+we are just you know generating the
+product description we just maybe
+require only highly only this role or
+either this row that is what we're going
+to require we also don't need to
+remember what we you know
+um you know ask earlier right so we just
+want to make the simple thing but I want
+to tell you the next video that I'm
+going to create is actually that how do
+we build you know chat GPT backend for
+our you know chatbot so let's say you're
+using chatbot and you know you have
+built some application which uses you
+know your relates your chat chipity also
+communicates with your internal system
+internal documents right so how do we
+store that all information in the back
+and how do we maintain the session right
+and how do we pass that relevant
+information to charge GPT from the
+packet so this is what in the next video
+I'm going to build you know how do we
+build a backend for the chat CPT and we
+will use the fast API and we will see
+how to declare the session and all of
+those things right but for now we just
+want the simple thing and that's we what
+we're going to you so let's come here
+and you will see hours is more simpler
+right so we just had only one object in
+that message list right which is nothing
+but the system role where we just want
+to give some instruction to it right hey
+just you know generate the product
+description and I specifying that I want
+the multi-paragraph rich text
+description it should also include
+emojis and you know all sorts of things
+that's what I'm you know telling and
+again I'm appending this messages here
+right and then eventually
+you know we're going to make a requests
+I'm going to use GPD 3.5 you can put GPT
+4 also here and finally whatever the
+response we are getting we're just going
+to return that response hopefully that
+response is actually your description
+right let's go back to the main method
+right here let's immediately import that
+function here
+so from
+utils we need that function actually
+okay
+details we require can write description
+not General description what is the
+function name yeah yeah correct generate
+product description hey you know this is
+wrong
+what did we declare here
+General this is gender description
+correct this is what we're going to you
+know call right and we're going to reply
+that you know instruction again it's the
+post method it is going to take up
+object or product which is going to have
+the name and the notes right let's try
+this thing and see whether it works
+where is our API this is let's refresh
+it
+we want yeah so this is the new endpoint
+you can see the post request description
+try it out and we will see you know
+again a mobile
+Ram
+I would say maybe the 16 megapixel
+camera
+and maybe you know um
+less than Maybe
+paint here please something like that
+let's say and let's call right so what's
+happening when we are actually making
+request to this product description it
+is coming here it has parse whatever we
+wanted then it is going to call our
+internal function called General
+description and that General description
+simply going to pass whatever the input
+we have passed here as some kind of a
+content right and that
+once you know once we send it to chat
+GPT we will get the response and we're
+going to Simply you know send that
+response back
+so this seems to be finish and you're
+going to see we got the response again
+you could see it is we are passing you
+know hyphen d means it is going to the
+request body and this is the description
+we got right you could see we got some
+slash in twice it means it does has a
+multi paragraph it is also having emojis
+and all of this right so this is working
+right so if you are already some
+familiar with you know how to make chat
+request as I said if not there is a
+whole video that you know that I had
+created that you can go and check you
+know here I explained step by step what
+we are doing but again in this video
+also I explained whatever we needed
+right again this system it could be I
+think you know user will also directly
+it is it may not be just the system so
+let's make a user role right
+and let's again make a request you could
+see it should restart area our
+application is restarted now let's make
+a request again
+since we have changed it to the user
+role and it should still work
+right
+okay so you can see it can still work
+right so you can definitely uh you know
+but the whole uh idea is that use the
+system role to provide the overall
+instruction actually towards about maybe
+to set its character give some its
+information right use user and assistant
+peer to give some examples like you know
+that hey this is what um if I input this
+is what I want it to the output and then
+you directly ask a new or Test example
+and it should complete with the role
+assistant that's what it is going to do
+right and yeah this is what and how you
+can integrate you know fast API and you
+know chat CPT to build you can think of
+you know building a GPT power you know
+apis or the web application pack and as
+I said you know we're going to see how
+can we build let's say backend for the
+chatbot so whatever the chatbot we see
+right we will see how can we build
+back-end for the chatbot so that it can
+uh remember the what was the earlier
+conversation right so if I'm chatting
+with the chatbot it is going to receive
+by this particular API right but it
+needs to know what was the other
+conversation in the same session so it
+should be able to retrieve that
+conversation from the database send it
+to uh you know chat GPT so there's all
+sorts of you know how do we create the
+backend
+for our chatbot that's what we will uh
+you know see maybe the next video right
+if you have any other queries let me
+know into the comments thank you
