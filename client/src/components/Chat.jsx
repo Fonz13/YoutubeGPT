@@ -1,6 +1,6 @@
 import React from 'react'
 import Message from './Message'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import api from "../api";
 
 import  LoadingSpinner  from '../components/LoadingSpinner'
@@ -11,7 +11,7 @@ const Chat = (props) => {
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false);
 
-  const [chatLog, setChatLog] = useState([{
+  const [chatLog, setChatLog] = useState([{//make  syncronous
     user: "gpt",
     message: "Hello! Do you have any questions about the Youtube video?"
   }])
@@ -22,28 +22,45 @@ const Chat = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    let chatLogNew = [...chatLog, {user: "me", message: `${input}`}]
-    setChatLog(chatLogNew)
-    setIsLoading(true);
-    setChatLog([...chatLogNew, {user: "loading", message: ""}]) //Set a loading icon while waiting
+    if(!isLoading){
+      let chatLogNew = [...chatLog, {user: "me", message: `${input}`}]
+      setChatLog(chatLogNew)
+      setIsLoading(true);
+      setChatLog([...chatLogNew, {user: "loading", message: ""}]) //Set a loading icon while waiting
+      
+
     
+      api.post("/chat-req/", {
+        VideoID: videoID,
+        Message: input
+        })
+        .then((response) => {
+          if (response.data.Status === "OK") { 
+            setChatLog([...chatLogNew, {user: "gpt", message: `${response.data.Message}`}])
+          } else {
+            setChatLog([...chatLogNew, {user: "gpt", message: `Sorry, I don't understand`}])
+          }
+          setIsLoading(false);
+      });
+
+      setInput('')
+    }
+  }
+
+  /*
+  *Keep the chat log scrolled to the bottom
+  */
+  const ref = React.useRef(HTMLDivElement>(null));
+  useEffect(() => {
+    if (chatLog.length) {
+      ref.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+      });
+    }
+  }, [chatLog.length]);
 
   
-    api.post("/chat-req/", {
-      VideoID: videoID,
-      Message: input
-      })
-      .then((response) => {
-        if (response.data.Status === "OK") { 
-          setChatLog([...chatLogNew, {user: "gpt", message: `${response.data.Message}`}])
-        } else {
-          setChatLog([...chatLogNew, {user: "gpt", message: `Sorry, I don't understand`}])
-        }
-        setIsLoading(false);
-    });
-
-    setInput('')
-  }
 
   return (
     <div className='Chat-container'>
@@ -51,6 +68,7 @@ const Chat = (props) => {
         {chatLog.map((message, index) => (
           <Message key={index} {...message}/>
         ))}
+        <div ref={ref} />
       </div>
       <div className='input'>
         <form onSubmit={handleSubmit}>

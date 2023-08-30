@@ -164,6 +164,8 @@ html, body {
                 height: calc(100% - 70px); //70px is the height of the input
                 overflow: scroll;
                 text-align: left;
+                overflow: auto;
+                position: relative;
 
                 .Message {                    
                     .Message-center{
