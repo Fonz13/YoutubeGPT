@@ -1,5 +1,3 @@
-### run backend in backend folder
-
 # run in api folder:
 - uvicorn api:app --reload 
 
