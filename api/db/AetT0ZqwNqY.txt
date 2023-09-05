@@ -1,0 +1,343 @@
+business automation would be widely
+disrupted as someone who provides
+service I receive 40 to 100 email
+inquiry every week and I need to review
+every single one of those emails filter
+out the quality leads and track them in
+expressions or a CRM system which took
+hours I wish I can have personal
+assistant who can do all those things
+but I don't well until now
+I want to be the greatest everybody on
+the face should I look around I feel
+like everybody is the fake as I make
+this every day and I'm impatient hoping
+one day I'll blow off in the basement
+statement the top is so vacant I don't
+hear that I think is amazing
+waiting for my day when I'm playing sold
+out sold for A Thousand Faces hey
+process that were almost impossible to
+automate before like this is very easy
+to be automated now thanks to a new
+feature open AI released called function
+calling and if you don't know what
+function calling is I actually made a
+video last week that talked about
+in-depth I post a link in the
+description below that you can check out
+but in Nashville function calling does
+two things extremely well it provides
+very easy way to get structured data out
+of a unstructured information like email
+or slack message and you can use those
+data to trigger different workflow in
+the systems you are using like HubSpot
+or Salesforce and also get data back to
+give GPD more context to do more complex
+tasks and this opened up a huge
+opportunity for business process
+automation because when you think about
+data exists in your company 99 of them
+are unstructured information like email
+slack message p PDF documents and all
+those unstructured data and knowledge
+don't really talk to each other but this
+is going to be changed now because GPD
+function calling allow you to extract
+information from those different
+knowledge and drive powerful automation
+I'm going to show you a very simple
+example of how to use GPD function
+calling to turn your inbound emails into
+a list of prioritized high quality leads
+let's get it first they want to test out
+how good GPT is in terms of extracting
+information as always let's open Visual
+Studio and create dot EMV file put our
+open AI API key here then we will create
+main.py import a few libraries and also
+load the EMV file together open AI API
+key and I plan to use a function calling
+feature that open AI just released which
+have this ability to turn on struct data
+into structured Json file so arrowcreate
+is function that I will pass on to gbt
+called extract information from email
+and all it does is it will try to
+extract useful information from an email
+I receive including which company it is
+what's a use case of their inquiry and
+this will give me a good idea to see how
+good GPD is in terms of extracting
+information and next I want to do
+something more interesting or ask GPT to
+give a priority score of this email
+based on content and the priority will
+be based on how likely this email will
+lead to a good business opportunity from
+0 to 10 where 10 is the most important
+and I will also ask it to categorize the
+email into different categories like
+customer support consulting job offer or
+Partnerships and in the end I even want
+to push it further ask GPD to see
+whether he can propose what's the next
+step I should take to move this forward
+and if you are e-commerce sites where
+you will get emails about the customer
+inquiry or purchasing certain products
+you can also change this function to
+extra specific information like which
+product people are trying to buy and
+what amounts they are trying to buy and
+this can come now to your Erp or CRM
+directly and now let's just try this out
+with one example email I received
+recently I'm looking to purchase some
+company t-shirt for my team we are a
+team of 10 people and we want to get two
+T-shirts per person with black color and
+sizing so this is a pretty complicated
+inquiry that they require GPT to do the
+calculation that there are 10 people and
+two T-shirts per person so there should
+be 20 t-shirt in total and that created
+a prompt where it asks GPT to please
+extract the information from this email
+and I'll create this message object and
+then we will use
+openai.chatcompletion.create we're going
+to use the gpd4 July 13 model which has
+this function calling feature we will
+pass on the message and also the
+function description that we create
+above now let's try to run this okay so
+we just got our response gbt function
+calling successfully extract which
+company is sending us this email as well
+as the product that they are trying to
+purchase which is company teacher this
+extra amount of t-shirts that they are
+trying to buy which is 22 per person 14
+or 10. and we can probably add more
+prompt to making sure the results is
+only the number and it is also able to
+categorize this email properly that is a
+sales email what's more impressive it is
+able to propose the next best step to
+take provide a price and timeline
+information to the customer which is
+exactly what this customer is asking for
+and in the end it is able to give this
+email a priority score of six I wonder
+whether this priority is accurate let's
+change this company name to be something
+more important like kuchi and it's not
+just 10 people let's say it's 10 000
+people so for this one I will expect the
+priority score should be higher let's
+run this again okay for this email since
+it is bigger company and bigger deal
+size it change the priority score to be
+10. and I'm sure if you want most
+sophisticated priority score you can
+actually create another function get
+enriched company data from different API
+servers or your own CRM and give it a
+bunch of rules of what's the weighting
+of different factors and how it should
+prioritize but already you can see this
+is super useful information to generate
+a prioritized inbound leads and when we
+start sending this data to multiple
+different other systems you're using
+that's where the magic happen Okay next
+we want this GPT function to be called
+every time when I receive a new email to
+do that we will need to convert what we
+built here into an API endpoint that we
+can call every time when we receive a
+new email API means application
+programming interface it's basically a
+way for machine to talk to each other so
+what we're going to do is we will create
+a API for this machine that we just
+created that will automatically
+categorized and extract information and
+we will use fast API which is open
+source library that allow us to build
+API very very fast and firstly let's
+open Terminal by clicking on this button
+and let's do pip install fast API this
+will install fast API in your local
+machine and next I will import two
+libraries here that we will use and
+create an app variable with fast API and
+next I want to create a class called
+email with base model which have two
+variables from email and content so this
+defines the structure of the information
+that we will pass on to the API and then
+we're or create app.post so it will be
+triggered when someone send a post
+request to our API and under the hour
+add this function called analyze emails
+where we were passed only parameters
+called email and we will try to get the
+content by doing emailed content and
+create the same thing that we just
+created earlier a prompt that included
+the content they asked GPT to extract
+information and then move it to a
+message that we can pass on to open AI
+with gpd4 July 13 model and next thing
+is once we get a response from open AI
+we'll try to extract information so if
+you look back the response we got from
+GPT we have this structure that inside
+choice is array where it has message
+function call arguments and inside
+arguments is all the information we need
+so what we're going to do is create an
+argument variable where we have this
+line code to extract information from
+the arguments in the end we will return
+this Json structure with all those
+information that we extracted so that we
+can send to Google sheet or other apps
+that we want to integrate to quickly
+test this server I'll create app.get we
+should just return hello world and get
+is a method to retrieve certain
+information from server and we will open
+a new terminal by clicking this plus
+button and run ubicorn main app hosts
+0.0.0.0 Port 10 000. so this will create
+a server on my local machine so main is
+referring to the file name and app is
+referring to this variable that we
+created here and let's just Define a
+specific endpoint if you click enter it
+should give you the C URL and if we try
+this you will say it'll return hello
+world so this means our server actually
+running populate and next to test this
+post message for our API endpoint I will
+create a new password file called test
+server where I will import the requests
+which is a library that allow us to make
+HTTP requests and I will do this request
+a post Define the URL that we just
+created as well as the Json file which
+follows the structure with two
+parameters from email as well as a
+Content so let's try this okay great you
+can see that it actually return turn the
+structural data we want the company name
+the product the amount of product as
+well as the next step provide a quote
+including price and timeline for 20
+black t-shirts now since we get
+everything working and want to deploy it
+to a cloud service so that we don't need
+to keep our laptop running to do that I
+will use render.com which is a platform
+that allows us to deploy apps very very
+easily to deploy that we will need to
+create a file called requirements.txt
+and list out the libraries that the
+Cloud Server need to install and then we
+want to upload this project to GitHub
+because render allows you to deploy
+GitHub repo directly and that is what I
+did here once you upload your project to
+GitHub you can create a account on
+render and then you can try to add a new
+web service and it will probably ask you
+to connect GitHub account if you haven't
+once you do that you can just search for
+the repo and I can click on that in your
+given name and you will choose a branch
+in my case would be Main in the start
+command we will use the one that we're
+running locally using core main app with
+this specific endpoint and you will
+choose a free one and click create a web
+service it will take a few minutes at
+beginning but once it's done you should
+be able to see that in your dashboard
+and you click on that and go to
+environment try to add the open AI API
+key here as the environment once it's
+finished you should see this message
+that your service is live with this URL
+you can click on the link on top left
+corner and we can see this hello world
+message return so it means it's actually
+working well to test again we will copy
+this link open the test server file we
+created and replace the URL with this
+unrender.com URL and try again
+it's returning the results properly so
+we just have our API running now we get
+our API endpoint up running the last
+step we need to do is build out the
+whole workflow whenever I receive an
+email on my Gmail account it will send
+this request to the render API endpoint
+that we created which will generate that
+structured information that should be
+automatically added to a Google sheet
+there are multiple ways you can achieve
+it you can use Gmail API directly they
+actually provide a push notification API
+endpoint that will automatically send
+notification to our service however I
+have pretty bad experience debapping on
+Google apis so I'm going to take a
+shortcut I will use the appear instead
+to build a whole workflow and if you
+don't know what the app here is it is
+basically a platform that allows you to
+connect in different service together
+which is perfect for this use case so to
+create this app for our use case I will
+set up a workflow that will be triggered
+whenever a new email arrive in my Gmail
+account so I will set up event as new
+email and then I will add a second step
+to use webhook webhook is a way to send
+HTTP requests and get a response back in
+our choose a post message or copy the
+URL from our rendered website and choose
+a payload type to be Json and I will add
+to field for email and content and map
+back to the information we receive from
+Gmail and click continue once you see
+the results coming back from our API
+endpoint we will end the last step which
+is Google sheet I will choose the Google
+sheet event will be create spreadsheet
+row or choose a specific sheet that I
+want to insert information to once I
+choose the right sheet it will display
+the list of columns from my spreadsheets
+so that I can map information to each
+column click continue now let's test it
+and I will show you the Google sheet
+side by side okay great so we can see we
+successfully put in a new record into
+our Google sheet with structured data
+for each individual column and this
+workflow will be triggered every time
+when this new email arrive in my email
+inbox so this example of how can you
+automate business process with GPT
+function calling I'm very excited to see
+all the other different automations that
+you're going to build comment below the
+ideas you have I'm going to continue to
+post different AI experiments I'm doing
+so please subscribe if you enjoy those
+content thank you and see you next time
