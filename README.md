@@ -33,7 +33,6 @@ To run the project with docker compose:
 3. When done, run `docker-compose down` to stop the containers
 
 # TODO
-- [ ] I am currently using the fattest node image to run the client. It is very large, and could probably be changed to an alpine image to reduce the size.
 - [ ] Set up nginx to serve the client and the api on the same port. This will make it easier to deploy the project.
 - [ ] When developing on *bare metal*, the `--reload` flag was set. Now, changes won't be immidiate. We should investigate how to fix that. Convinience is key. 🔑
 
