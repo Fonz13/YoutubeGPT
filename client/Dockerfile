@@ -1,5 +1,5 @@
 # pull this image into the docker container bayesimpact/react-base
-FROM bayesimpact/react-base
+FROM node:18-alpine
 
 # Copy the client directory into the container
 COPY . /client

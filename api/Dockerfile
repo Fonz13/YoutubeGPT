@@ -1,5 +1,5 @@
 # Use an official Python runtime as the base image
-FROM tiangolo/uvicorn-gunicorn-fastapi
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9
 
 # Set the working directory inside the container
 WORKDIR /app

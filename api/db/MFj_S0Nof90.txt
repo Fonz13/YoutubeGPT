@@ -1,0 +1,338 @@
+use effect is one of the greatest
+features ever added to react and it's so
+much nicer than the old component life
+cycle system but you should be using way
+way less use effects honestly if you
+have a use effect in any of your
+components you're probably using use
+effect the wrong way and you should
+remove it now this sounds crazy but I'm
+going to show you exactly what I'm
+talking about how I use this in a real
+world project and why it makes writing
+code and react so much easier and so
+much nicer
+[Music]
+welcome back to web dev simplified my
+name is Kyle and my job is to simplify
+the web for you so you can start
+building your dream project sooner and
+today we're talking about use effect now
+right here I have my career fair project
+that I've been working on for a while
+open I've taken a bit of a break from it
+which is why you haven't seen any videos
+on it but it's a fairly large project
+you see we have a bunch of different
+components if you can see I opened this
+up we also have this Pages directory
+here you know we have a ton of different
+pages throughout this application it's a
+fairly large application you know not
+just some toy application but when I do
+a search for use effect you'll notice I
+only use use effect in seven different
+files in my entire project and of those
+seven files I only use it 23 separate
+times and that actually counts the
+import statement which means in total I
+use usefx 16 times in this entire
+project now that may sound crazy but by
+doing this it actually has made my code
+so much easier not only to read but also
+to write so I'm going to show you
+exactly how I would go about removing
+these use effects and how I go about
+replacing them with other things so the
+first thing I want to look at actually
+is going to be this file right here this
+is a fairly large file if we just scroll
+down you can see it's quite large we
+have our component at the very top here
+and this has you know some information
+at the top some logic basically then we
+have a big return statement that
+contains all of our jsx markup and then
+finally we have here a custom hook that
+is used for this component and this
+contains a bunch more logic as you see
+it's quite large so if we scroll to the
+very top if we look at our actual
+component here you can see we have some
+logic to the top we have like
+authentication our router some different
+state this use collection data is just
+querying Firebase essentially so it's a
+Firebase query and this is just getting
+some data so essentially more data this
+is filtering our data to get exactly
+what we want this right here is using
+that custom hook that's defined at the
+bottom of this page then we have more
+getting data so again just like more
+State filtering that state finally we
+have here another custom hook that is
+not implemented in this file it's a more
+Global custom hook some more filtering
+of things and then finally a couple
+functions for you know doing on click
+event listeners and things like that
+then you can see we have this giant
+return statement and then that's the end
+of our component you'll notice nowhere
+in this component do I have any use
+effects I have a bunch of custom hooks
+things like use collection data use job
+listing search form and so on and some
+of these custom hooks they actually use
+use effect behind the scenes but I don't
+have any use effects in my actual code
+and this is really nice because use
+effect is kinda ugly the actual you know
+interface for and the actual API for it
+is pretty ugly it's pretty difficult to
+use and pretty difficult to read so not
+having to look at that is so much nicer
+I can just be like okay use collection
+data that's super straightforward it
+gives me an array of information or like
+use job listing search form this is for
+dealing with job listing search forms
+and it doesn't even look like I'm using
+a use effect for any of these because
+there's no information being passed
+around but when I go and look at these
+different custom hooks for example this
+use job listing queue here this all it
+does is it takes an array of job
+listings so it takes almost nothing at
+all into it and as you can see here it
+has a bunch of logic but here's where my
+use effects are as you can see I have a
+use effect here that handles some stuff
+and a use effect here that handles some
+stuff essentially it deals with the
+queuing so like I want to show a toast
+message anytime things in your Q change
+so if you have like more or less people
+in front of you online it's going to
+update and say hey you're number seven
+in line or something for the job fair so
+that's essentially all this is doing or
+for like removed from the cube that's
+all this is doing is dealing with that Q
+Logic and then we have some functions
+that we return down here you'll notice
+I'm not exposing that use effect out of
+this custom hook I'm not actually
+writing this use effect or dealing with
+anything at all with the side effects of
+the use effect in my actual component
+where I use this hook the use effect is
+stored away inside this custom hook and
+nothing else accesses it nothing else
+deals with it and it just kind of is
+there in the background doing its thing
+that's what use effect was meant for in
+react it wasn't meant as a way to write
+you know 20 different use effects inside
+of your component and I have them all do
+different things that's just difficult
+to read and difficult to manage instead
+it's meant to be put into smaller custom
+hooks that deal with that logic for you
+and that allows you to write really
+small components this component while it
+does a lot of things the actual code for
+the logic of my component right here is
+fairly straightforward there's really
+not much I can fit almost all of it on a
+screen just one screen even using this
+very large font size that I use for
+recording videos so this is like the
+general idea of how I think components
+should should be written you know you
+have all of your logic and custom hooks
+if applicable and if your custom Hook is
+only used in one file just Define it in
+that one file that's perfectly fine
+that's what I've done here otherwise you
+know break it out for example this use
+collection data is used all over my
+entire application so it's broken out to
+its own hook if we click on that real
+quick you can see that it's a very
+simple hook it just uses a library to do
+this essentially I just have a bunch of
+typescript stuff around it that's why I
+created a custom hook for a beyond what
+the library is doing but as you can see
+you know I have that custom hook and
+then I have a couple other custom Hooks
+and that how it works so now I want to
+show you some more examples of how I use
+use effect in this project about where
+maybe it's a bad idea or maybe where
+I've done it in the wrong way so one
+thing that I want to look at here is
+let's look at this preview modal so here
+I've used use effect twice as well we're
+going to open that up real quick again
+this is a fairly large component but not
+quite as big as the other one we scroll
+down here a little ways we have our
+modal here we have just some State then
+we have a form that we're dealing with
+this is also some form related stuff we
+have a custom hook right here for audio
+levels and then I have a use effect a
+use callback and then a use effect again
+inside side of my component logic this
+in my opinion is a red flag and this
+should not be here as you can see I have
+a bunch of to-do's because this actual
+component is not completely finished
+it's mostly working but it's not how I
+want it which is why all this use
+effects stuff is in line right now I'm
+writing it out to try to get it to work
+and then as soon as you have everything
+working I'm planning on taking out these
+use effects because all that these use
+effects do is they deal with getting the
+video and the microphone input from a
+user as you can see here we're getting
+the video input and we're getting the
+audio input that's all that the shoes
+effect does and this one essentially
+does the exact same thing just does some
+other stuff with your audio so these
+should be moved out into a custom hook
+like use video and audio or use video or
+something like that and I can just
+Define those way down here at the bottom
+of this file or if I need to use video
+and audio and other components obviously
+I would break that out into its own
+custom hook for example I have here this
+use audio levels and this right here is
+a custom hook that is going to be used
+in multiple places in this application
+and I have used effects inside of here
+to deal with all this information now as
+you can see I still have a lot of work
+to do I got a lot of comments inside of
+here but I have all these user it's kind
+of broken out and separate from the rest
+of my project which is exactly what you
+want when it comes to use effects as you
+can see this returns level and this
+level I think it's just a number yeah
+this literally returns a single number
+and all the logic for dealing with what
+that number is is taking care of inside
+this custom hook all the custom use
+effects are doing that for me and then
+in my component literally it's one
+single line it just returns to me a
+number which is perfect so in most cases
+when I'm looking at other people's code
+this is kind of what I see their code
+looking like you know they have their
+use effects just in line for dealing
+with certain things and they just have
+individual use effects like okay I need
+to do this one thing one off one time
+I'm just going to write that in the
+component really if you're doing that
+I'd highly recommend rethinking it
+putting it in a custom hook and just
+putting it in the same file if it's
+small or break it out if it's something
+you use everywhere for example like I
+use fetch hook if we look at another
+example here if I just open up we have
+this next page right here this one has
+four separate use effects and all of
+them are bad essentially all of these
+are inline use effects and they all deal
+with the same thing this is a page that
+allows me to essentially check a user to
+see if they've properly passed the
+LinkedIn quizzes and every time I click
+next it'll load menu new user so every
+time the user change changes I need to
+do a bunch of different things to the
+actual UI of this page so I have a bunch
+of use effects for doing that and this
+one use effect right here just loads all
+my user data this is terrible I should
+not write code that looks like this
+because all of this use effect code if I
+remove this as you can see this
+component is very very straightforward I
+mean I can fit the entire component
+rendered content all on one page and I
+could just have a simple hook that's
+like use user just like that or whatever
+and that custom hook could contain all
+of this logic right here that I just
+removed so all of these different use
+effects could be inside that custom hook
+and that would be a much better way of
+writing this it's easier to know what's
+going on because I just gave you this do
+you know what all these different use
+effects are doing I mean no I don't even
+know what they do but the reason that
+this page is not as good or well written
+as some of my other pages is this is
+just an admin page that I threw together
+really quickly because I needed to do
+these this thing really easily and
+quickly so I threw together this admin
+page in like one day just super quick
+threw all this code together and you
+know this is what I ended up with this
+really ugly code now one of the most
+common things people use use effect for
+is going to be for fetching data in this
+apple application I don't have any
+fetches at all I don't think at least if
+I just search for fetch here for example
+you can see I mean I have a bunch of
+fetches but they're just in my package
+Json and yeah I have no instances of
+fetch being used and that's because I'm
+using Firebase for everything so I'm
+using a library to interact with
+Firebase through that way and if you're
+not using Firebase for example I would
+recommend using something like react
+query or any other type of fetch based
+library to make sure all your fetches go
+through properly that's going to make it
+so you don't have to write a bunch of
+use effects for your fetch because a
+library like react query that's going to
+handle all that use effect nonsense for
+you behind the scenes and it just makes
+working with them easier but if you
+don't want to use a library just write
+your own custom use fetch hook they're
+super easy to write for the most part
+and you can make it so that it has all
+the data you want loading error
+everything like that and it's just going
+to be one line instead of having every
+time you need to fetch data you know
+having a massive use effect
+now this entire video just mentions one
+mistake with using use effect in too
+many places if you want to know six
+other mistakes that developers make when
+it comes to use State and use effect I
+have a full video on it it's going to be
+linked right over here with that said
+thank you very much for watching and
+have a good day

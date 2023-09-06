@@ -1,2 +1,2 @@
-fastapi
-youtube-transcript-api
+fastapi==0.96.1
+youtube-transcript-api==0.6.1
