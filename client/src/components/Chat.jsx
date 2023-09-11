@@ -30,7 +30,7 @@ const Chat = (props) => {
       
 
     
-      api.post("/chat-req/", {
+      api.post("/chat/", {
         VideoID: videoID,
         Message: input
         })

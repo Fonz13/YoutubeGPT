@@ -34,7 +34,6 @@ To run the project with docker compose:
 
 # TODO
 - [ ] Set up nginx to serve the client and the api on the same port. This will make it easier to deploy the project.
-- [ ] When developing on *bare metal*, the `--reload` flag was set. Now, changes won't be immidiate. We should investigate how to fix that. Convinience is key. 🔑
 
 # Resources
 https://medium.com/@rushikeshnaik779/routers-in-fastapi-tutorial-2-adf3e505fdca

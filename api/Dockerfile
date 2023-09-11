@@ -16,4 +16,4 @@ COPY . .
 # Specify the command to run the application
 # NOTE: omitted the --reload flag, but should be added for development
 # I do not yet know how to make it have effect when devoloping in Container
-CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

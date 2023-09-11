@@ -1,17 +1,18 @@
 # pull this image into the docker container bayesimpact/react-base
 FROM node:18-alpine
 
-# Copy the client directory into the container
-COPY . /client
 
 # Set the working directory to /client
 WORKDIR /client
 
+# Add dependancies so they are cached
+COPY package*.json ./
+
 # Install dependencies
 RUN npm install
 
-# Make port 3000 available to the world outside this container
-EXPOSE 3000
+# Copy the the source code into the container
+COPY . .
 
 # Run the app when the container launches
 CMD ["npm", "start"]

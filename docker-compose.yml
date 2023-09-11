@@ -9,8 +9,8 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./client:/app
-      - /app/node_modules
+      - ./client:/app  # Synchronise docker container with local change
+      - /app/node_modules  # Avoid re-copying local node_modules. Cache in volume. See https://stackoverflow.com/questions/29181032/add-a-volume-to-docker-but-exclude-a-sub-folder
   api:
   # restart: always
     build:

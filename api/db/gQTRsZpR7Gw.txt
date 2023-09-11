@@ -1,0 +1,4448 @@
+hi everyone my name is gwen from faraday
+academy i'm a software developer as well
+as a content creator on youtube in this
+crash course i'm going to be showing you
+how to use fast api
+from the very basics to some of the more
+advanced features
+the technologies i will be using
+are fast api which i will run with
+uvicorn as a development server i will
+be using sql alchemy to create the
+models for the database and i will also
+be using its new asynchronous orm
+the database in this course will be
+postgres
+i'll be running that locally and using
+postaco as a client to interact with the
+database
+some of the python libraries i will be
+using
+are pydantic and alembic
+so pedantic will handle data validation
+and fast api has a really nice built-in
+way of using pidentic with its api
+endpoints
+and alembic i will be using for
+migrations and tracking migration
+history and i will also be using those
+migration files to seed the database
+with some initial json data
+i will be using poetry as a package
+manager instead of pip which gives me
+some extra features like a lock file
+and automatically and adding my
+production and development dependencies
+to a tamil file that it creates for me
+i'll be using flake 8 for code linting
+and black as an auto formatter
+and finally pre-commit
+so i can set up git hooks to make sure
+i am
+committing and pushing properly linted
+and formatted code
+all of the code for this project
+is in this github repo
+the link is also in the description
+below
+you can check out different branches to
+see the different stages of development
+as we go through this course
+i really hope you enjoy this course i
+put a lot of thought and effort into
+making this so if you have any feedback
+comments questions please leave them in
+the comment section on this video or
+join my discord server
+and ask me over there next up i want to
+briefly explain what fast api is and why
+you may want to try it out for your next
+project
+what is fast api and why might you want
+to use it
+fast api is basically a modern python
+framework for building apis and web
+applications
+it came out around the end of 2018
+so it's just celebrating its third year
+anniversary at the time of recording
+this video
+some of its notable features and
+benefits
+are its speed compared to other
+frameworks
+some of the speed benchmarks for web
+frameworks that people have done
+show it to be on par with other
+technologies known to be fast
+like golang and node.js
+in addition it provides support for
+asynchronous behavior
+out of the box with python's async and
+await syntax
+in addition to the speed of the
+framework itself
+many developers including myself like
+this framework because of the speed of
+development in other words the reduced
+time it takes to spin up new projects
+and build out features
+this is due to several things including
+an intuitive api
+from the framework
+sensible defaults that it provides for
+you and a lot of built-in features like
+data validation serialization
+automatic api documentation with both
+swagger and redoc
+built-in type support and other features
+like security and authentication
+websockets sessions cookies
+it's not just for apis either since it
+has built-in template support if you
+want to use it for building a full stack
+application
+the documentation for this project is
+also wonderful
+it's well written has user guides and
+plenty of examples which cover
+everything from how to set up a project
+to using a database modularizing your
+code and testing
+this framework is built on top of the
+starlet micro framework which is also a
+modern fast asynchronous python
+framework
+if i had to compare this to another
+popular framework the development feels
+a lot like building a flask application
+but it also comes with a lot of
+well-documented and built-in ways of
+doing things similar to what you would
+experience when working in a django
+application
+i want to quickly demonstrate the
+functionality of this app
+it is basically an api so there's going
+to be no ui
+and we will just be interacting with it
+through these api docs
+i guess this is technically a ui
+but it's not a front-end user interface
+these are the automatic documentation
+with open api that fast api generates
+for us
+we're going to be creating all of these
+endpoints with crud operations
+and we'll be able to interact with the
+api directly from the browser here
+make different kinds of requests
+and get responses back
+this is basically the creation of a
+learning management system
+if you look at the readme on the github
+for this project there's a lot more
+information about what it does
+and an overview of its features
+it basically allows users
+to be assigned courses users can be
+either students or teachers teachers can
+then manage and see student progress in
+the courses
+and then for courses you have
+sections and content blocks
+i will actually be building an actual ui
+for this later on on my channel in
+vue.js as well
+so let's go ahead and get into building
+the app
+first i want to walk you through
+installing all of the prerequisites for
+this project
+of course you need to have python
+installed
+right now i'm using python version 3.9.6
+one tool i recommend installing for
+managing python versions is pi end
+this tool is available for mac or linux
+and there is a fork available for
+windows as well
+i will link those in the description
+below it allows you to install multiple
+versions of python and easily switch
+between them
+now that i've installed the new python
+version
+3.10
+i can now do
+high-end
+versions
+now if i want to change my version i can
+do pi n
+global there are a couple other commands
+that would also change the version
+for the shell for example
+i can go ahead and do
+version 10.
+i have to do the exact version in point
+it's 0b
+4.
+now if i check my python version
+now i'm currently using 3.10
+and i'm going to go ahead and change
+back to the 3.9 version that i was using
+the next tool i recommend you install is
+poetry
+now poetry is a package manager for
+python that you can use instead of pip
+it comes with a lot more features out of
+the box
+and you won't have to go through the
+extra step of freezing dependencies
+because it automatically puts those
+dependencies inside of the python
+standard pi project.tamil file
+it also creates a lock file to lock in
+all of the versions from the
+dependencies that you install
+as well as dependencies of those
+dependencies
+the final prerequisite for this course
+is postgres
+you will need a local instance of
+postgres running on your computer
+for mac users the easiest way is to use
+the postgres app you can go to
+postgresapp.com and easily download it
+you also have homebrew available
+for all major linux distributions
+postgres will be installable through
+your package manager
+and for windows there is an interactive
+installer available as well
+once you have those prerequisites
+installed we can get started with the
+actual coding setup
+the first thing i want to do before
+coding anything is just to check my
+python version
+it's 3.9.6 which is what i want so now i
+can go ahead and create a virtual
+environment
+i could use poetry's virtual environment
+but i'm just going to use the built in
+python one here
+vm
+and then i'm going to put it in a folder
+also called vm
+inside my project
+and that way i can always look at my
+installed packages if i want to
+you can see i have this open in my code
+editor vs code
+so i just have my virtual environment in
+there so far
+now to use my virtual environment before
+i install any dependencies
+i can just do source
+and then point to that virtual
+environment folder called vm i created
+bin
+and activate
+and now you can see i'm inside my
+virtual environment so i can safely
+install local dependencies here
+since i'm using poetry as my dependency
+manager or my package manager
+i'm going to have to initialize a poetry
+project
+now poetry has a feature where i could
+spin up a whole starter directory
+structure but for this tutorial i'm just
+going to be building all the files and
+folders from scratch
+but i still do have to initialize the
+poetry project and create that pi
+project.tamil file so i'm going to do
+poetry init for that
+and it takes me through the command line
+guide
+and just asked me a couple questions i'm
+just going to use all of the defaults
+and then it asks me if i want to define
+my dependencies interactively meaning
+interactively in the terminal right now
+and i'm going to say no
+because i'm going to install those on my
+own after
+so now it shows me a preview
+and i'm going to hit enter for yes
+and now
+in my project i can see it gave me this
+default pi project.tamil file
+with my
+python version
+and the initial poetry setup here
+now pi project.tamil is a python
+standard it's not just for poetry so
+some other libraries that we're going to
+be using are going to be using this same
+file for their configuration as well
+so to start this project i need to add
+two packages so first i'm going to do
+poetry add
+uvicorn
+for our development server
+and fast api
+and i'm just going to come to the
+documentation
+let me go ahead and turn this on dark
+mode
+go to the tutorial user guide
+first steps
+and this is basically
+the hello world app so i'm going to copy
+this code here and in vs code i'm going
+to create a file
+i'll call it main.pi
+basically i need to import fast api we
+need to create an instance of this main
+fast api class from the framework which
+will be the basis of the whole api that
+we are building
+and then i can define my routes here
+so this will just return an object hello
+world
+you can see it's an asynchronous
+function we're not doing anything
+asynchronous yet but we're going to use
+that functionality later
+to run this i'm going to go back to my
+terminal and i'm going to use that
+uvicorn package that i installed
+and i have to tell yuvacorn what file i
+want to run
+which will be main and then what do i
+want to run inside of that file
+that will be app
+you can see i have main.pi
+and then i have app inside of that
+i'm going to hit enter
+and you can see that uvicorn is running
+on port 8000 by default
+so i'm going to copy this
+in my browser
+and i can see the response from my
+endpoint here
+that's basically how easy it is to get
+started with fast api just two packages
+and a couple lines of code
+one thing i want to go ahead and show
+you
+is the automatic api documentation so
+i'm at port 8000
+and i'm gonna do slash docs
+and you can see it gives me the swagger
+documentation
+out of the box i didn't have to do any
+additional setup
+and all of the routes which is just one
+so far is here
+this is interactive documentation
+so
+it gives me details about it and then
+actually if i want to
+try it i can press try it out
+and then it gives me this execute button
+of course it's just a get request
+without any url variables so i'm just
+going to click execute
+it shows me the response here
+there's also an alternative form of
+documentation that's used in certain
+types of projects it's called redoc so
+this is really zoomed in so this isn't
+the format you might normally see let me
+zoom out a little bit
+and you usually see this in three
+columns a lot of apis have this kind of
+documentation i won't be using it in
+this tutorial but some people do prefer
+this type of documentation over the
+swagger style so it's really convenient
+that fast api provides both of them out
+of the box without any setup
+i'm going to start with the user
+endpoints for the application and create
+just a quick in-memory database before i
+move to postgres
+so you can see how to use
+basic get and post requests
+and also how data validation works in
+fast api
+so i'm going to add one more endpoint
+here
+and i'm actually going to say that these
+are
+post requests
+to the user's endpoint
+you can do
+and i'm actually going to
+make these at the user's end point
+so i have one get and one post
+i'm going to call this
+get user
+and this function i'll call
+create user since i don't have my
+database set up yet
+i'm going to just create a quick users
+list here
+and in my users endpoint
+for the get request i'm just going to
+return
+the users list
+and then for post
+i want to create a user
+so i need to
+define a variable here this will be
+called user
+and
+basically my post body
+that i'm going to
+pass in
+when i post to slash users
+that will be
+in this variable user
+and this is going to make more sen
+and this will make more sense in a few
+minutes i'm just going to leave it like
+that for now
+now
+when i pass in user
+i'm going to say
+users
+which is that list above and then dot
+append
+and i will append the user that i've
+passed in now i'm going to check this
+really quick in the browser but first i
+need to run my server
+so last time we did
+uvicorn
+and then file name
+and the name of
+our fast api instance inside the file
+which is app
+and now i'm going to add the flag reload
+so that whenever i make
+changes in the fast api code then it
+will automatically
+reload the server so i don't have to
+start and stop it every time i make
+changes
+i'm going to run that
+and now i can see in my docs
+that i have a get and a post request
+if i try this out
+then i get that empty list
+and if i post a user let's see what
+happens
+i'm going to try it out
+it's asking for user here
+and
+it's just giving me this regular text
+field because it has no idea what kind
+of data
+i want in that field
+and it's just giving me this regular
+text field here because it has no idea
+what kind of data i want in that field
+since i have not defined a type which we
+will do in a second
+so i'm just going to put
+a couple characters here
+i get the message hello world i'll fix
+that in a second
+and now
+that should be appended to our list
+so i'm going to try to get my users
+and you can see i have a user
+in the list which is just a string
+with the name bob
+so my get and post requests are working
+i'm going to fix this object really
+quick
+i'm just going to return
+something like success it's fine for now
+if i just wanted a string of the
+username for example
+then this might be fine to append the
+username
+but really when i want to create a user
+and an application it's going to be an
+object with many different fields
+and i really want to check or validate
+that those fields exist
+and that i am passing in a proper user
+object to save in the database
+built-in way of doing validation and
+serialization
+in fast api is to use a library called
+pydantic
+and so what we're going to do is
+actually
+define a user class
+with all of the types
+for each field that we want to exist
+in our user objects
+and then
+it will validate
+that we are
+passing in
+a correctly formatted user object
+so let's see how that works
+one thing that i almost forgot to do
+is install the pedantic dependency
+so i'm actually coming back later and
+doing this but just to show you
+you can do poetry add
+pedantic
+and now we're going to use it
+first
+i'm going to import the library called
+pydantic
+and then i'm going to import
+base model
+and now i need to create a user class
+i'll create class user and this will
+inherit
+from the pedantic base model
+and now i can define the fields that i
+want to exist on my user
+so for right now i'll just define two
+fields for an example
+email
+and i need to use a colon
+and then i define the type string
+and then let me define a different type
+of field
+i'll just say is
+active
+and this will be a boolean
+and this is basically what i'm going to
+be using as my user type right now
+so when i pass in a user
+via a post request
+i want to validate
+that it has these fields right
+so i'm going
+to say that this
+user object that i'm expecting needs to
+be of type
+user
+and that's basically the syntax that i
+use to define that
+and now if this isn't type user
+then
+fast api will automatically
+send an error response for us
+let's try this out
+in the browser
+i'm going to refresh
+now
+i shouldn't have any users here anymore
+because the apps already reloaded
+and you can see
+the example of the body that it's
+expecting
+i'll try it out
+and now it gives me this
+json boilerplate i can use so i need an
+email i'm not validating that it's an
+email but just a string for right now
+but i'll go ahead and make this an email
+anyway
+and then is active i'll leave that as
+true
+and i'll press execute
+let's see what the response is success
+which is just the string that i'm
+returning for now
+and then let me execute this again
+and now you can see that i have an
+object in the list which is the user
+that i just created now if i don't pass
+in the correct fields
+let's say i get rid of this required
+field
+now i'm just passing an email
+i'll click execute
+and it gives me a 400 level status code
+and then automatically returns details
+of what is missing
+it says that the is active
+field is required but it is missing
+and all i had to do to set up that data
+validation
+is to just define the type that it's
+expecting
+and say that user
+must be of the user type
+now the variables defined here
+could be from the body they could be
+from the url
+so later on we're going to talk about
+how to differentiate between
+different types of variables that we'll
+use
+in our api functions
+for right now we can just leave it like
+this
+some other features of using these types
+come from
+the built-in typing module
+in python
+so i'm going to import
+typing
+and use
+optional here
+and let me define one more field on my
+user
+let me just call this bio
+and i'll say this is a string two
+but by default these fields are required
+and as you saw they'll throw a 400 error
+if they're not provided but if i want
+bio to be optional
+then i can just wrap it
+in optional
+and then use square brackets
+and pass in the type that i want
+my server should automatically refresh
+so let me go to my browser
+refresh the browser
+and now
+i'm going to get rid of bio here
+execute
+i got success
+and if i fetch the users
+then you can see
+it just saved with a null value for bio
+since it's optional
+so i can enter the string or not and if
+there's no string it will just set it to
+null
+now it's not just for
+data coming in via post requests that i
+can define the type
+i'm also going to be using the pedantic
+type classes
+for my
+responses
+so for right now
+i'm going to define
+a
+response model
+and i'm going to say that this is user
+now
+this is going to throw an error
+but i'm going to go ahead and show in
+the browser real quick
+let me refresh
+and i'm going to create a user just any
+user
+i'll just leave what's there by default
+okay
+now let me try to get
+and it gives me a 500 error
+in my terminal it's saying that the
+value is not a valid dictionary
+it's basically giving me a validation
+error
+and that's because it's returning a list
+but when i define my response model that
+i'm supposed to be returning from this
+end point
+it says it's a dictionary this user
+dictionary
+but instead i'm i'm returning a list
+so what i have to do
+is actually tell it that it's a list of
+these dictionary objects
+so i need to also import the list type
+and then i can wrap
+user with list
+using square brackets again and now it
+will properly return a list of my
+dictionary objects
+this is a very basic example
+of how
+validation works with fast api
+later on we're also going to be using
+this with sql alchemy
+and real data from a postgres database
+now that we've looked at resource
+endpoints both
+getting and posting data to our endpoint
+let's create an item endpoint on this
+resource
+to see how fast api handles
+url path parameters as well as query
+params
+so i'm going to do
+i'm going to put at
+app dot get
+and then forward slash users
+and then slash and here i want the
+specific user id
+in my restful api
+so i'm going to put id here
+and now anything after users and a
+forward slash in the route
+will be captured into an id variable in
+my function so let me create that
+function
+and let me say get user
+this time
+i'm going to have the index
+of the user in the users list act as an
+id for right now
+so i'm just going to pass in the index
+as the id
+so i just need to return the user at
+that index
+so i'm going to say return
+users
+and then at index of id
+of course i don't have the id variable
+available to me yet in the function
+so
+i need to actually list it as a
+parameter here
+and then i can also use python's
+typing syntax again
+so i can say
+the id should be of type int
+let's look at this in the browser
+i'm going to refresh here
+and i have my third end point
+that i just created
+so let me go ahead and create a user i'm
+just going to use all of the defaults
+here for now
+execute
+and then
+another user
+execute
+okay now let me get the list of users
+and i have two
+test users
+now let me come down here to
+my get user by d
+endpoint
+i'm going to go to try it out
+and now i need to
+have the user id
+or the index of that user
+so i can use the user at index zero or
+one so i'm going to do one
+and it returns the second user
+if i do zero here
+then i get the other user
+and if i do something
+out of range
+of the indexes that i have so far
+then i get a 500 error because i'm not
+handling
+errors in my api yet
+so i'm going to get to error handling a
+little bit later
+first i want to show you how to
+give some help text for
+url variables and you can do the same
+thing for query parameters as well
+so if you look at
+this right now this is our parameter it
+says id needs to be an integer
+it's in the path so of course it's
+required
+because you can't
+hit this endpoint without
+providing that path variable
+basically i need to import path
+from fast api here
+and now if i scroll down here
+i have my type hint syntax
+and then
+i'm going to use the same syntax
+that i use for default values
+and here i'm going to use
+path that i just imported
+call it
+and then i basically need to pass in two
+things
+the recommended way to write this
+per the fast api docs
+is to use an ellipsis from python to
+show that it's required
+and now i'm going to add a description
+here
+and say
+the description of this variable is
+the id of a
+user you want to
+retrieve
+and now
+if i go to fast api
+i can see and get here
+that it gives me the description text
+and then i have the field
+where i can enter in the id
+now with these path and query imports
+that you get from fast api
+you can also do some level of data
+validation
+so just really quick
+i'm going to add
+another argument here
+and
+since this is an integer
+i'm just going to say that the minimum
+number
+has to be 2
+so i'll say greater than
+equals
+2.
+now if i go here
+i'm going to try it out
+and try it with one
+and you can see the error i get
+is that the value has to be at least two
+you can do greater than or less than or
+greater than or equal to
+and some basic validation
+and it works similarly for query params
+as well
+let's say that
+i have this
+user is active boolean
+so i want to filter the active users
+how i might do that in an api
+is get
+some kind of query object here
+and i'm just going to go ahead and call
+this query parameter
+also is active
+the type
+will be boolean
+and i need a comma at the end of my
+other one
+and just for example
+we're going to import
+query here
+so i'm going to import query
+and now
+i can call this
+and here instead of the ellipsis i'm
+going to say none
+as the default
+i can also put in a description here if
+i want
+but instead
+i'm going to use some validation i'm
+going to say max length
+it's not really instead because you can
+use as many of the named parameters as
+you want
+but i'm going to say max length is 5.
+not a really good example with a boolean
+because anyway you're just going to put
+true or false
+but basically
+i'm expecting is active which fast api
+will parse for me as type boolean
+and just for this case of this example
+actually i'm going to make it a type
+string
+because
+otherwise
+this max length wouldn't really work
+because it would be only expecting a
+boolean anyway
+so i'm going to use type string for this
+and i'm just going to turn this into a
+dictionary to return
+which will be
+user
+and then some kind of query parameter
+which
+since this is already string i'm going
+to go ahead and change the name to q
+like it says in the docs so
+i'll just use q here
+and i'm just going to return it via the
+api
+okay
+and now let me refresh here
+i have some kind of error it was giving
+me a value error while i was writing
+that end point
+let me go ahead and clear that and try
+running it again
+there we go
+now i have a field for
+q which is my query param
+and for the path variable
+so let me create users
+and create another user
+and
+just go ahead and create another user
+i have all three of my users saved in
+that list
+and now i can try out this new endpoint
+i'll just pick any user id
+and then
+a query parameter
+so q
+will equal cat
+execute
+oh i forgot about the validation in the
+path i'll just go ahead and put 2 here
+or i guess it's not greater than or
+equal to
+so i'd have to use three
+i don't want to reset this api
+by changing
+this value so i'm going to add
+user number four just for this example
+and now i should be able to make this
+greater than 2
+by using the id3
+let me execute
+and i do get my user or index 3
+and query
+which is the cat cat
+the string i passed in
+now
+i do have it where it should only allow
+me to pass in
+five characters at most so let me
+change this to
+kittens
+and it automatically validates and says
+value must be no longer than five
+characters i don't know if you can see
+that in the hover text but you can see
+that little box that popped up
+for the query field
+it doesn't even let me execute the api
+request it just gives me the error right
+away so i can't even execute properly so
+i would have to
+delete two characters
+and now it lets me execute
+and it's kitae
+so one thing some people wonder is how
+does fast api determine
+if it's a post body
+or if it's a path variable or query
+param or something like that because
+they're all
+just parameters defined inside of this
+api endpoint function
+basically it matches up the path
+variable first
+so
+since this is required
+for
+any type of api this might be get
+put delete or whatever you want on this
+item api
+and you can even have multiple path
+variables in here
+well these path variables have to match
+to a parameter every single path
+variable must be defined as a parameter
+so it will match those first
+and then after that
+the rest of the variables will be
+assumed to be query params
+unless it's a post request
+or a put or a patch request
+and then it will assume this to be
+a post body
+if you had
+some kind of id here then you would just
+add it here
+it doesn't matter the order so you would
+just add
+your path variable here
+of type
+whichever
+and it would work the same way
+it would look for the path variables
+first and then
+whatever variable you're using to define
+the body of the post request
+now since we got into
+some of the ways you can define metadata
+in your endpoints
+for example this description
+before i end this section i want to
+quickly
+just add some metadata
+to our api
+that will show up in our api docs
+right now it just has this default
+boilerplate for fast api
+so i'm going to copy paste
+some of the fields available from the
+documentation and then customize them
+for our api
+i'm going to call this fast
+api lms
+and then a description
+lms
+for managing
+students and courses
+version is fine
+not going to have the terms of service
+license i'll just keep it
+at mit
+and now let me refresh the project
+and you can see
+it changed the name
+and has the correct version number
+and then added the other fields here
+there are also options
+you can pass in basically to
+define docs for each type of endpoint
+you can look at the tagging api
+actually i just noticed i have an extra
+curly brace there
+so let me get rid of that
+i'm not going to show this in this
+tutorial but you can find it in
+the fast api documentation
+in this
+create metadata for tags section
+so you can just search for that
+i'm going to actually turn this into a
+git repo so i can save this initial
+setup so i'm going to do
+git init
+and it is giving me the warning to
+change from master i'm just going to go
+ahead and do that
+i'm going to change my default branch to
+main
+and i'm going to actually create
+a named branch for this
+i'm going to do git checkout dash
+b
+and call this
+initial
+app setup
+and i think i'm going to prepend this
+with one
+so it's easier to find
+and now if i do get status
+and see it does have the files i want
+but also i need to add a git ignore
+really quick to ignore pi cache
+and i also don't want to commit my
+virtual environment
+i have a couple options for get ignore
+so github
+has
+default ignore files that you can use
+in a repo
+at
+github.com
+github slash get ignore
+and you can actually go through all of
+these there's one for python and so many
+different things
+they're pretty good up to date
+but what i usually do is go to get
+ignore dot io
+and i just type in all of the things
+that i want to ignore
+so i'm going to type in python
+not all of the things i want to ignore
+but all of the tools that i'm using
+and it will automatically add
+the correct fields to an ignore file for
+me
+and i usually
+enter
+every different operating system in case
+someone from a different operating
+system
+uses this
+they don't have fast api in here yet
+no
+so i think that's
+good
+it creates this ignore file for me
+so i'm just going to do
+command a
+which is control a on windows
+and i can copy it
+and now i'll create a new file
+dot git
+ignore
+and i'll just paste all of that in here
+now let me check one more
+time in status
+and i don't have pi cash or vm to be
+created now
+so i'm going to
+go ahead and commit these
+i'm going to do git
+add just to add all of those files
+and
+now i'm going to do git commit dash m
+and
+i'm going to say first commit with
+initial
+api setup
+now i'm at my github
+i'm going to go ahead and add a new
+repository
+i'm going to say
+i'm going to do it under faraday academy
+and i'm going to say this is fast
+api
+lms
+all right it's available
+it's private right now i'm going to make
+it public before i launch this tutorial
+i don't want any of these things right
+now because i'm going to push fresh code
+up here so i'm going to create the
+repository
+and now i have my url
+let me just copy it
+if i go to my terminal
+i'm going to get remote add origin
+and then paste the url
+i can see that it added if i do get
+remote dash v
+and now i can push to that new
+repository
+i created on github
+so i'll do git push
+origin
+and then the branch name
+and actually
+i'll set this as the upstream so i don't
+have to define
+origin in the branch name next time
+and now i can click enter
+i can refresh here
+and i can see
+my initial app branch i have no other
+branches
+push up yet but i can see my code is
+here
+now that we have already built a basic
+api
+i want to go ahead and restructure the
+end points
+into different files to clean up and
+also prepare for the additional logic
+that we will be adding later on
+it's going to make it more intuitive to
+navigate around as well as provide a
+more real world example
+of how you might
+actually build an api
+to get started we don't want to keep our
+end points
+inside of our main.pi file
+but instead we're going to separate
+types of endpoints
+into files inside of a new folder that
+i'm going to create
+so i'm going to call this api
+and i'm going to make three files in
+here
+first i'll make users
+for all my users endpoints
+and then i'm going to make
+sections dot pi
+and
+courses dot pi
+now to start with users i'm going to
+remove
+these endpoints
+and put them in the users file
+and now of course i'm getting warnings
+because i have no imports here
+so the first thing i need to do
+is import
+fast api into this file
+and then i need to set up what's called
+a router in fast api
+this is similar to blueprints in flask
+so i'm going to set a router i'm going
+to define it as fast api dot
+api router
+call that
+and now instead of app
+here
+all i have to do
+is save router
+and all my endpoints are now set up of
+course i have other variables that i
+need to import now
+so i'm going to get those from my
+main.pi
+i'm going to take the rest of the user
+variables first
+go to users
+i like to put my default python imports
+first
+and then my packages and then i would
+put relative imports
+of course i am missing
+the query and path here i'm actually
+going to get rid of these
+and i'm going to say id stint
+and for right now i'll just
+get rid of those
+so now this should work exactly as it
+did before in the main.pi file
+the only thing i have to do is now that
+i have the router inside of this file
+i have to let my main application know
+about the router
+so i can do app dot
+include router
+and then pass in each router that i'm
+going to use
+so i have to import the router from
+api
+dot users
+and
+i have to pass it in to include water
+and now if i go to my browser
+all of my endpoints are still there
+but when i'm using the router pattern i
+don't just want one router but i'm going
+to have a router inside of each of these
+files
+since i've already typed out all of
+these user endpoints
+i'm going to just copy paste the
+endpoints into the other files
+you can see the router is defined in the
+same way in these files
+so if i go to my main.pi file
+i'm going to now need
+three routers
+of course i can't have
+three
+imports all named the same thing
+so instead of doing api.users
+i think the easiest thing for me to do
+is just to import those three files
+so
+users
+courses
+and sections
+and then i can just do users.router
+courses dot
+router and sections dot router
+let me see if those endpoints now work
+in my api
+and you can see i have all of these new
+endpoints added
+now one thing you'll notice in fast api
+it forces you to write
+a separate function definition for
+each http method
+so
+here i have the course's endpoint i
+actually have get and post
+but i can't put these together in
+one function
+as some frameworks let you do or chain
+them somehow but actually you need to
+explicitly define
+a separate function for every single
+http method
+that you want to use on this endpoint
+and that is just a specific design
+decision
+of the creator of this framework
+if you want to know more about the
+design decisions behind this framework
+then i'll link a podcast in the
+description below
+actually as you can see here in these
+two files there's something i need to
+fix really quickly
+and
+i need to change this id
+to be the correct syntax
+for fast api
+now that i have my api and all my routes
+set up and my app structured how i want
+i'm going to set up the database config
+in the next section
+now before i do that i am going to
+create a new branch
+i'm going to do git
+checkout
+b
+i'll call it 2
+api
+setup
+and i can do a git
+status
+i need to add my new api directory
+i'll just go ahead and get
+add everything
+git commit dash m
+and i'll say creating
+routers for
+api
+endpoints and adding
+courses and
+sections to
+api and i will push this
+and now in my repo
+you can see it saw that i pushed a new
+branch
+and now i have
+number two api set up
+now let's hook up the database
+fast api has some really good
+documentation about hooking up
+the app to different types of databases
+you can see the sql databases section
+for a reference on what we are about to
+do
+basically all of the examples here are
+written in sql alchemy which is also
+what we will use
+so the first thing i want to do
+is install sql alchemy
+and now i can set it up in my
+application
+there's some initial config
+that i need to do first
+and if you scroll down on this sql page
+you can come to the section
+with the initial configuration here
+and i'm going to use this as a starting
+point so i'm going to go ahead and copy
+this
+and then go over to my code
+and i'll create a database folder i'll
+just call it db
+and then inside of that i'm going to
+create a file called
+bbsetup.pi
+and paste everything i just copied
+and there are a few changes i want to
+make here
+so first of all
+i'm going to
+get rid of this is just
+a comment as a helpful
+connection string to show you what it's
+going to look like if you use postgres
+i already have my connection string
+created so i'm going to copy it
+and
+paste it here
+you can see i'm using postgres sql
+and
+psycho pg2 which i actually have to
+install this library
+this is my username at localhost
+and then this is the name of my database
+fastlms
+that's just the name i gave it
+i'm going to come back to that in a
+second
+now for
+the create engine call
+my sql alchemy database url has to be
+passed in first
+now for these connection arguments this
+check same thread is true you can read
+about this in the documentation but
+basically i don't need this because
+i'm using postgres
+and not sqlite
+one thing i'm going to add here is this
+option future
+equals true
+and that actually allows me to use the
+new asynchronous api
+in the latest version of sql alchemy
+so i need to put future equals true
+there
+and i'm also going to put it here
+so both in the session maker and in the
+create engine
+i need to have
+that option set so that i can use that
+latest api
+now one more thing i'm going to add to
+this file
+is a utility that i'm going to use later
+when i connect to my api
+this just creates a database session
+by creating an instance of the session
+local class
+so now i have to take care of two things
+to set up my database
+first i need to install this library the
+psycopg2 library
+to
+use with postgres
+and then i also have to make sure i
+create this database before i can start
+using it
+so i'm going to come to my terminal
+clear that
+and i can do poetry add
+and then i need to do
+that psycho pg2 library
+but actually i'm not going to use the
+regular one
+but i'm going to be using
+this psycho pg2 binary library
+which is basically
+the same library except there are no
+other dependencies it's much easier to
+install
+so i'm going to copy that come here
+and install that
+and then that will work the same way
+so now i need to create the database
+so i need to make sure my postgres is
+running which it is right now and
+actually i have already created this
+database here so i'm going to go ahead
+and leave it if i didn't have this
+database created
+then i could come in here
+to
+my p sql
+and create it from the terminal
+or what you will probably want to do is
+use some kind of database client for
+postgres
+the one i use right now this is post to
+co but you can use any other client i
+use dbeaver on my other computer
+but any client will work just as well
+and all you have to do
+is come down to this button add database
+and i just created a new database
+and call it fast
+lms i already have a fast lms so i just
+call that fast lms2
+and now i have a database
+and i can start interacting with it
+but i'm going to delete that
+and now i have my database i've
+installed on my required packages
+i have postgres
+running and i also have my database
+config
+already in my db setup.pi file
+so the next thing to do is to create my
+database models
+so let me create a folder
+inside db here
+called models
+inside that i'm going to go ahead and
+create
+a user model and actually i will
+have a few models inside each file here
+just for simplicity
+and i'm going to also create a course
+dot pi model file
+and basically what i want to do
+is
+first of all i'm going to need to import
+that base variable
+from that db setup file that i created
+because i'm going to be using that in
+this file
+and then i'm going to need to import
+some things from the sql alchemy library
+i'm going to basically need column types
+so i'll probably need i need the column
+definition itself
+i'm going to need
+foreign key
+integer i'm just importing
+all of the ones i'm going to need and
+then i'm going to be using them as i go
+in enum and also text
+one more thing that i'm going to be
+using in a minute is a relationship
+so sql alchemy
+has an api for me to define
+relationships
+between fields and tables
+so i'm going to go ahead and import that
+and now
+i can define
+a class of type user and for right now
+this is just going to inherit from base
+which if you remember in our setup file
+i was just calling that declarative base
+function and basically that is the base
+for all of my models you can create a
+custom base but i don't need to
+so i'm just going to be using that for
+every model
+and the first thing i want to define
+here
+is
+the table name before i define any of
+the columns
+so
+i'm going to say
+table name
+and this will equal
+users now one thing to note if you're
+used to some other frameworks like
+django
+then you might not be used to defining
+the id as the framework usually handles
+creating an id as a primary key by
+default
+but here i do need to find an id
+and set it as the primary key
+so i'm going to say that's type integer
+and i'm just going to be using the
+regular ids
+that are auto-generated by postgres so
+those will be integers
+and i'm going to set this as the primary
+key
+and then
+index equals true
+a few other columns that i'm going to
+want are email
+and roll which will be an enum because
+there's a few choices for roll
+and you have to choose one of a list of
+choices
+and then the only other things are a few
+relationships that i'm going to create
+so let me go ahead and define the email
+as a column
+and then for right now i'm just going to
+say that's a string type
+i can have a special
+email type later
+and i'm going to say the email must be
+unique
+create an index and nullable
+it can not be nullable so nullable must
+be false
+because i need to require a value for
+email
+and then roll
+will be an enum
+so i'm going to set it as a type enum
+and
+pass in a class that i am about to
+create called roll and accidentally said
+enums
+so remember i imported enum here
+but for enum
+actually it's a little special so i have
+to import
+the built-in enum
+from python here in order to create that
+enum class
+and i'm just going to create it up here
+so i'm going to call it classroom
+and i'm going to set it as enum.enum
+so i know there's an enum here from sql
+alchemy but the one i'm inheriting from
+is the built-in one for python here and
+then the only two options
+will be you can either be
+a teacher type as your role in this
+application
+or you can be a student
+and then i pass it in
+and wrap it in the enum field pass it in
+as a column and then that sets this role
+as an enum so i will have to choose
+either one for teacher or two for
+student when i set that field
+and the second class i want to define in
+here
+actually it's the third class but the
+second model class
+is a user profile
+so i'm going to say class
+profile and this will also inherit from
+base
+i'll do a table name here so
+table name
+and this will be
+profiles
+and i don't want to type out all of
+these columns so i'm actually going to
+copy paste them
+it's pretty much like defining the
+columns before
+here i'm setting strings for first and
+last name that can be max 50 characters
+and i'm requiring them
+and then bio
+i set that to be nullable true so it's
+optional
+and it's a text field so there's no
+set maximum character length
+and then i'm gonna a boolean for is
+active meaning is an active user default
+to false
+i probably could put that on the user
+class but i'll just leave that on the
+profile for now
+and now what i actually want to do is
+create a relationship between these two
+classes user should be attached to a
+profile
+so there's a couple things i have to do
+here
+the first thing is i want a field
+for the user id
+that will be a column
+which will be
+in
+integer
+and then that foreign key
+class that i imported i have to tell it
+what foreign key i'm pointing to
+so i'm passing in a string
+that says users
+because it will be from the users table
+dot id
+so it will be users dot id
+and that's what this field is pointing
+to now a profile always has to be
+attached to a user
+so i'm going to go ahead and explicitly
+say
+that's
+nullable
+equals false
+and now i need to define the
+relationship between these two tables
+and
+to do that i need to create a field on
+each table
+that will allow me to do things like
+profile.user or user.profile
+and i'll be able to use the sql alchemy
+orm in that way so let me define a field
+called owner
+and i'll use that relationship i
+imported
+i need to point it at the user class
+that i created above for that model
+and i need to set
+a back populates
+named argument and i'm going to say
+that's profile
+that means from user
+i can access the relationship
+via profile
+so it'll be user.profile
+now i also need to define the
+relationship
+in user so i'm going to call this
+profile
+equals relationship
+and this will be
+that profile model
+and then i need to set back populates
+to
+owner
+it has to be the name of this field on
+profile so i'm saying it back populates
+to the name of that field and this one
+populates
+to the name of that field and that that
+will become more clear when we start
+actually writing queries
+and one more thing i want to
+use here
+is a lot of times when you are defining
+these relationships it will be a
+one-to-many relationship
+so for example
+let's say this was a to-do list class
+and this was
+an items class like to do items
+so you would have one list
+but many items attached to that list
+and
+sql alchemy defaults to this one-to-many
+structure
+but in this case
+we're only ever going to have one
+profile
+attached to a user so we want to tell
+sql alchemy this is a one-to-one
+relationship not a one-to-many
+so
+the only thing we have to do here is say
+use list
+equals false
+and now sql alchemy will expect that
+there's only going to be one profile
+attached to this user
+so that looks pretty good
+for our users
+now we are going to use these
+classes to automatically create
+migrations later on
+so i'm going to go ahead and finish
+setting up all of the
+models from our database schema
+and we have quite a few
+under courses that we want
+but they are all pretty similar to what
+we already did with one exception that
+i'm going to point out
+so i'm going to copy paste and put them
+in here
+now here are all the model classes from
+our schema and actually there are two
+differences that i'll point out so this
+url type
+and then this timestamp mix-in that i
+haven't created yet
+let me also fix this db because the
+file's name
+is db underscore setup
+and that needs to import base
+to inherit from the same as our user and
+profile classes did
+now i'm going to touch on this first so
+sql alchemy ur utils and this url type
+so this is actually a library that
+allows me to define a lot of special
+types and do some other things to kind
+of extend sql alchemy functionality
+so
+if i look here instead of one of these
+default types like string and integer
+that are provided directly from sql
+alchemy
+i have this url field on content block
+and i want to ensure that it's a
+properly formatted url
+so instead of doing custom validation on
+this every time i can simply use this
+url type
+from this sql alchemy utils library
+so let me look this up in the browser
+and if you look at installation here
+you can see you can just install it
+from sql alchemy dash utils
+and then
+there are a whole bunch of
+different features provided by this
+library
+let me go ahead and look up the
+url type that we're using
+there are data types
+and you can see all of the different
+data types such as email and all of
+these other things
+that we can import so i'm going to go
+ahead and do
+poetry add
+sql alchemy utils
+and now you can see
+it's no longer throwing an error
+so all i have to do is import url type
+or email or any types that i want
+and then define them
+as you see here
+so what's this mix in so you can tell
+from the dot mixin
+in the import path
+that this is a local file
+so generally when you're creating models
+there are a lot of models that you're
+going to want time stamps on
+you're going to want to know the time
+that each row was created
+and then probably when it was updated as
+well you might want other fields such as
+who updated it or some other type of
+metadata associated with the update
+but i just wanted to create a simple mix
+in to show you how it works with sql
+alchemy
+so i'm going to go in my models folder
+create a new file
+and say mixins.pie
+and i'm going to paste in some code in
+this file as well
+so here i'm importing
+the python standard datetime module
+and then from sql alchemy i'm defining
+this
+pretty much like i would a regular model
+class
+i still need to define columns
+and i have the types for each column
+now the difference here is that i'm not
+extending from base instead
+i am wrapping this in this declarative
+mix in decorator
+and basically what this does
+is allow me to create a class with
+fields here
+and then extend from this class
+into my other classes
+so i can use inheritance and then
+basically have these created and updated
+at fields
+in any other model class that i want
+now you can see with created at an
+updated at here
+that i'm setting defaults
+so every time a new row is added to the
+database it's going to
+already have the default time
+when it's added
+in this file the courses file
+i have mix-ins import that timestamp
+and you can see i'm extending from
+timestamp first and then from base
+in these different classes
+so far actually i'm only doing it in the
+course class
+but i also actually want it in the rest
+of these classes so i'm going to go
+ahead and select
+all of those
+and
+i think that's all of them yeah so now
+they're all inheriting from timestamp
+so i'm going to have timestamps
+on all of the classes in that file i
+actually also want to do this for my
+user classes so i'm going to know
+when users are created or updated
+so i'm going to go ahead and
+import that
+and then
+your timestamp
+and timestamp
+and usually most tables in a database
+will have some kind of
+timestamp fields
+so it's a really good mix in to have and
+that way i don't have to define it on
+every single table
+i can just inherited
+inherit from it
+and i might also have
+some other logic in here about how dates
+are added or updated
+so this looks pretty good for my
+database models
+there is a little bit more setup i need
+to do in my main.pi file
+so i'm going to have to import my
+database configuration into here
+and set up my models from each file so
+i'm going to do from db
+dot db setup
+import
+session local
+and also
+actually i don't need session local here
+let me just import the engine right now
+and now i need to actually import
+those files that i created my models in
+so i'm gonna
+import from
+db.models
+import
+user
+and my other one course
+and now what i can do is user.base
+metadata
+dot create all
+and then i need to bind that database
+engine from my setup file
+which is connected to my database via
+that connection string so i'm going to
+do
+create all
+and then
+i need to
+set bind equal to
+the engine that i created
+and then
+coarse
+dot base
+dot
+metadata
+dot create all
+and then i also have to bind
+equals that engine
+and that should be all that i need of
+course i'm not using these typings in
+this file anymore so i'm going to remove
+those
+i'm not using these anymore
+and then i'm not using the pedantic base
+model because
+my api has moved to another place i'm
+going to do some cleanup there
+and now i have my database models all
+set up in my database engine
+and then also my routers for my api are
+all created
+so let me make sure my server is still
+running properly
+let me go to my terminal and just run it
+real quick uvicorn
+and it is running
+if i go over here
+you can go to swagger
+and it appears to be working of course
+none of these endpoints are actually
+hooked up to the database
+before i do that i do need to create my
+database tables which is what i will use
+migrations for
+so next i'm going to be setting up and
+generating my migrations with alembic
+so now that i've created my database
+models i want to use those models to
+actually create the tables with all of
+the right columns and data types in the
+database
+now i'm going to do that with a related
+library called alembic
+and actually this library is officially
+documented in the fast api documentation
+as the recommended library to use for
+migrations
+so i'm going to be using it for
+migrations and seeding in this project
+the first thing i need to do is install
+it
+i'm going to do poetry add
+alembic
+and now that it is installed
+i need to initialize it in my project
+now so far
+i have my api in the api folder and my
+database in here i'm going to create
+another folder
+called alembic
+to put all of my migrations and some
+configuration inside of there so what
+i'm going to do is say alembic
+and then use the init command
+and then optionally i can set a folder
+instead of putting everything in the
+root directory
+so i'm going to create a folder of the
+same name olympic
+hit enter
+and it gives me all of these logs
+basically it created successfully it
+generated some initial files for me
+and then it's asking me to please edit
+the configuration connection settings
+in this olympic.ini file
+it created this whole directory for me
+which i'm going to look at in a second
+and it also created this olympic dot any
+file
+in the root of my project
+now the only thing i need to do in this
+file now of course i can look at
+different options like using an auto
+formatter and my migration files but i'm
+not going to do that right now i'm just
+going to come here
+to the sql alchemy url variable
+and i'm going to copy that out of my
+database setup where i also have this
+string
+i'm going to copy the same thing
+and paste it there
+that's all i need to do for the setup
+right now
+olympic knows where my database is and
+it will be able to run migrations to
+create tables update columns etc
+so in order to
+set up the tables in my database
+from all of the models that i already
+created
+i need to create a migration file with
+alembic and i can actually do this
+automatically
+the migration files will be housed in
+versions here
+i'm going to do
+alembic
+and then revision
+i could create an empty revision but
+instead i'm going to say
+auto generate
+now before i run this command one thing
+i did forget to do
+is to tell olympic where to find
+my database models
+so i'm actually going to do that really
+quick
+in this olympic
+slash env.pi file
+and i have to update this target
+metadata variable here and see how it
+gives some hints
+saying you can import models and then
+say mymodel.base.metadata
+i think the easiest way to do this right
+now
+is to just
+import my
+db setup
+the base variable
+and then just import my models
+inheriting from base
+so i'm going to import
+user and course
+and now what i need to do here
+is set target metadata
+equal to base dot
+metadata
+now you could also
+use the base variable from each of these
+files
+and then set target metadata as an array
+or as a list
+of
+like user.base and course.base or
+actually it would be
+user.based.metadata and course.basedup
+metadata but i've had an easier time
+just setting based up metadata and
+making sure i import my models
+because they also use that base variable
+so it will be included when i just do
+the general base variable.metadata
+i think that's all the config that i
+need for right now so i'm going to go
+ahead and try running this command
+to auto generate that migration
+okay and it was saying all of the things
+that it auto generated
+and basically it created this
+auto-generated file for me
+i did forget to name my file but i think
+it's okay for the initial file
+for this project i'm just going to leave
+it
+so here's my auto-generated file
+basically it is creating my tables and
+all of the columns
+any indexes anything else
+that i had in those model files now one
+thing about these generated files from
+olympic
+is they're pretty good but not perfect
+so you definitely have to check
+everything that is generated and make
+sure it is correct
+you'll notice it has
+the upgrade and also the downgrade
+functions
+so it's going to create all these tables
+and set them up
+and then also if i want to
+undo everything that i did when i ran
+this migration i have this downgrade
+file for that
+so i'm going to look inside upgrade and
+see what i need to fix there's a couple
+things here
+so the first thing
+is that these sql alchemy utils
+need to be imported
+so that's an easy fix
+i can just come up here
+actually i'll go to the database
+go to this course file and i'm going to
+copy the input that i have here
+and actually
+i just need to import this i don't need
+that because it's just using sql alchemy
+tills the default import
+and that fixes that error
+now i'm going to try to run this and
+show you another error
+that i pretty much always run into when
+using enums
+i'm going to clear this
+and to run this migration
+i could either point at the specific
+migration
+or i can just run
+all of the migrations that need to be
+run so i'm going to do that i'm going to
+do alembic
+upgrade head and let me zoom out one so
+this is a little bit easier to see
+so it's all in one line yeah
+so alembic upgrade head
+and then i can run this command
+and it tried to run that migration but
+you can see
+there's a sql error create type role as
+enum so there's a problem
+with my enums and this took me a little
+while to figure out the first time i
+tried to do enums with olympic
+migrations
+basically the fix is
+that i had to remove
+the creation of enums
+from the table here because it's getting
+confused
+with the column name and the name of the
+enum
+the fix is to just create the table
+first
+and then add the column with the enum
+after
+so i'm going to paste in some code here
+what this does is i'm using
+this add column method i'm saying which
+table i want to add a column to
+i'm defining column the same way here
+and all of this information is the same
+as i was doing when i created the table
+so now i can remove this
+and i'm basically just creating the user
+table and then adding the enum column
+after the table is created
+now i have one more enum
+if i scroll down
+it's this table
+so i have this type enum
+and what i'm going to do is paste in
+that type enum
+and remove it from there
+so let's see if this runs
+i'm going to try to alembic upgrade head
+again
+and it did in fact run
+now
+i'm going to come in here
+to fast lms double click
+let me refresh
+and now i can see all of those tables
+that were generated from my sql alchemy
+models so if i go into users here i can
+see i have created at updated at
+this is kind of small but i have created
+a updated at id email
+and role
+it also created my relationships
+so i have the user id
+and it's basically all set up now
+i do want to show you downgrade real
+quick
+so if i do
+alembic
+downgrade
+base
+i could downgrade to a specific
+migration file name if i wanted to but
+base just removes everything basically
+so i'm going to try this
+and now it undid that whole migration
+that i ran
+so i'm going to come back here
+to my sql client
+and refresh
+and now you can see all those tables are
+gone the only one left
+is this olympic version history
+basically the migration table which
+will have a field for the last migration
+run which of course i undid the
+migration only migration so now it just
+doesn't have anything in that field
+now i'm going to redo the migration but
+first i actually want to add something
+so at the beginning i mentioned i was
+going to seed the database and that's
+something i do want to demonstrate here
+so what i'm going to do is add a folder
+inside of alembic i'm going to call this
+just data because
+really in my migrations that's the only
+place i'm going to be using seed data so
+i'll just leave it inside my alembic
+folder
+and i'll create a file
+i'll call this students.json
+i'm just going to add a few students
+into the database
+so i'm going to paste that student data
+here
+this is just some regular json data with
+a few users of type student basically
+and these are just
+my cat names by the way
+i don't really have three cats
+these are
+previous cats fish is my only current
+cat
+now back in my migration file
+i'm going to
+paste in some code here
+this is just regular python code
+so not really in the scope of this
+tutorial
+but
+i will show you what it's doing
+first
+this is
+code to seed the database with those
+student records
+so basically
+what i need to do
+is have a reference to this student
+table or this user table actually that
+i'm creating
+so i'm going to call this
+users
+and now i am missing some variables so i
+need to import
+these
+standard library modules from python
+json and os so i'm going to come to the
+top
+and
+do that
+now that i have those
+i'm going to just really quick walk
+through
+i am opening that file reading the json
+data
+and then inserting it as python objects
+into the users table
+alembic gives me
+this op module and then i have this bulk
+insert function that i can use to insert
+data into the table
+so let let me run this migration now and
+i should have some
+seeded data
+when i run it this time
+so let me try to upgrade again alembic
+upgrade head
+and it ran
+so let me go back to
+my database client here
+everything looks good with the tables
+let me go into the users table
+and i have three rows
+all of those
+students were added
+as users into the application
+i could seed a lot more data and
+including the relationships in between
+data
+but this is just for demonstration of
+the best way that i've found to see data
+with olympic
+now real quick i want to show how to add
+another migration
+so i'm going to change a column
+let's say on my user table
+actually this is perfect because is
+active i don't think that really belongs
+on a profile table that's more
+of a user attribute so i'm going to
+remove is active
+from user
+and
+or remove it from profile actually and
+put it in the user table
+alembic should make a migration that
+removes it from here and
+adds it to here
+let's see if that works i'm going to try
+to auto generate
+my integrations again
+auto generate let me try to name this
+migration this time
+i'm going to say
+moving is
+active to
+user table
+hit enter and now it did generate a
+migration file
+here is the generated string as well as
+the text i used to name the file
+so let me go over
+the file has a custom name here
+so let me open this file and check out
+everything
+yeah you can see the column is dropped
+from the profiles table and that column
+is added to the users table
+but in my database
+it hasn't been changed yet
+you can see there's no is active here
+it's still over
+in the profiles table here
+so let's run the migration and see
+let me do
+limbic
+upgrade head
+and you can see it did just run that
+migration
+so let me take a look
+in my database
+if i refresh is active is now removed
+from the profile table
+and
+it is now in the users table
+now it's unfortunate i already seated
+this data in the table
+so i would have to run a script or just
+come in here and manually update these
+two booleans because that's a boolean
+field
+i'm just going to set these all to true
+real quick
+just manually
+save and that's perfect
+on that field let me see what i have
+there
+i do have nullable as true on that field
+for some reason
+which if this was a real application i
+would set that to nullables false anyway
+the default here
+is false
+but for the data already in the database
+it just set it to null
+but any new data that i add it's going
+to default to false and is active until
+i switch it to true
+so that's basically how alembic
+migrations work
+the olympic documentation is quite good
+it's at alembic.sqlamy.org
+and there's lots of different things
+that you can do with olympic
+if you want to see the auto generation
+of migrations
+it has a really good walk through at the
+alembic documentation as well
+now we are almost ready to start
+actually building out our api endpoints
+and all of that functionality
+we just need to make a few pedantic
+models for data validation and
+serialization and then we can get
+started with that
+now that we have planned our schema
+and implemented it in sql alchemy
+and used it for creating migrations to
+create the actual database tables with
+alembic
+there is one more time that we have to
+enter the fields relating to our models
+and that is by creating pedantic models
+in other words schemas
+if you read the documentation for fast
+api and scroll down
+in the sql area
+to this section create initial pedantic
+models or schemas
+then it basically recommends naming them
+schemas just to avoid conflicting with
+the sql alchemy models that we already
+have because usually we would name them
+the same thing if we have a user model
+in sql alchemy we would also want to
+create a pedentic model called user
+and sometimes in python when you
+accidentally have two things with the
+same name you can get confusing or
+hidden errors so just make sure
+that you are not confusing your models
+or accidentally using the wrong model
+because they are named the same thing or
+similar names
+now i am going to
+pretty much copy what it has here and
+then update it
+this is an example from the
+documentation
+and you can see
+with users there are three different
+classes that extend from the base model
+for pedantic
+and to house these models or schemas i'm
+actually going to create a new folder in
+my application
+and just to be very explicit i'm going
+to call this
+idantic
+schemas
+and now i'm going to create that first
+file so the user schema user.pi
+i'm going to import
+that base model to inherit from
+from the pedantic library
+and then i'm going to copy
+these
+let's look at this user base first
+so the reason why it's separating these
+classes instead of just creating a
+single
+user class with pedantic
+is that user creation and
+retrieving a user reading a user will
+involve different fields
+for example since the ids in our
+database are auto-generated when we
+create a user we are not going to be
+expecting
+a user id to be passed in we just want
+the regular user fields
+and then timestamps id all of those
+fields will be auto-generated but when
+we retrieve a user we do want those
+fields like id and time stamps
+so let's go into our database and open
+up the user model
+we can see we have email
+role is active
+so we basically are going to want to set
+email and role
+when we create a user
+so i'm just going to add
+roll here
+which will be an integer
+now for user create we don't actually
+have a password field if we were
+creating a user
+we would want that field but for this
+application we don't have one
+so
+i'm just going to leave that blank
+and here
+when i return a user
+i want to return the id i want to return
+is active and i'm also going to want
+those time stamps
+so
+i have
+created at and updated at
+because of the mix in here
+so i'm going to need the
+date time here
+i'm going to do
+create it at
+and then
+update it at
+i'm importing date time
+and let me see i should be able to do
+date time here
+the final thing here
+is
+this
+config class this child class
+i'm setting orm mode to true
+this is very important if you are using
+an orm
+in conjunction with pydantic otherwise
+you are going to have to manually loop
+over things to convert items returned
+from the orm to python dictionaries and
+this just makes it work together much
+better
+before
+in our api
+we had this pedantic model we didn't
+have to set that or mode to true because
+we aren't using an orm yet
+but now that we are going to be plugging
+in sql alchemy we need sql alchemy and
+pedentic to work together
+so that's why you need to set
+this to true you can try it without true
+and there will be errors that you will
+have to manually fix
+so just make a note of this if you're
+getting some errors just check and make
+sure you've set this to true
+now that i've created my pedentic schema
+i'm ready to plug this all into the api
+if you read the documentation
+of course it recommends
+putting the logic for interacting with
+the database
+in separate utility functions
+so it creates
+this file crud.pi
+the fast api
+documentation does a really good job of
+saying why they do different things
+so you can see why you might want to do
+that to make them reusable and to be
+able to test them more easily
+plus when they get complicated it's
+better to just abstract away that
+functionality from what's in your api
+into some utility or a service
+these are basically the user functions
+that we might want first to get a user
+this is the database query they create
+now this is with the old api i don't
+want to call it the old api because it's
+not deprecated yet
+but this is basically
+the sql alchemy one point
+x whatever
+api that's synchronous
+using db.query
+we're going to use this at first and
+then upgrade to their new asynchronous
+api
+so i'm just going to take these
+and copy them i don't have these items
+right now so i'm just going to take
+all of the user functions so at least we
+can get the user endpoints working first
+and inside of my api i'm going to create
+a folder called
+utils i don't want to put all of these
+in the same file
+so i'm going to create a user's utility
+and then i'll create a utility for every
+other type
+of api
+now i don't have a password here so i'm
+going to get rid of that
+but if you had a password you could take
+care of hashing it and saving it here
+now i am expecting role though
+so i'm going to say role equals
+user dot role
+of course
+these
+come from two different places
+user create and this user parameter is
+from pydantic from my schemas that i
+created
+and then this user model is from the sql
+alchemy models that i created
+so i need to import those because
+they're not
+in the same directory structure as the
+documentation example
+so i'm going to
+go from
+my models so i have models dot user
+and then i'll import
+user
+and now from
+the pythanticschemas.user
+i can import that create
+user class or user create
+and now i have to update
+this
+to be type user create
+and then all my models here
+i think these are all the same
+yeah so i can just delete those
+because i've imported the user model
+directly here
+all of the logic is pretty
+straightforward
+you can see i need a reference to my
+database session
+passed in
+and then i need some kind of information
+that i'll use to query
+if you've ever used an orm before this
+should be recognizable to you
+you query the database
+and this is saying i want to query the
+user table
+and then i want to filter by this
+information and i want the first record
+that you find
+which we're only expecting to ever find
+one of course we should only ever find
+one something would be terribly wrong if
+we had more than one
+user with the same id
+that's not going to happen because
+postgres will create a unique id for
+each user
+but filter will by default return a list
+so the reason why we're using first here
+is just to give us a single object we
+just want a single object not being
+inside of a list
+now get user by email is pretty much the
+same thing except we are filtering
+by email instead of the user id
+get users
+is basically getting all of the users
+we're not checking permissions or
+anything so it's just going to return
+every user
+and then if we want to
+this has some pagination set up so we
+can say we want to limit it to 10 users
+or we want to skip the first 10 if you
+want the second page etc
+and then
+for create user we are getting the
+validated data from pedantic so we are
+using that data when we use our sql
+alchemy model in order to create this
+new user
+then we have to add and commit it
+and basically we're returning the
+created user
+which should now include the id and any
+other auto-generated fields because
+those are created when we save them to
+the database
+the last step in this process is to
+implement these utility functions in our
+api
+and close out all of these tabs
+and now i have the users api
+i'm not going to need this class anymore
+or
+this
+in browser database because we have a
+real database
+so
+i'm going to get rid of those
+of course now i have to change things
+around a little bit
+i don't need to import pedantic anymore
+in this file
+and i am going to
+import my utility functions though
+so
+api utils
+dot users
+import
+all of them basically so get user get
+user by email and
+get users
+now you can see one problem i have
+created for myself already
+actually i'm missing a function here
+oh yeah i need to import create user as
+well so let me just get that one real
+quick
+create user
+and so now you can see
+i have made a problem for myself
+because i have
+get users here i believe i have
+yeah another get user and then i have
+create user
+so i have naming conflicts here so i
+need to have two different naming
+conventions
+for my api functions
+which i think is less important
+than these functions the utility
+functions to be properly named so i'm
+going to leave the utility functions
+alone
+and leave them with their name
+there now we can see them all
+what i'm going to do
+since i don't really care about the
+naming here so i'm just going to put
+something else here like read users i
+believe that's what it says in the
+documentation as well
+and for create user
+i'm just going to say
+create
+new user
+now in my apis currently they were just
+using that in memory list and now i want
+to use the actual database
+so i'm actually going to paste in a few
+things here
+i'm going to leave that line alone
+and just add a line
+that calls that get users function
+which will just
+return all of the users in my database
+but now i don't have any of these
+variables defined that i'm supposed to
+pass into the function here
+so basically i need to
+define them as parameters in this
+function
+what i'm going to do
+is
+optionally pass in skip which defaults
+to 0 if nothing is
+passed in
+i have the limit here
+of rows to return which is at 100 if
+nothing else is passed in
+and then i have my database session
+now if you read the documentation
+for
+the database session and using it in
+your apis
+you can just read from this section
+creating a dependency
+and it kind of walks you through
+exactly what it's doing we've already
+created this function here actually
+this get db function so we're going to
+import that in a second
+but down here
+somewhere actually let me just search
+for it
+you can just read this section to
+understand what it's doing with
+creating the or getting the database
+session
+this is a special function this depends
+function that comes from fast api
+that you can use in your endpoints
+and then you don't have to manually pass
+in
+that database session
+so i'm going to import that
+because i actually created that function
+over in my db setup file so that i can
+just easily import it into any
+api file that i have
+so i'm going to do it here so from
+db dot
+db setup
+import
+get db
+and of course i need session and depends
+so
+that comes from sql alchemy i'm going to
+do
+from
+sql alchemy dot or m
+import
+session
+and then
+from fast api
+past api i'm going to import
+depends
+and then
+i'm also going to need
+exception handling in a second
+so i'm going to go ahead and import that
+and just put one space between my
+standard library modules and then my
+third-party modules
+and then my custom modules that i'm
+importing
+the only things left that i need to do
+while i need to fix these two functions
+but i also need this pedantic schema
+and i'm not going to have any naming
+conflicts here because all of my
+utilities
+i'm just importing these these are the
+ones that are interacting with the
+database
+so i don't need to import any
+sql alchemy models directly i'm just
+going to be importing my pedantic
+schemas
+so let me go ahead and get those so from
+pedantic
+schemas.user
+i'm going to import
+i'm going to need
+the user create
+since i'm using these for validation i
+need these both in my utils and in here
+so i'm going to say
+user create
+and also user
+so now my user type is correct so this
+endpoint should be completely correct
+now
+so let me just comment out these
+and try this out in the browser
+in my swagger
+all right it's not running
+now if i go back to my browser refresh
+that works
+now let me get users here
+try it out
+i'm not going to worry about my
+pagination execute
+i do have an internal service error
+let's see the error
+right so the reason why i am getting
+this error it's saying that my user
+class doesn't have the property that
+it's looking for student courses
+now why is it looking for student
+courses
+it's actually because
+if i look in my database here
+in course
+and go down to student course
+i can see that i have
+this relationship back to the user
+so it's looking for a field on the user
+called student courses
+and of course i don't have that
+not in here
+it's in this file
+so
+after i created
+my courses models i never added student
+courses
+to the user model because this was the
+first model i created
+so i'm just going to add these two
+fields real quick
+this will add the student courses field
+that back populates to the student field
+over here on student course
+and then i'll have student courses over
+on my user model that it's looking for
+and then
+on completed content blocks
+this is also looking for
+a student content blocks field
+over on my user model and it will find
+that now
+and that will back populate to the
+student field
+so from my user model it's looking for a
+student field over
+here and it finds it here
+so now my relationships should be
+properly set up
+let me re-run that end point
+i'm still getting an internal service
+error
+so now it's a new error
+and it's basically complaining about the
+type for
+the role field which is an enum
+so why is it complaining about a role
+type we're not saving anything into the
+database in those endpoint or in our
+get users endpoint over here
+we are just trying to read what's
+already in the database
+which are
+our
+seated student data
+if we look at the student data now
+there is a role here
+however i believe when we initially
+seeded it there was not a role
+so if i look in users here
+there's no role
+so i would have to add
+this field
+so i'm just going to change this to
+student
+and this one to student and this one to
+student
+now if i save changes there are no
+null values in here so i shouldn't be
+getting that none type error from python
+so
+let me try this endpoint again
+okay i'm still getting an internal
+service error
+it's basically giving me the same error
+let me restart my server
+i can go back to my api
+execute
+and i'm getting that error
+okay so this is good
+now it's not saying i have a nun type
+error but it's saying it's not a valid
+integer
+okay so it looks like we're going to
+have to set this as an actual enum type
+i'm going to import the python standard
+enum
+import
+enum
+and then we're gonna try this
+okay
+let's see if this works
+so if i go down here
+execute
+and that worked fine i get all of my
+users back
+i thought maybe because it returns an
+integer that would work for validation
+but i guess i have to actually set it as
+an enum
+everything else seems to work and
+validate just fine so now we have our
+get user's endpoint working
+and we just need to make the rest of our
+end points over here
+now i'm going to come into the user
+model and start uncommenting these
+let's just start one at a time
+first with creating a new user in this
+post request
+of course i have a utility for doing
+this
+which is this create user utility
+that returns the new user that's created
+since it is returning that new user here
+i'm just going to add a line of code
+here
+or actually i can get rid of this line
+and just put it
+in the return statement
+so i'll use that create user function
+i need to pass in the database
+i'm going to add the session for that in
+a second and then i'm also going to have
+to pass in
+the user that i'm going to create
+and you can see that it is expecting
+the user and basically i need two fields
+on that user in order to create it
+that is the email and the role
+and that's of course part of
+this user create
+function because it's inheriting from
+user base so it's expecting the email
+and the role
+let me make that named
+user
+here
+i need to use the same parameter and
+definition that i did before
+i'm going to copy that bring it down
+here
+and that's basically all the
+functionality that i need to create a
+new user
+let me test that out
+so here's my post request for creating a
+new user
+and here are the fields
+that it's going to give me in the schema
+i don't need these two fields
+because i have default set it's just
+going to automatically enter the current
+date time so i'm going to get rid of
+that is active i'm not going to be
+passing that in
+id of course will be auto-generated so
+really the only things that i need
+are
+email
+which could be anything
+it's not validating right now for a
+correct email but i'll just put that
+there
+and then roll which is number two which
+is a student
+so let me try posting this
+execute
+and i get a 400 error
+it's saying 2 is not a valid enum
+instance
+it's complaining about a couple other
+things about the id
+saying that is active is missing
+and it's also complaining that created
+at and updated are missing
+let's fix this error first
+it's looking for an enum instance and of
+course we are using an integer
+so there's actually a couple mistakes i
+made here
+we'll get to this in a second
+but
+here
+in enum i'm using an integer enum but i
+didn't inherit from integer here
+there are a few different ways to fix
+this the easiest thing to do
+is just
+inherit from
+enum which we'll expect to type integer
+here
+and then one thing i have to change is
+in my pedentic schemas
+i need to change this so i don't need
+type enum here but instead it should now
+be
+integer and i can get rid of this
+so that should fix one problem let's see
+if that works
+i'm going to execute the same command
+and yes now it's just saying i am
+missing some required fields
+now why is it saying i'm missing those
+fields
+it is because
+so the fields are located here right but
+in my user create when i'm creating a
+user those fields shouldn't exist it
+should be just these two fields
+so let's see why it's looking for these
+four fields
+if i go to my api
+i can see here
+so i have type user
+but this is looking for
+type user
+which comes from
+here and the type i really want to use
+is user create
+so let me do user create
+so my api will be expecting the post
+body to have the fields on user create
+now
+but let's see let me go to my browser
+i'm actually going to
+refresh now
+actually i don't need to because this is
+fine here
+so i'm going to click execute
+and now you can see this was created
+and if i go to my users table in my
+database
+i'm going to refresh the users table and
+i can see i do have that user test at
+example.com and that created
+successfully
+so now let me go to my third end point
+which is just get a single user
+this should be pretty
+straightforward
+especially since i already have the get
+user function here
+and this will be my database query just
+to select the user
+so i'm going to come here
+and do
+get
+user
+and then i need to pass in
+db
+equals db
+i'm going to pass in user
+user id
+equals
+user id which i'm about to create
+now i'm calling it in the url i'm
+calling the variable
+id
+so i'm going to have to change that if i
+want to use user id instead
+so i'm going to say user underscore id
+and then i do need to have the db
+variable defined
+so i'm going to copy this same logic
+and paste it there
+that should work let me refresh and see
+if that endpoint exists
+now i have this get users and user id
+try it out let me go for
+user id5 the one we just created execute
+and i did get my user back
+now if i do three
+execute
+i get a user
+there's no user at 4 right now so let me
+execute
+and i just get null it still gives me a
+200 though and i do want to throw an
+error
+or let me implement some error handling
+in the api now
+and i already imported this http
+exception class so i'm going to be using
+that
+and just here
+i'm going to move everything on this
+line
+and set it to a variable here
+so i'm going to say
+i'll just call it db user
+and then i have get user
+and then
+db
+user
+okay
+and now i can check
+if the
+db user doesn't exist and throw an error
+here
+so i'm going to say if db
+user
+is none
+and then i will raise
+an exception
+so i'll use http exception that i
+imported
+i'm going to set the status code
+to 404
+because it couldn't be found
+and then i can
+write a message in detail
+so i'm going to say
+either not found
+so now if i try this api again if i hit
+execute on this user that doesn't exist
+it just says error not found and it
+actually gives me a 404 response instead
+of a 200
+acting like it's working properly
+and i also want to do this really quick
+for this endpoint
+actually no for the creation endpoint
+so here i also want to check so i'm
+going to
+do the same thing here basically
+i'm going to do db user
+equals and i'm just using db user here
+because i already have other variables
+called users in this file or called user
+so now i have dbuser
+and actually that's not exactly what i
+want to do let me put this back here
+because
+i basically what i want to do here is
+check if the user exists first
+and then if the user doesn't exist then
+create the user
+so i would want to throw an error before
+i ever create the user
+if the user already exists so to do that
+actually i'm going to use the get user
+by email function
+so i'm going to
+get
+user by email
+send db
+and email
+is
+this user.email
+and now i can say if
+db underscore user because if there is
+already a user with that email it means
+the user already exists
+and now i will raise an http exception
+and
+i'll just do
+the regular status code 400
+and then detail
+is email
+is
+already registered
+i can test this out on the user create
+so if i go to post users
+try it out
+you test
+at example.com
+[Music]
+roll doesn't matter i guess
+so let me execute
+and i do get that error response now
+that is the basic way of error handling
+in fast api
+basically without error handling
+if there is no validation error
+which it gives you validation out of the
+box if you use
+the pedantic type hints
+so if it's not one of those errors
+generally it just returns a regular 200.
+so for everything else pretty much
+i want to
+raise exceptions with the proper status
+codes
+you can also set a status code actually
+i forgot to put the response model here
+so let me do that
+and also set a proper status code
+let's see response model as user and i
+also want a status code since this
+endpoint is creating a new user i don't
+want a regular 200 response but i do
+want a
+201 response
+so i'm going to do 201
+and that response means that the user
+has been created
+for get user i'm going to have the same
+response
+let me test that out and see if it works
+for get user
+okay still get a 404
+let me try to get a valid user
+and i got a 200 that works
+now if i create a new user
+let me do test 2
+execute
+and i do get a 201 response code for
+created
+so all of these apis are working fine
+i also have utility functions for the
+apis to query the database
+and then i made the first pedantic
+schemas
+to validate my data correctly
+and now i basically need to finish
+creating the course api so for courses
+and sections and all of those things and
+hook those up which will include
+making pedantic schemas for each one of
+those
+and then also building out the utility
+functions and
+updating the api to
+query the database properly
+let's get started with the course
+endpoints
+the first couple of these are very
+similar to what we already created
+with the user's endpoints
+so we're going to be using most of the
+same logic
+basically with the users endpoints we
+have these three so far
+where we can get all the users create a
+new user or get a specific user and
+we're going to be doing the same thing
+for courses
+so i'm going to copy over that logic and
+then create a utility file
+and then also a pedantic schema to go
+along with it
+so the first thing i'm going to do is
+copy this get all users
+to this get all courses function read
+courses
+and i'm not going to paginate for
+courses i'm just going to
+leave it as simple as possible
+let me make this named
+okay
+and then of course i'm going to want to
+grab this
+for the database session here
+and then i'm going to need to import
+that up here
+so i'm going to take
+these four
+and
+paste those here
+of course this is going to be different
+this is going to be importing from
+course in a second
+and then
+this where i'm saying
+users here
+i just want to basically replace that
+with course
+and actually this is get courses so
+this should actually
+have an s on it
+so now that i have get courses
+i do want to go ahead and create that
+utility function
+so i'm going to create a new file here
+and this will be
+courses.pi in my utilities
+and then i'll need a matching
+pedantic schema which would be course.pi
+create that
+so in my courses.pi utilities this is
+going to be pretty much the same as
+users with a few updates so i'm going to
+go ahead and copy this file over and
+change a couple things
+and i'm going to get rid of this
+okay so i've got single user get
+multiple users and create user and these
+are going to change into courses so i'm
+going to start at the top of the file
+and first from the database models i
+need to import my course model
+so that's going to be course
+and this will be
+course
+and then the pedantic schema i don't
+have it yet but let me go ahead and
+import it
+that's going to be
+course create
+and then
+let me comment out this
+for one second and let me get these get
+requests working
+so i'm going to do db query
+and these queries will be
+on course
+and then of course user id here that's
+going to have to change to
+course id
+and even the name of the function
+actually
+so if i have
+let me change those names
+that's going to be
+get
+courses or get course
+so there's nothing surprising in this
+logic here it should be the same logic
+to get a course or a user we're
+literally using the same queries
+one thing that is different is just that
+i've simplified this and i'm not going
+to have any kind of pagination here
+so i can just get rid of the offset and
+limit methods
+and since this is pretty straightforward
+i'm going to go ahead and add this back
+in and finish up this logic
+so i have user create
+which is going to change to course
+create
+i have user here
+this is going to change to course
+and then of course there's different
+information that's going to be inside of
+course
+basically i'm going to need a couple
+different things let me go ahead and
+open up this model here
+so for course i'm going to need a title
+the optional description
+and then i'm going to need the user id
+so i need those three fields
+so let me go ahead and
+get rid of that
+and actually this isn't correct this
+would be course not user
+so i'm gonna have to do title
+which is going to equal
+4 stock title
+and the same thing for
+description
+equals
+course dot
+description
+right
+and then user i
+id
+now normally i would pull this off of a
+logged in user
+but i am going to be passing the user id
+in via the api here since i don't have
+authenticated users so i'm just going to
+be passing it on course as well
+so i'll do course dot user id
+and db user is going to change
+to
+the
+course
+and fix this
+so that looks good now i have to work on
+my pedantic schema so this actually
+works because this isn't hooked up to
+anything right now
+so if i go over to pedantic
+i'm in courses here
+and actually i'm going to
+paste in this code
+just so i don't have to type it all out
+again
+and this is
+pretty much the same as the user
+pedantic schemas
+the only thing that's different here is
+the user id which is a foreign key
+to the user table
+and then the description is optional as
+well
+everything else is exactly the same so
+i'm going to close out of that
+that is already ready to import and i am
+importing it here
+so let me make sure course create
+yeah it's called course create there
+in the api also
+i need to import
+actually let me go back here
+so
+course
+import
+course and
+course create
+and now i'm going to have to import
+that utility so from
+the c api dot
+utils
+dot courses
+import
+let's see get let's say get course
+get courses and
+create course
+so i have those three utilities
+and i already have get courses here it
+should return a list of courses
+let me actually see if that works
+if i do get courses try it out execute
+and it does return a course this is just
+test data that i had in there previously
+off screen
+get courses works now let me hook up
+some of these other api endpoints
+let me go to create a course
+and create course should be simple here
+actually i'm just going to change the
+name of this function just to be
+consistent with my users file
+because i called it create new user in
+that file
+i'm not going to do much with this
+function
+i'm just going to say create course
+and
+let's see db
+equals db
+and then i'm going to have to pass in a
+course
+so i'm going to have to validate that
+and
+the course that i'm passing in
+will be of type
+course create and then of course i need
+the database session so i'm going to do
+that
+and that should be everything i need for
+courses
+of course i do want to set the response
+type here
+and that should just be
+course
+and the response here the response type
+is going to be
+a list
+of
+courses
+oops
+and i'm not importing lists so let me do
+that
+from
+typing import
+list and that all looks good
+and for get course by id i'm basically
+going to use the same thing that i used
+in the users api
+which i'm going to
+check and see if the course exists in
+the first place if it doesn't exist
+raise an error
+otherwise
+return the course
+and i already have
+the code for this so i'm just going to
+copy it
+and put it over
+in my
+course api
+and then
+copy these parameters
+and here
+this was just kind of copy pasted
+from api planning
+so i'm going to update
+all of those with the proper syntax for
+fast api
+which would be
+in curly braces and actually
+along with what i did over
+on user i'm going to go ahead and do
+course id
+so
+these three end points should be working
+let me see if they are
+let me first check if i can create a
+course
+so let me go to post
+try it out
+title
+description i'll just
+leave that alone and then i need user id
+oops uh user id which i'll just put one
+execute
+and it worked i was able to create a new
+course
+now if i
+get all the courses
+try it out
+i can execute
+and i see the course i just made as well
+as the other course that was already
+there
+just real quick i also want to check
+via the course id i know i have a course
+that exists of id2
+that returns just fine and then if i put
+one that doesn't exist
+let's say seven
+that returns four or four course not
+found that's exactly how i want the api
+to behave
+now the only other thing i'm going to do
+right now
+is create an endpoint to return all
+courses for a specific user
+and that's going to show
+how to query based off the relationship
+which isn't too much different really
+from anything that we have done so far
+this is going to be an endpoint on users
+actually
+so if i go here
+this will be at
+router.get
+and then
+let's say users slash
+user id
+and then this will be slash courses so
+when a suit student is assigned to a
+course it should show up from the list
+that's returned in this endpoint so
+basically students will have a list of
+courses that they are taking associated
+with them
+that list of courses will be returned
+so let me start with the response model
+here then
+which will be a list
+of
+courses the same thing i'm returning
+from that
+other api endpoint
+which is
+here here i'm returning a list of
+courses when i do a get to courses
+but here
+well first let me define the function so
+async def
+let's say read user
+courses
+of course i need to define user id which
+would be
+integer
+and then i need
+db
+session
+basically i just want to get a list of
+courses here
+but i need a new method or a new
+function i'm going to create for this so
+once i get user
+i call it get user courses i haven't
+created it yet
+but i'll say basically i need to pass in
+the user id
+because it's based off of which user or
+the courses that belong to that user and
+then i need to pass through
+the db variable
+and then all i'm going to do here is
+return that list of courses
+so courses
+and now i should be able to just create
+this function as a utility
+so get user courses since it's a list of
+courses i'm going to put it in this
+courses
+file and i'm going to say here
+so def
+get user courses
+and then this is going to accept
+db which is
+type session
+and i'm going to need the user id
+that's all i need there
+oh let me set the type of
+the user id
+which is int
+and i don't actually need to pull the
+user i'm just basically going to
+find the courses and return them
+so i'm going to go ahead and put in a
+variable
+make a query
+so db.query
+and that will be
+on the course table
+and i need to filter so if i do filter
+i can do
+course
+dot
+user id
+and that should be equal to
+the user id that i'm passing in
+so that should be
+that
+i want
+to
+get all of those
+and now i'll just return
+courses
+let me see if this works
+and actually just to order this a little
+bit
+more intuitively let me actually take
+that function
+and go up here
+and i think i can
+let me undo that
+there we go
+okay so get courses and then get user
+courses
+and the only difference really between
+this query
+and this one is that i'm doing the
+filter by the user id
+so let's see if this works i might have
+missed something in all of those updates
+let me go back here i should see my new
+endpoint
+it's not starting let me check my server
+so let me run my server
+and it says course is not defined
+response model list course is not
+defined
+so let me go into my api
+and
+i should be getting that from pedantic
+but here yes it it's true it's not
+defined
+so i need to import that
+actually i'm going to import it here so
+from
+pedantic schemas dot
+course import
+course
+and then
+from
+api dot
+utils
+course
+import
+get
+user courses
+oops
+let's see if that works
+my server's running
+and
+now i have this new endpoint
+so let me try it out
+user id let's say one
+and i do get the courses associated with
+that user
+if i do user 2
+it's an empty list
+so those are all the basic
+functions of fast api and querying and
+you kind of see how you make api
+endpoints and then create utilities as
+functions for those endpoints to
+interact with the database
+and then you kind of validate data with
+these pedantic schemas that you create
+i hope this has been helpful so far
+i'm going to continue this by building
+out different features in some videos on
+my own channel faraday academy the only
+thing i'm going to do real quick in this
+video is show you a couple things that
+we can upgrade and clean up
+including how you might implement
+asynchronous behavior and a couple items
+of code cleanup and making this repo a
+little bit nicer
+now i'm going to show you how to make
+fast api fully asynchronous by also
+using
+an asynchronous driver for the database
+and the asynchronous sql alchemy orm
+to do this i'm just going to demonstrate
+it with one end point and then you can
+kind of see how it works
+and you'll be able to replicate that for
+any other endpoint as well
+so i'm going to
+just change this read user endpoint
+this endpoint we're making a get request
+for a single user
+by passing in the user id
+to do this i'm going to be using sql
+alchemy
+1.4
+which we actually already have installed
+in this project we have version 1.4.28
+basically anything before 1.4 won't
+support async they added that support in
+1.4 which also released a new api
+and they call it 2.0 style
+because the 1.4 release is kind of the
+transitional release
+in between the older version of the api
+which we've already been using
+with the dot
+query method
+and the new 2.0 which releases a few new
+top-level apis that we're going to look
+at
+now one thing that's important to note
+that i don't think is mentioned very
+often in tutorials about this subject
+so i'm just going to point it out here
+there are two different apis just in
+general that you can use
+for sql alchemy and i'm not talking
+about the old api versus the new one
+it's actually using core
+versus the orm
+and you might get confused if you're
+looking at different tutorials and
+wondering why they look completely
+different
+so i recommend you looking through this
+docs.sqlakkami.org tutorial on there for
+version 1.4
+and you'll be able to see as you go
+through the tutorial it'll point out
+kind of
+which syntax belongs to
+the core
+and which syntax belongs to the orm
+which is the one that i'll be using this
+is kind of a matter of preference and
+also project requirements
+the orm is a bit easier to use in my
+opinion
+but you can kind of look at both and see
+which one works for you
+right now when we are interacting with
+the database
+actually it's in here
+we are using this
+db.query syntax
+and then passing in the table name
+now this is the
+1.3
+and prior version
+of the sql alchemy orm
+for the 1.4 version which is the
+transitional 2.0
+basically with the new api
+instead of using the query method
+there are some top level
+functions that you will import and use
+like the select statement
+so basically
+you import select
+and then you use select dot where or dot
+filter by or order by or any number of
+different chained methods
+i actually really like the new api
+it reads a lot like a sql statement
+of course you can use raw sql strings if
+you want to as well that's also always
+available
+in the sql alchemy orm
+they also have other top level methods
+such as
+delete update
+let's see if i can find it here
+so here's just an example of update and
+delete
+so you would import update in the same
+way
+pass in
+pass in the model class
+that you have for that table
+and then you can chain on
+where methods
+and any other methods just the same way
+and it does point out the comparison
+between
+the older syntax which is still valid
+to use alongside the 2.0 syntax
+so let me get started updating this
+endpoint to be asynchronous
+now the first thing i need to do
+is go into my database setup here
+and basically every single variable that
+i create in this file
+needs to be changed a little bit to be
+async compatible so
+this first line here
+let me close that
+it will remain mostly the same i'll
+still be using postgres of course
+and
+this doesn't really matter for
+async or non-async behavior this is the
+name of my database
+and then information regarding the
+connection
+the only thing that really needs to
+change in my string
+is
+this driver so i need to be using an
+async compatible driver
+if you try to use async features
+with a non-async driver you will get
+pretty good warnings in your terminal
+there are drivers available for every
+major database
+so if you're using sqlite mysql postgres
+there are
+several different async drivers for each
+one
+i'm going to be installing a postgres
+driver here
+so i'm going to stop my server
+and
+poetry add
+async pg
+this is just a very fast asynchronous
+driver for postgres
+and now i'm going to run my server again
+now
+i would normally just replace this url
+with the asynchronous one
+but since i'll only be using async for
+one end point right now
+just to demonstrate this i'm actually
+going to copy and make a complete
+duplicate
+with the new driver
+and i'm just going to call this
+something else
+so
+async sql alchemy database url
+and i also need to update
+the engine so i'm not going to be using
+this function anymore for async but
+there is another function that i import
+called
+create a sync engine
+which will work for my asynchronous
+database connections
+and there's actually an orm extension
+from sql alchemy
+so
+it's
+from sequel alchemy dot ext dot async io
+i can import create a sync engine
+and now again because i'll be using both
+kind of so i'm just going to create this
+side by side
+so i'm going to call this
+async engine i guess
+and then
+create a sync engine
+and i have to use my async sql alchemy
+database url
+and now i also have to change the
+session a little bit
+although i can still use the same
+session maker function that i've
+imported
+the only difference is that i have to
+let it know that it's an async function
+so i can't use its default behavior
+so what i'm going to do is
+copy this function
+and now i'm going to actually remove
+everything inside of there
+and as the first positional argument i
+can actually pass in a sync engine
+and the class
+which is going to be this async session
+class that i imported up here
+and
+i'm going to set that as the class
+underscore
+named argument
+and then
+i'm going to
+set expire on commit to false
+base equals declarative base i i'm going
+to leave that alone
+and then this utility to get the
+database session
+i'm going to again copy this
+and i'm going to change this around a
+little bit
+basically
+i'll just delete everything
+the best way i've seen to handle
+these connections is actually with an
+async
+context manager
+so i can't remember what i called that
+i think did i call it async session
+no i didn't rename this one actually
+so let me call this
+i guess async session local
+and then
+down here
+i'm going to say async session local
+i have to call that
+as i'll just give it the same
+name here
+some people use the word session or db
+is what is used in the fast api docs and
+some other docs so i'll just use
+database here db
+and here similar to what i was doing
+before
+i'm going to yield
+db
+of course i don't need to
+close anything because the context
+manager handles that for me
+and inside of this context
+i'm going to
+use
+a weight
+db.commit
+and then here because i'm using
+async and away inside my function
+i have to make this an async function
+and then
+it has the same name as my other
+function now so
+again i'm just going to change the name
+and prefix it with async for right now
+just to differentiate it
+so this is basically how you would set
+up
+sql alchemy for asynchronous database
+connections
+if you look at different tutorials
+and the docs and even the examples in
+the docs you'll see several different
+ways of doing this this is just the way
+that i like to set it up and i've found
+is
+kind of the easiest or most intuitive
+way that i've found
+so after this database setup file
+i'm all ready to use asynchronous
+sections
+or sessions
+so now i basically need to update my api
+function here and then also
+in my
+utility function
+for get user i need to update this to be
+asynchronous as well and use the new
+api
+so for this i'm just going to paste in
+the new api query and also a few new
+imports that i need
+i need that
+async session import once again and then
+from sql alchemy dot future i'm going to
+import the new select api
+that top level api
+now i can replace this get user function
+it's going to be a little bit longer
+basically i of course changed it to an
+asynchronous function
+and then i'm using the async session
+so of course i need to
+await that when i execute my query i'm
+using the 1.4 the new 2.0 syntax
+for
+select
+from user
+where
+user id equals whatever user id pass in
+so i build my select statement save it
+in the query variable and then i pass it
+to db.execute which is asynchronous so i
+await that
+store in result and then there's this
+whole new api
+of methods i can choose dot one dot
+scalar dot scalars
+scalar one or none
+i'm not going to go too much into the
+api here
+and i'm also not going to go too much
+into how all of this async stuff works
+i just want to give you a little taste
+right now and i'm going to be going more
+in depth in a video on my channel later
+on
+that's basically all i need to do for
+this file and then if i go into the
+user's api i'm going to need to do the
+same thing
+first i'm going to code fold
+everything in this file
+i'll just make it a little easier to
+read
+and now this is the function that i am
+going to be
+turning into
+in async function well actually it's
+already async or the endpoint is
+but i just need to
+make this
+use the new async function that i
+created
+so basically i need to import a few
+things here
+i need the async session here just for
+the type i'm already importing the
+regular get db function but now i need
+to import that get
+async db function to get the async
+session that i set up over here in db
+setup
+with this function
+so now i'm importing everything i need
+and here
+instead of session all i have to do
+is
+async session
+and then update this last variable let
+me close the sidebar here
+and i'll say
+get
+async db
+and of course get user is exactly the
+same function except
+now i have made it in async function so
+i will have to
+use a weight here
+and those should be the only changes
+that i need to make right now
+i need to run my server again
+oh it says i can't import get async db
+from
+db.db setup let me see what i did
+here
+oh it's called async getdb
+and here i'm trying to
+import the other one
+so let me just change it here
+and try to run the server again
+interesting it says get asyncdb
+is not defined
+oh i didn't change it down here
+all right
+yeah in a real application i wouldn't
+have two of these everything would just
+be all asynchronous
+oh i am importing this twice though
+there you go
+all right one more time
+all right now the application's running
+and here i'm gonna try it out
+try to execute
+and i get the same response body
+so that means my api is working
+of course this is a very
+small example so you can't see the
+difference between using async or not
+async
+and on top of that there are so many
+more features
+and things you can do with
+asynchronous behavior and using the
+async io
+the need to run multiple async functions
+at the same time
+i'm going to dive into all of that in a
+future video
+but it is pretty nice and fast api how
+easy it is to
+set up async endpoints with async
+database connections
+and this new api
+from sql alchemy that supports that
+and even just the intuitive nature of
+these new top level functions i think is
+really awesome
+there are a few more things that i want
+to do before closing this video that
+will only take a few minutes
+and that is just a few
+code cleanup and maintenance items that
+will make this a little bit better
+and that is to add
+poetry black and get hooks
+i actually meant flake 8 black and get
+hooks but i'm going to be installing
+them with poetry so poetry add
+flake
+8
+black and pre
+commit
+and actually i meant to add these as
+development dependencies
+so i might as well just show you how to
+remove dependencies
+so
+i'm going to remove the ones i just
+installed
+okay and now i will do poetry add
+and d or
+dev
+and add these dependencies
+all right
+i'm going to go ahead and run my
+tab again
+and now let me set up these dependencies
+really quickly in the project
+you can see they're installed under dev
+dependencies here
+and i'm going to add some more
+configuration directly to this toml file
+there are several different ways of
+setting these up and different options
+i'm just going to show you
+kind of some simple settings
+so if you look at the black
+documentation
+are some suggested
+settings and more recommendations here
+you can also look at the flake 8
+documentation for some suggestions here
+a few things that are important
+is lining up
+any rules of both libraries or that
+overlap i guess
+like the flag 8 max line length should
+line up with the one you set for black
+and basically flake 8
+we're going to set it to automatically
+lint all of the code
+and black
+will automatically go through and
+try to format the code in all of our
+files and it actually does a really good
+job of that better than any other auto
+formatter i have ever used
+one more thing i'm going to add here
+is i'm going to paste in
+a file
+for that
+pre-commit
+library that i just installed
+i have a dot pre dash commit dash config
+let's see
+dot yaml file
+if you go to the pre-commit
+documentation they have
+a lot of different options here
+basically i am setting up black
+and flake 8
+to run on commits
+so whenever i make a commit before it
+will commit my code it is going to run
+flake 8 in black against my code
+and i'm going to show you how that works
+you can also do this or run it before
+you push code or in other situations
+and you can manually run it as well but
+i'm going to run it before commit here
+so i can check
+so i added pre-commit here so we get add
+that
+pre-commit file
+i can do git status again
+now i'll do git commit dash am
+to add and commit all these
+modified files
+basically going to say
+adding
+async
+db connection
+improving
+code
+quality with
+black and
+flake eight
+actually i forgot i made a mistake here
+so you notice that the
+pre-commit hooks didn't run at all
+and that is because i forgot to use
+the pre-commit install command now that
+i have that pre-commit yaml file i can
+use pre-commit install to set up those
+git hooks
+now they should work so
+i'm going to do
+git
+reset and then i'll just do head
+so that basically undo my last commit
+so now i have to restage and recommit
+everything so i'm going to do
+my git add again
+and i'm just going to copy the same
+commit that i had before
+now it's saying it's failing to find the
+interpreter for built-in discover of
+python spec
+let me real quick check
+version
+so let me go back here
+i believe because it's set to
+3.7.9
+let me try setting it to
+my current version that i'm using in
+this virtual environment
+so i can do
+git commit again
+okay actually i made a mistake and i
+didn't mean to
+change
+this for flake eight i meant to change
+the python version here
+so let me
+change that
+and
+okay
+i'm going to
+emit this again
+okay
+it worked this time so these are the
+messages you should see if the commits
+worked properly
+now first with black
+you can see that it reformatted
+these two files so db setup and users.pi
+so
+this is just reformatting the files that
+changed here
+and then it says it
+also
+reformatted api
+users so this file
+i think it changed this line
+and
+basically you can see that if this line
+exceeds 80 characters which i think it
+did
+it
+moved this on to the next line and then
+the end parentheses on the following
+line
+and if it still exceeded 80 characters
+you'll see that it will actually
+put each argument that you're passing in
+on its own line so you can play around
+with the black auto formatter it's
+really really nice
+so it says it failed
+because it had to reformat some lines
+so that means that i'll have to commit
+these again or not commit again because
+i guess the commit failed so it didn't
+commit in the first place but i'll run
+the commit again and this will pass next
+time because it already formatted those
+files
+now with flake 8
+this is not
+automatically changing or fixing these
+things so i have to manually fix these
+lending errors
+so first it's complaining about api
+slash users that
+os.stat is imported but unused
+i didn't even know i was importing that
+all right
+and then it's complaining in the same
+file that typing.optional
+is unused all right
+that should fix all of my errors
+so now
+if i try to commit again
+and you can see both black and flake 8
+passed
+now i can push this code
+and that's live with all of my other
+branches
+as i mentioned before
+if you want to run this without
+having to actually commit you can
+actually run pre-commit on its own
+i'm going to actually
+copy paste in a command here
+and you can see
+during a commit it will run it against
+the files that you are committing
+but now that i ran it manually it runs
+it against all files so you can see now
+it just reformatted all the other python
+files
+including
+this olympic file which i thought i was
+ignoring but i guess i was not
+maybe i was ignoring it from flake 8.
+let's see
+oh yeah i was just ignoring it or
+excluding it
+from flake 8 linting but i guess i'm
+running the black auto formatter
+against that softer check if that still
+works
+and now flake8 is complaining about
+courses.pi and users.pi
+in models or course in user.hi
+it's saying that datetime is imported
+but unused
+and then sql
+expression null
+all right let me check those out
+let's see
+yeah date time is unused
+i'm not sure why i was importing that
+but
+that might have actually been an auto
+import
+because if you accidentally type
+something sometimes the code editor
+thinks you want to import it and it will
+automatically bring in the import up
+here
+anyway let me
+commit this to
+let me actually check the olympic
+versions here first
+just to make sure i didn't break
+anything
+oh nice it just reformatted it here
+all right that's actually good because
+it was kind of
+hard to read
+before so
+okay
+and then my second one
+looks good
+all right so i'm going to commit this
+hit commit
+dash a.m
+and all
+formatting
+files
+all right
+that is a basic introduction to fast api
+and all of the
+related libraries
+to be able to use
+database connections and asynchronous
+behavior as well as just maintaining
+good coding standards with flaky and
+black and then setting those to
+automatically run
+i'll also update the readme with some of
+these instructions
+again if you want to look at the code
+repo
+it's the one that we created here so
+it's at faraday academy
+fast api lms
+and you'll be able to see all of those
+branches
+for each step of the tutorial in the
+video
+of course these branches
+were committed after
+each step
+so if you want to look or if you want to
+start in the third step for example
+and code it yourself you have to
+go to
+this second step 2-api setup and then
+you can add all the code for three
+i would love to hear your feedback on
+this tutorial
+if you have any suggestions or
+anything you think i can improve please
+reach out to me here or on twitter or in
+my discord
+i will be going into deeper dives into
+many of these subjects in the future i
+tried to keep it as simple as possible
+and explain
+enough to get all the basic parts in
+this tutorial so i really hope that it
+was useful for you
+if you want a deeper dive into
+fast api and asynchronous behavior
+i'm putting together some videos and
+articles on my youtube channel faraday
+academy and also over on my blog
+gwenfaraday.com
+i hope you have a great rest of the year
+whenever you're watching this
+thanks again and i'll see you in the
+next video
+you
