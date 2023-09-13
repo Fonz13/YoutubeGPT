@@ -3,7 +3,7 @@ from typing import Optional
 from pydantic import BaseModel
 
 from fastapi.middleware.cors import CORSMiddleware
-from routers import url, chat
+from api.routers import url, chat
 from config import settings
 
 app = FastAPI()

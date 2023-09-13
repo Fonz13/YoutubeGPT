@@ -1,5 +1,5 @@
 from youtube_transcript_api import YouTubeTranscriptApi
-
+import os
 
 
 def get_transcript(video_url):
@@ -17,7 +17,7 @@ def get_transcript(video_url):
     
     transcript = {}
 
-    with open(f"db/{video_id}.txt", "w") as file:
+    with open(f"api/db/{video_id}.txt", "w") as file:
         for i in srt:
             file.write(i["text"] + "\n")
 

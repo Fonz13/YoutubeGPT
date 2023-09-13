@@ -1,24 +1,31 @@
 version: '3'
 
 services:
-  client:
-  # restart: always # NOTE: use with caution, restarts service when it crashes
-    build:
-      context: ./client
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./client:/app  # Synchronise docker container with local change
-      - /app/node_modules  # Avoid re-copying local node_modules. Cache in volume. See https://stackoverflow.com/questions/29181032/add-a-volume-to-docker-but-exclude-a-sub-folder
+
   api:
   # restart: always
     build:
-      context: ./api
-      dockerfile: Dockerfile
+      context: ./backend
+      dockerfile: ./api/Dockerfile
+    env_file:
+      - .env
     ports:
       - "8000:8000"
     #depends_on: #depends on databases
     #  - serviceName
     volumes:
-      - ./api:/app
+      - ./backend:/app/backend
+
+      
+  frontend:
+  # restart: always # NOTE: use with caution, restarts service when it crashes
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app  # Synchronise docker container with local change
+      - /app/node_modules  # Avoid re-copying local node_modules. Cache in volume. See https://stackoverflow.com/questions/29181032/add-a-volume-to-docker-but-exclude-a-sub-folder

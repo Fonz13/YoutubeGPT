@@ -1,5 +1,5 @@
 import fastapi
-from utils.get_transcript import get_transcript
+from api.utils.get_transcript import get_transcript
 import time
 from pydantic import BaseModel
 from typing import Optional
