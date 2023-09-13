@@ -1,0 +1,1286 @@
+so here you see a classifier
+that takes a look at this image and
+assigns
+one of many many labels actually one of
+a hundred
+and one labels as you can see here and
+one of the labels is a photo
+of guacamole a type of food and it
+assigns
+a really high probability to that as
+opposed to like the the second
+prediction which is
+ceviche um so
+you know classifier pretty good okay uh
+take a look at this classifier
+out of 397 labels it correctly
+identifies that this
+is a television studio um
+you can go on right here and
+so this is a photo of an airplane
+whenever there's a green bar at the top
+it means that
+the respective classifier has this
+correctly whenever there is an orange
+bar
+it's an incorrect label with the the
+green bar being the correct
+label so you can see here these
+classifiers perform
+sometimes pretty well on these examples
+and sometimes
+not but what you can distinctly see is
+that these are all
+from different data sets so different
+tasks there is a
+satellite image there is a car
+and you're supposed to classify which
+car it is not only
+that it is a car so
+very diverse set of of tasks and the
+interesting thing is that this is all
+the same
+classifier so the this classifier is
+it's not even fine tuned it is a
+zero shot classifier that handles all of
+these
+different training data sets sorry not
+training data sets
+all of these different test data sets in
+one go so that's already pretty cool
+but what you may have noticed is that
+the labels aren't
+labels that you would usually see in a
+classifier so
+you know these these 101 labels here
+they
+are it says it here guacamole that's
+the label interestingly the label the
+classifier assigns is not just the word
+it's
+the a photo of guacamole a type of food
+okay that's the label the classifier
+assigns and the second highest label is
+a photo of ceviche a type of food
+it's not always a photo though it is
+often a photo
+but here you can see for example the
+label that the classifier assigns is
+a centered satellite photo of
+permanent crop land where the
+um the correct label here is the annual
+cropland which is down here again the
+label is longer
+so there's something interesting going
+on here
+it's the same classifier it's zero shot
+so that means the classifier is not
+trained on these data sets it's not
+trained to fulfill these tasks yet still
+it seems to perform okay
+and the labels are quite weird
+so this is this is a
+new paper by open ai which we're going
+to look at today you can see it's a
+pretty long paper but we'll cut it short
+i promise
+and it's called learning transferable
+visual
+modes from natural language supervision
+and the model colloquially or also in
+this paper is referred to as
+clip so this is the model has been
+released
+along with the dahle model which you
+know can do the
+chair made of avocado and so on the
+dolly model is a generative model that
+generates images clip is a
+more of a i don't want to say
+discriminative model but
+clip is a model that takes in images
+and text and connects them in a
+in a non-generative way so we're going
+to see
+what that entails it's by alec radford
+and john woo
+kim and others as i said of open ai
+so the idea here is to connect text and
+images and this has been done
+in a in a number of ways previously even
+in this way it has been done in one
+fashion or another
+i find the introduction and discussion
+of lady related works in this paper to
+be
+very very thorough and and superb so
+they do assign a lot of credit to people
+who have had the various
+ideas so the goal here is that
+we want to get a model
+that can represent images and text
+really really well okay so
+how do we connect images and text first
+of all
+what what if what if we have a data set
+of images and text
+okay so they construct a new data set
+where there's an image
+like something like this a cat and a
+text a little piece of text to it like
+my
+my cute cat images
+and text like this you'll find on you
+know for example
+social media you can scrape that
+pinterest what not flickr people write
+descriptions along with their
+pictures so it's pretty easy to get
+these
+pairs of images and text from the
+internet without having to
+label them right so one motivation of
+doing this kind of work is
+if we train a image classifier model we
+always need
+labeled examples into you know into a
+very predefined
+set of classes so in imagenet we have a
+thousand classes or
+twenty two thousand respectively in
+mnist we have ten
+however if we could just somehow learn
+uh to connect images with the text that
+comes along
+um we wouldn't be bound by the
+classifier labels and we could get
+very good representations so the
+original
+idea or one of the original idea is we
+take the image and we predict
+predict the text
+from the image um of course dolly goes
+the other way
+so um dolly
+some somehow goes the other way taking
+the text and predicting the image
+but the idea is if we can take an image
+and from it
+predict the text what we get out of it
+is not only a model that can label
+images but
+what we hope to get out of it is this
+process right here
+may be very very good representer
+so if this is like the image goes into a
+neural network with a bunch of layers
+and then out comes you know the text my
+cat and so on then somewhere
+in here in the intermediate
+representation of the neural network
+there must be a pretty pretty good
+representation of what is in the image
+so not not only you know the pixel
+values
+um but there must be actually some kind
+of representation of
+the concept of cat because otherwise it
+could not predict
+uh the word cat at the end okay so
+the idea is to get a really good
+representer
+and then you could take that
+representation and
+fine-tune it to other tasks and so on so
+that's
+one of the ideas we're going to work off
+here
+and it turns out this is pretty useful
+there have been papers before predicting
+the um simply predicting the caption of
+images
+but it doesn't work too well so what
+this model here is going for
+and we're we'll simply um we'll simply
+let's look at this graph right here so
+they tried first
+to predict the text and
+you can see that zero shot and we're
+going to
+to look at what exactly zero shot image
+net accuracy
+means in this context but you can see
+here that they had
+some success with using a a transformer
+language model to predict the text in
+images
+and evaluating that on on imagenet
+however they seem to have more success
+by using
+just a bag of words predictions so what
+that means is you you're not
+trying to predict the exact words you're
+simply trying
+to predict which words occur in the
+description so you see the photo
+if you predict cat and my and cute
+in you know any not non-ordered you're
+already correct
+and that already gives a sort of a
+better efficiency
+you can see the models here they tend to
+go up
+uh but it's questionable if that will
+ever reach the orange line
+and with their new objective with what
+this paper suggests you can see right
+here
+the contrastive method
+you get a way bigger performance
+so we'll look at what this zero shot
+accuracy means and why it might be
+that these simply predicting the text
+from an image
+might not be a good enough idea
+so let's say we have a model that can do
+this
+we have a model that can take an image
+and it can predict
+uh the the text that appears in it right
+most of the time this model right here
+is also going to give you something like
+a probability okay like a likelihood so
+if this is a
+a transformer you can you can ask you
+know for its logits and then you can
+compute
+the likelihood of a given label so if
+you have such a model what you can do
+is exactly what what
+they allude to right here if
+you have an image task right and you
+have a
+you have a model that can predict the
+the text of an image you can take that
+image
+and you can run this sort of through
+your image and through your encoding
+pipeline
+and then you can ask the model instead
+of
+you know predicting a text you can ask
+the model how likely
+is the text um dog
+how likely is the text cat for this
+image how likely is the text
+mouse and then you can you get
+some sort of likelihood right so maybe
+it says
+dog is this likely cat is this likely
+mouse is this likely
+and immediately you have built a
+classifier so i hope you can see if
+if i have a model that can predict how
+likely a piece of text goes with an
+image
+i can by simply asking my model
+for each of the for each of the classes
+that are possible in the task
+i immediately get a classifier out of
+that i mean i'd have to normalize or
+something
+by that but i immediately get a
+classifier
+um and now you can also already see
+why we might want to
+phrase the things a bit so i don't want
+to just put dog and cat right here even
+though
+those are the labels in that task right
+if if i had an imagenet
+classifier i would put here i would put
+all of the
+1000 possible classes and ask the model
+for each
+how likely is that label to go
+with this image and the model you know
+can produce text but the model can not
+only produce you know the single word
+dog
+the model can also tell me how likely is
+the phrase
+a photo of a dog a
+photo of a dog
+or how likely is the phrase a photo
+of a cat and so on right so
+um and you can you can see that
+this result here the classifier result
+it might change actually depending on
+how you phrase so here you can
+use the exact same classes as you used
+above
+but by rephrasing the prompt so to say
+you might get a better quality
+classifier or a worse quality
+classifier so if you already know that
+your images are all photographs um
+you will get a better accuracy because
+simply you know the
+the model if you you might get a better
+accuracy by asking the model
+hey how likely is the phrase a photo of
+a dog
+going with this image versus the phrase
+a photo of a cat that might give you a
+better
+signal so less noise in whatever you get
+as an output
+than simply going with the single word
+because again this model is trained to
+predict this just from a data set scrape
+from the internet so how often do people
+you know post something i don't know an
+instagram of their cat and simply
+write cat with it whereas you know
+maybe they they were right here's a
+photo of my cat
+right so the the phrase a photo of a cat
+is
+or they do like hashtag photo hashtag
+cat or something like this
+so that's why these classifiers at the
+bottom
+they were constructed from the labels of
+the data set
+but with a prompt that has been adapted
+by humans
+uh to work you know find to work
+particularly well
+on that data set so we're sort of back
+to prompt engineering here
+so this is how we go from a model that
+can assess
+predict text to
+a classifier and that's a zero shot
+classifier
+we don't need to train this classifier
+on the actual task we simply need to
+restrict its possible outputs
+to the classes at hand right um this is
+a bit it's a bit like a tiny bit like
+like you know in in queue learning in uh
+where for in in each step you ask your
+model
+well what if i do action one and then
+the model tells you what that's five
+good probably that your q value is five
+and then you just ask well what if i do
+action two and then your the model says
+well that's
+seven good and so on so it's it's sort
+of a similar concept
+uh in except you know q learning we
+usually train
+end to end with an actual classifier
+but i said simply predicting text
+objective might not be good enough
+right so we're going to retain this
+property of being able to zero shot
+classifier uh but we're going to now
+switch out our task of how we get to
+such a model
+so instead of predicting text what does
+clip do
+clip does the following so what we're
+going to do is we're going to take
+the image right here and we're going to
+pass it through an image encoder
+and that gives us an image
+representation so a
+vector in some latent space
+so this is image one and then image two
+right here would be image two
+here okay so we have a mini batch of
+images and that's important
+um then we're going to take the text
+and feed it to the text encoder also
+obtaining
+a representation for the text right a
+single vector
+for this entire text right here and then
+of course if we go to the second sample
+in the mini
+batch we get the second representation
+and the batches of course in the
+training data set we know that the first
+the first text goes with the first image
+the second text goes with the second
+image the third text goes with the third
+image because that's how we scraped it
+from the internet and then what we ask
+the model to do
+is simply to tell us not so previously
+we tried to predict from the image
+the text right we went through the image
+encoder and from this representation
+here
+we try to predict the text so we no
+longer do that
+what we're trying to do is simply ask
+ask the model which
+for so for this representation which of
+these
+texts is most appropriate
+to that particular image okay
+so this is why it's called a contrastive
+objective
+we know because this is training data we
+of course know that image one goes with
+description one
+and image two goes with description two
+but we're going to train this
+in the way that you know we feed in this
+image and we ask it
+to which of all of these texts right
+here
+to which of all of these is this image
+the closest
+and we're going to train it such that it
+is maximally close
+to the correct one and minimally and far
+away
+from all the other so this this is why
+it's contrastive it contrasts
+what we know goes together right the
+diagonal elements in this matrix
+with what we know doesn't go together in
+actually we don't know if a different
+description wouldn't fit the same image
+but we can
+safely assume that a random piece of
+text since we do the mini batches
+randomly
+a random piece of text will probably not
+go
+with this particular image at least not
+as well
+as the piece of text that we found it
+with on the internet
+okay so you get what you get is
+effectively
+for each input you get a classification
+task in this direction you can see right
+here for image three there is
+one correct text that it goes with and
+for
+each text you get a classification task
+in
+this direction by the way this is simply
+an inner product right here right you're
+simply trying to
+maximize the inner product of things
+that go together and
+minimize the inner product of things
+that don't go together
+so you you multiply the two for the
+inner product you interpret that as a
+logit
+and then you do a soft max
+classification in this
+direction and the softmax classification
+in this direction
+so this is a symmetric loss from the
+text and image perspective
+and yeah so so it's a classification
+problem
+like a classification problem
+viewed from two different angles so
+you can immediately see that this relies
+on having large enough mini batches
+right so the larger your mini batch as
+your mini batch size approximates the
+entire
+data set your representations are going
+to be
+more and more detailed right so
+so you wanna so pepper the aussie pop
+being close together to this particular
+image means
+that in the ideal case
+it is close to this image and far away
+from
+anything else in in the data set and as
+an approximation far away from anything
+in this particular mini batch
+and at inference time you do very much
+what we did so far so you take if you
+want to build an image classifier
+and the interesting thing is you can
+also build a text classifier right if
+you have multiple images to go with a
+text
+then you uh you can do that
+it's entirely symmetric but in this case
+you take an image you put it through the
+image encoder you get a representation
+here
+you get all the labels of your
+classification tasks
+right so this is the label is this
+right here you engineer a prompt and
+that you do as a human right this is
+heuristic this you as a human
+think aha okay i'm going to put whatever
+this
+is here you encode all of these labels
+in their prompt context through the text
+encoder you get the representations here
+and you simply
+ask to which of these labels
+is it closest right so the is the inner
+product the highest
+and then and that's how you obtain the
+label
+zero training needed on the actual task
+right so the data set that you do
+this with can be an entirely different
+data set
+that then you do this with um
+and this is extremely extremely uh
+interesting
+i've actually seen um some some
+posts on on twitter and reddit where
+people use this to guide a a style gan
+to produce given pictures with given
+descriptions and so on so
+the possibilities for this are uh
+pretty pretty huge okay so
+that's uh that's the model the model it
+encodes images and codes text it does
+this contrastive objective what goes
+together
+what needs a part and now you see why
+this might be
+a better representer than for example
+simply pre-training a model on an image
+classification task
+because if you pre-train a model on an
+image classification
+task it is going to simply lump together
+every
+all the dogs you know if this is if this
+is your classification test it's going
+to lump together all the dogs because
+there's no need
+to differentiate the individual dogs
+from each other
+right it's going to lump all of them
+together
+and forget that they are actually
+different
+right it's also going to forget
+everything that
+doesn't concern the immediate
+classification problem
+whereas this model here this model is
+specific as as it gets better and better
+it will pick up at more
+of the text right so in in this case
+maybe
+if the model is pretty weak still it
+will focus on this pup
+and that's about the same as saying okay
+it's a classifier of a dog
+but then we can also aussie pop if it
+incorporates that
+if it gets better well it can
+differentiate it from other dogs and by
+the way it's a pop so it's a young dog
+um it can also learn
+eventually learn its actual name right
+and and so on so you can see that as the
+model gets stronger it can pick up more
+and more
+nuances of the data set so they
+test this and they test it
+fairly fairly fairly extensively um
+and i don't think we'll have to go
+through all of it for me to convince you
+that this
+is a good idea you're going to
+maybe see it approximately or
+immediately
+so um
+yes so they use different
+different types of yes that's what i
+wanted to say they use different types
+of
+encoders for the image encoder so for
+the text encoder this is a transformer
+so
+transformer it's not a particularly big
+transformer even
+and they simply take the end of sentence
+token the representation of that at the
+end and that's their vector if you don't
+know what a transformer is i've done
+many many videos on transformers um
+find one of them any of them
+for the image encoder they test out a
+bunch of different things
+so they test out a bunch of variants of
+resnet
+i've done a video on that and they also
+test out a bunch of
+variants of the visual transformer the
+the vit that has
+recently been popularized
+i've also made a video on that so
+that's why their model shows up in sort
+of different
+uh flavors and sort of different
+different points here they scale the
+amount of data i believe with the model
+so they scale everything together
+compute data and model size and that's
+why you see
+different variants of the same model
+they also
+do ensembling so you know you have to
+engineer
+these prompts and um what you can do
+is you can engineer better prompts and
+that will gain performance
+and you can also ensemble over prompts
+and you can see right here
+that that uh gets you both an efficiency
+gain
+if you want to stay at the same
+performance and also
+um sorry yeah and also it gives you
+a performance improvement for the
+same compute um with the same model
+right so here the
+corresponding dots are the same model
+that's why they have the same compute
+so that's just one of the fun things you
+can do and again i think prompt
+engineering will become
+quite a bit more relevant so here
+you can see you can see the comparison
+zero shot clip um is competitive with a
+fully supervised baseline right so the
+baseline here isn't too good so it's
+a fully supervised linear classifier
+fitted on resnet 50 features on 16 data
+sets including imagenet
+so the resnet 50 is a popular
+architecture it's not
+nowhere near the absolute best we have
+but it's a popular uh architecture so
+this resonant 50
+what it's what it has been trained on
+is has been trained on imagenet right so
+you get
+so and that results in a neural network
+with a bunch of layers
+including a classification layer at the
+end right into a thousand classes
+so what you do is you pre-train this on
+imagenet and then you simply take
+this part right here up until the last
+layer
+and you take it so that's
+this part right here and you assume that
+this
+has a sort of a good representational
+power
+since it can do imagenet and then you
+simply
+train a new linear classifier
+on top that does the classification into
+whatever new task you want so this is
+called
+um it's called linear probing so
+linear probing you can also do it in the
+middle uh sort of but
+in this case they mean linear probing at
+the second to last layer like before the
+classification layer
+so you assume that whatever this is is a
+good representation function
+you keep it constant and then you train
+a linear probe
+on top of it this is compared to
+fine-tuning where you would fine-tune
+the entire network
+on your new task but they elect to do
+most of their experiments with linear
+probing
+since it gives you a better indication
+of the representational power of the
+bases
+so here they compare to image
+net right so
+on six and that is including image net
+so for imagenet you would expect the
+resnet50 to perform quite well because
+it's been
+its representational base has been
+trained on imagenet
+and training a linear classifier on top
+it should simply give you back the
+performance
+that it had on imagenet here you can see
+how
+zero shot clip compares to linear probe
+on resin at 50 right
+zero shot clip compared to an actual
+trained
+thing not not the best but a trained
+thing
+and you can see that on many many many
+data sets
+clip out performs the resnet 50.
+zero shot right um so no training
+required beyond the pre-training that
+being said the pre-training is huge
+um but it's similar to gpt-3 right you
+train it once
+huge training but then you can do lots
+of things
+imagenet interestingly you see right
+here only
+it's actually improving imagenet
+over resin at 50. crazy right
+um whereas so resnet50 still better
+in various uh other tasks so this is not
+to say
+that this is the new state of the art or
+anything
+except in stl 10 where it actually
+appears to be
+the new state of the art against all the
+previously including all the supervised
+whatever
+it's the new state of the art on this
+data set and the reason is
+this stl 10 data set it has very few
+training examples per class only so
+supervised is very difficult transfer
+learning is kind of difficult as i
+understand it it's not
+that similar to imagenet so that
+transfer learning is kind of different
+so this really seems to be
+this zero shot clip objective seems to
+be good
+if you have um
+images that are sort of natural uh that
+happen a lot on the internet
+but are not really like imagenet um
+so there exists quite a number of those
+and that you have
+few labeled examples of if any
+right so that's a that's a good
+application domain
+however on more specialized things they
+say things like
+you know tumor classification and so on
+satellite
+images this clip objective still does
+pretty poorly
+uh probably because you know that that's
+not the type of
+images you find on the internet with a
+piece of text
+super interesting mnist one of the
+easiest tasks in deep learning
+it also quite underperforms in this
+in this thing so that
+they do they do an analysis of these
+different
+data sets so they they compare to
+resnet50 and also to
+visual n grams right here and they
+discuss
+the the importance of the different data
+sets
+oh i find i found this too i found this
+to be very interesting
+uh most standard image classification
+that data sets treat the information
+naming or describing classes
+which enables natural language based
+zero shot transfer as an afterthought
+uh the vast majority of data sets
+annotate images with just a numeric id
+of the label and contain a file mapping
+these ids back to their names in english
+some data sets such as flowers and the
+gtsrb as it's a
+german transport street sign or
+data set i don't exactly know don't
+appear to include this mapping at all
+in their released versions preventing
+zero shot transfer entirely
+so what these authors had to do is they
+had to like
+look at the classes and then sort of
+label them themselves because their
+model works on language whereas this
+street sign data set probably just came
+with this is sign type one this is sign
+type two they have a footnote here
+alec learned much more about flower
+species and german traffic signs over
+the course of this project than he
+originally anticipated
+i love that i love a bit of humor in the
+papers and
+i so i made this meme um
+where the street sign is specifically
+tractors and trucks with an authorized
+loaded weight
+of more than 3.5 tons prohibited
+i wonder actually how the model does on
+exactly this
+uh sign but yeah we'll find out
+by the way the clip model is available
+in
+not the big one but a small one is
+available actually
+trained so you can test it out
+and maybe we'll do a video on it where
+we actually do
+something with it so here you can see
+that if they compare
+their model to few shot linear probes
+so here they compare zero shot clip with
+few shot linear probes so before we
+compare to linear probe which mean
+means we just trained this linear
+classifier but we did it on the whole
+data set
+okay so here we simulate
+only having very few examples per class
+which is where pre-training
+really comes in and you can see
+that zero shot clip outperforms
+a lot of models if you only give them
+very few
+labeled examples per class in fact
+it is comparative to a 16
+it is comparative to a 16 label bit m so
+this is one of the
+best models that is currently in the
+public
+and that is doing this transfer learning
+so if you transfer learn with a linear
+probe again this is not fine tuning
+with a linear probe on 16
+samples per class with this model
+you are still only as good as the zero
+shot
+no training at all of the clip model
+that is pretty pretty interesting and
+pretty cool
+the other noteworthy thing is that if
+you linearly probe the clip model
+you way outperform the um
+the largest models there
+and also
+what is also interesting is that
+when you do labeled examples for clip
+when you do linear probe on clip
+the performance decreases first and only
+increases once you get to like four
+labeled examples per class
+and that you know is um
+is pretty intuitive when you think about
+it so what you're doing is
+so in clip the zero shot classifier is
+actually a different one than the linear
+classifier
+so the zero shock classifier is in a way
+already
+trained so it has already trained this
+sort of last layer
+where as if you do linear probing you
+throw that away you know
+the whole part where you encode the text
+and you blah blah blah you throw that
+away
+and you simply do the old school so the
+linear probe here
+this is no more of the is which text is
+closed this is simply
+i take this i throw away the last layer
+i put in a new last layer and i do my
+original classification task and of
+course
+this layer right here is initialized
+randomly and it's going to require
+some training and maybe you know one
+example per class
+isn't enough it's it's just going to
+pick up on some spurious uh correlation
+in the future
+and it's going that's why it's getting
+worse initially
+but it recovers at four examples per
+class and it severely outperforms the
+other models
+so we'll forgive it um
+they do discover in various experiments
+here
+that it is very very different from data
+set to
+data set how this model performs zero
+shot how it performs
+versus linear probing they they find
+that
+um they find that very often
+in in um in some
+data sets uh that are far away
+from sort of natural images they perform
+worse in
+again in some data sets they require
+lots of
+labels to match zero shot performance so
+it is really a study
+into sort of um
+i want to say it's a study into what
+kind of images appear on the internet
+they do interestingly there is a trend
+in machine learning that if you give
+more data and compute
+then your error goes down even with the
+same type of models
+and that seems to hold pretty well here
+as you can see here
+as they scale up this is the same this
+is a resnet backbone
+as you scale that up zero shot clip
+performance scales smoothly as a
+function of model compute
+however they do note that there is a
+whole bunch of
+variations so the curve you're seeing is
+the average
+but for the individual tasks in their
+task
+data sets um
+it it varies wildly so there's a lot of
+noise here this could be because of how
+the data sets are selected this could be
+because of how the prompts are
+engineered
+there is still a lot unknown right here
+they compare various other things like
+linear probe linear pro performance of
+clip models in comparison with
+state-of-the-art computer vision models
+and they do outperform all of these
+other models as you can see here
+so there is 12 data sets
+in previous experiments but the 12 are
+still sort of similar to imagenet
+but if you include more data sets of
+course that's sort of a
+selection bias or whatnot but then
+this model severely outperforms all of
+the other models so the red models here
+are
+the red ones are the clip models
+compared
+to the other ones so
+yeah this seems to be a step forward in
+the sort of in the sort of
+building classifiers for the average
+user right
+so i can now go ahead take this model
+and
+build my own classifier pretty pretty
+easily
+they also make some interesting
+discoveries in terms of robustness
+robustness to perturbations so
+previously all these models they
+sort of pre-trained on imagenet and so
+on
+and people have discovered that as soon
+as you go away from imagenet
+these the performance of these models
+decreases heavily
+so if for example imagenet v2 is just
+imagenet
+but is it they try to collect
+i've made a video about that by the way
+they try to collect imagenet
+as closely as possible to the original
+test set they try to
+collect a new test set and immediately
+the performance of all the classifiers
+dropped in the light of this just
+slightly data shifted data set
+um and if you
+if you sort of try to go away a little
+bit further so you just have sketches of
+these objects
+um you sort of have this this
+adversarial placement of
+objects you can see right here uh it's
+you know it's pretty it's pretty mean
+but still a human
+could do this right um
+you see right here these are just
+variations on the themes of imagenet
+they have the same classes
+so a classifier trained on imagenet
+should be able
+to also classify these images
+right so here they compare zero shot
+clip
+to models that have been trained on
+imagenet
+and they find that zero shot clip
+even though it matches so this zero shot
+clip matches the performance of imagenet
+by the way a huge achievement right this
+is a fully trained model on imagenet
+and this is a not the state of the art
+but
+respectable top one performance on
+imagenet
+and zero shot classifier matches that
+performance
+this is crazy okay uh you can see
+as this classifier degrades degrades
+degrades degrades degrades as you go to
+harder and harder data sets that are all
+technically imagenet images like in the
+same classes
+this classifier it sometimes even you
+know
+gets better but it you know it keeps up
+its performance
+which you can see here the difference uh
+between it gets just
+larger and larger so the clip is way
+more robust
+and of course this model right here is
+trained
+to predict these specific types of
+images so it knows very well like how to
+keep them apart
+the only thing it has to do as a
+classifier of imagenet
+is keep apart the individual
+instances of exactly those classes in
+exactly this data set so it forgets
+about everything else
+right and as a result it he has never
+seen a sketch
+it it like a banana is yellow what are
+you talking about
+um so it heavily degrades right
+and whereas clip it simply knows how to
+sort of connect images to text so while
+clip realizes that of course both are
+described as banana it somehow has to
+account for the fact that
+there are also lemons in here right it
+has to somehow represent that
+um it has to represent that this is a
+bunch of fruit
+and that this is here maybe
+a you know high-grade picture like
+on a magazine where this here might be
+more of a
+sort of random gopro fallen into some
+bunch of bananas
+it has to somehow represent all of this
+if it
+you know performs well on its task and
+thereby its representation will be
+nuanced enough
+such that it can transfer more easily it
+picks up
+on different features uh oh than
+only distinguishing banana from you know
+other classes in the imagenet data set
+and that results
+uh so here is the the curve in that if
+you had the ideally robust model you'd
+have
+this right here so the exact same
+performance on the natural
+distortions than on imagenet
+in the original imagenet
+you can see that all of the standard
+imagenet training
+examples including all the robustness
+techniques that
+barely lift away from this curve are
+massively outperformed by
+a zero again a zero shot classifier
+that hasn't even been trained on
+imagenet and the fact that it hasn't
+been trained on imagenet
+might be one of the you know things that
+it actually
+is is very helpful so they do
+they do some investigation into it
+in including that you can in fact um
+adapt to imagenet so you can in
+uh i think that's the that's a linear
+probe
+if if you linear probe clip you can
+improve the performance
+on imagenet where interestingly
+you can improve the performance on
+imagenet
+by doing a linear probe on top of clip
+so this is logistic regression clip
+while only mildly um degrading your
+performance
+on these other data sets so there seems
+to be a value
+to only to just having their
+representation so their representation
+itself seems to be more stable
+okay so you can see as you adapt to
+imagenet
+this performance improves massively but
+it only degrades a little bit
+across the other data sets
+so that means yeah as i said the
+representation itself is more nuanced
+such that even if you train a linear
+classifier on pure classification you'll
+still keep
+up the performance on the other tasks
+you can also adapt to class shift so by
+better
+prompt sort of prompt engineering for
+some of these sub tasks but i think
+that's a
+sort of a minor thing
+all right um yeah i don't want to go
+you know too much they also compare to
+humans which is very interesting
+and they discover that you know samples
+that are hard for
+the clip model are also hard for the
+human
+model they do some sort of duplicate
+detection from their training data set
+because their training data set is 400
+million images together with text
+right so it's conceivable that there's
+some duplicates but they find
+even if there is there's generally not a
+problem and they have like
+a three or four page broader impact
+section
+as you can see right here which you know
+is
+um so if you read it
+it reads sort of like um yeah there are
+problems with these models we are better
+than other models
+but we're still not good enough or
+things like this or
+they always they're like yeah this is of
+course we're better
+like they're better at everything but
+then again you know this is only
+preliminary more study is needed and so
+on
+but i so they have some fairly um
+interesting interesting results
+so they what they do is since there is
+such a focus on
+prompt engineering right um it
+actually matters what you give to the
+model as possible labels so this is no
+longer
+fixed labels you can give any labels so
+they have these data sets where you you
+know
+for example this fairface fairfax race
+where you
+try to categorize faces into different
+uh
+ethnic ethnicities or races um
+these seven things that are given here
+they also include some
+non-human categories
+or is it so they include they include
+categories
+such as here such as
+animal chimpanzee gorilla or angutan and
+they also
+include sort of crime categories like
+thief suspicious person criminal and
+then they research how how the model mis
+behaves and these models they do do a
+fair bit
+of you know kind of misclassification
+right here as you
+can see they also
+so they notice that the
+misclassification
+is especially there for younger people
+so these are the ages of people and here
+are the misclassification
+rates you can see the misclassifications
+are
+mostly for younger people then
+they simply add a child category
+and then the misclassification for young
+people all of a sudden drops because the
+model now has the option to classify
+them as a child so this
+i think the result of the paper and
+especially of the broader impact section
+one of the results is that it matters a
+lot
+how you engineer the prompts which is
+something we already
+knew but of course this can be
+particularly
+particularly crucial in some
+applications
+uh in some concerning applications
+that's kind of
+one of their points right here you can
+see that the paper is huge and it
+also has a huge appendix and they do as
+i said a lot more experiments
+right here um but all in all
+this is a very very cool approach i feel
+and it's as i said a step towards
+making it easier for you know the
+everyday person to build their own
+classifier for
+you know you can do quite niche tasks as
+long as they're sort of natural images
+this
+will work fairly fairly well i think
+it's
+pretty cool it um gives
+it gives a little bit of more freedom in
+how you work with these models
+and i'm excited for people to come up
+with ideas of how to use this
+how to connect this to other models such
+as you can connect it
+as we already saw with dali um you can
+connect it with
+stylegan as some people are doing i'm
+sure you can connect it to
+something like gpt3 and it's going to be
+an exciting world
+all right that was it for me thanks bye

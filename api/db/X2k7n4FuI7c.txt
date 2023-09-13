@@ -1,0 +1,1180 @@
+[Music]
+hey all this is a comprehensive paper
+review of the paper on blip this is a
+model and a technique for bootstrapping
+one's own data set in vision and
+language pre-training which is pretty
+cool so the video is a comprehensive
+review we'll dive into the paper we'll
+see what the paper is about i'll explain
+you what's in it and by the end of the
+video you should have a good
+understanding of what's in the paper in
+the next video which i'm going to
+release tomorrow there's going to be an
+interview with the authors of the paper
+so also be sure to check that out
+because that answers a few very very
+interesting questions that i had while
+reading the paper itself so i wish you a
+lot of fun let me know what you think in
+the comments and i'll see you around bye
+bye
+hey there this video is sponsored by
+zetta alpha which is a new neural
+discovery and recommendation engine for
+papers yes for scientific papers for
+trends in research and code in ai their
+goal is to become your research
+assistant and streamline how you
+organize share and stay up to date on
+the latest r d this is really cool
+because the flood of papers in machine
+learning is sheer overwhelming in recent
+months zetta alpha uses neural embedding
+based search and can give you the best
+recommendation of research that matches
+your interest and that you don't want to
+miss and what better way than to just
+try it out so first i start off
+searching for today's paper which is the
+blip paper and this is really cool
+because not only do i get the paper i
+also get the github code implementation
+and i can directly see the impact on
+social media that this paper has this is
+much better than something like google
+scholar which would just give me a few
+links to the paper itself i can now save
+this paper under a tagging category that
+i'm just gonna invent right now and i
+can use zetta alpha to find similar
+research here i'm gonna limit my search
+to the last three months so i make sure
+that i don't miss anything that has
+recently been going on that i should
+know about when reviewing this paper now
+i also like a bunch of those other
+papers so i'm gonna save them as well to
+the same category once i have a bunch of
+papers in my category i can use again
+zetta alpha's recommendation engine to
+give me more suggested papers to add to
+the same category based on what i have
+already in there and i can also share
+this entire category with my teammates
+because everything zeta alpha does is
+not only for individuals but also for
+teams this is really powerful and can
+dramatically accelerate your discovery
+of new and relevant research now this
+doesn't only work for categories that
+you define once you interact with the
+search engine z2 alpha is gonna be able
+to give you a list a feed of
+recommendations from archive from
+conferences from blogs from github and
+much more this saves you a ton of time
+and lets you stay up to date with
+whatever is happening if you're at all
+into ml research this is hyper relevant
+for you and i definitely invite you to
+check it out now they do have a free
+tier but i got you a great deal if you
+go over there right now and use code
+yannick you'll get 20 off a personal
+assistant subscription again go to zetta
+dash alpha.com use kodianik for 20
+off right now thanks again so much to
+zeta alpha for sponsoring today's video
+and now let's get into it see ya
+[Music]
+hello there today we'll look at blip
+bootstrapping language image
+pre-training for unified vision language
+understanding and generation by jinan li
+deng xi li timing xiong stephen hoy
+yeah that's it of salesforce research so
+this paper proposes two things one is a
+new architecture and i want to say
+a new conglomeration of existing things
+so an arrangement of modules for
+multi-task pre-training
+this model will take in an image text
+pair and perform multiple tasks on it it
+has multiple losses and therefore ends
+up being able to do multiple things now
+that being said this is a pre-training
+method so the idea is that for any of
+these modules you'll take them you
+recompose them downstream
+and you fine-tune them on a task
+although they do have some
+zero-shot results so this is one thing
+and this could be really cool if this
+alone
+turns out to be successful because it
+leads the path to a future where we have
+much more dynamic compositions of models
+and where we would pre-train these
+models with a lot of different tasks in
+in one thing rather than pre-training
+them on just a single task like language
+modeling
+the other thing is a bootstrapping
+method for the data and these two things
+are not necessarily disconnected
+although i do lament the fact that it's
+two things in one paper a little bit but
+there's a bootstrapping method for these
+image text data set
+that includes training captioners and
+filters which means that this there's a
+part
+that learns to synthetically generate
+data and then there is a part that
+learns to distinguish good from bad data
+and that allows them to collect lots and
+lots of data from the internet and
+filter out bad
+badly poorly labeled images which there
+exists a lot on the internet and also
+allows them to augment the data set by
+labeling images themselves so this is
+also really interesting and it feeds
+really well back into their model
+because their model is uniquely capable
+of doing this being the multi-task model
+that it is so we're going to go through
+the architecture through the dataset
+bootstrapping method and keep in mind
+that i think you know if this catches on
+uh this could be there could be recipes
+in here for future research that leads
+us to a much more dynamic world where we
+compose these modules much like we
+compose different modules low level
+modules and deep learning we could
+compose these higher level modules and
+losses and
+do lots more multi-task pre-training
+maybe even dynamically configured but
+let's dive in
+so
+vision language pre-training they say
+has recently recently been you know the
+the hit
+for example if you think of something
+like clip i mean that's not even
+pre-training but there are lots of
+architectures that do vision language
+pre-training meaning they take pairs of
+images and text so you'll have like some
+sort of an image and you'll have like
+some sort of text that goes with it
+and you'll try to come up with a system
+that connects the two in any way they
+say the major the existing methods have
+two major limitations so
+first of all
+the
+what they call the model perspective
+they say they are either the existing
+methods are either encoder based or an
+encoder decoder architecture so in an
+encoder based setup what you would do is
+you would take in both of these things
+and you would try to come up with
+probably a number that represents how
+well they fit together so are they good
+together or not this is the clip
+architecture essentially
+so in encoder based models they
+criticize that
+encoder base are less straightforward to
+directly transfer to text generation
+tasks so it's not it's not simple to
+take clip and actually make it produce
+something remember if we have to if you
+have to produce an actual image with
+clip uh we need to do this diffusion
+clip guided diffusion or clip guided
+gans vq gans so it's really cumbersome
+to make clip generate an image and it's
+probably even more cumbersome to make it
+generate text because it's not trained
+on that so they criticize on these
+methods it's not easy to make them do
+generation tasks
+whereas encoder decoder models have not
+been successfully adopted for image text
+retrieval tasks so an encoder decoder
+model is where you would take the image
+probably
+and then make the produce the text so
+you train it as a language model to auto
+regressively produce the caption and
+that's really neat for producing
+captions but you cannot necessarily do
+this task up here very easily with such
+a model
+you will you will be able to do some
+things but they're not necessarily
+successful because the task is really a
+different task
+so
+both
+both approaches for doing this currently
+are not ideal
+the other thing is the data perspective
+they criticize that these models are
+pre-trained on image text pairs that are
+essentially scraped from the internet so
+collected from the internet
+and they say noisy web text is
+sub-optimal for vision language learning
+we've known for a long time that
+there is a trade-off between scale of
+data and quality of data and ideally
+you'd have both if however if you scrape
+from the internet so let's say
+you scrape websites and there is like
+some text and there is an image
+somewhere and the image will have alt
+text and that's what's usually used as
+the label in these systems so if you
+don't know in the html if you have an
+image tag that's how that's how the
+browser knows it's an image you have the
+image tag you have the source attribute
+which leads it's it's a url usually that
+leads to the image but then you also
+have an alt attribute and um
+it's really recommended that you put an
+alt uh an alt property to the point
+where frameworks and linters and so on
+they will yell at you if you don't have
+it so what does this do um this
+specifically is for visually impaired
+people for screen readers but also for
+bots to know what is in the image so you
+put a description there however
+a lot of people don't do that um and i
+think it makes it actually worse that
+linters and so on almost require you to
+do it because if you don't want to do it
+you're just gonna put like some some
+dumb stuff there like image
+or people do lots of search engine
+optimizations in there so since you know
+the search engines don't usually look at
+the image itself but at the old text
+they try to come up with buzzword-y
+things uh so that it's ranked high in
+search results so not necessarily the
+best quality data
+and um their bootstrapping their
+bootstrapping method right here
+is
+is helping in that of getting higher
+quality data out of the internet
+so how do they do this the first thing
+they propose is this model the
+multi-modal mixture of encoder decoder
+they say it can operate either as a
+unimodal encoder or an image grounded
+text the
+encoder or an image grounded text
+decoder
+so
+yeah we're gonna look at these things
+but i think here they say can operate
+either as one or this or that uh it's
+not like this it's not like the exact
+same model can do this it's just that
+they they put all of these models into
+one big model and then they just use the
+part of the model that does the
+particular thing so it's not necessarily
+super duper unified is what i wanted to
+say
+um yeah they train the three
+the three subparts of their models with
+three objectives which we're also going
+to look at the second part is this
+captioning and filtering
+this is what this is what boosts the
+data set quality
+they say they learn from noisy image
+text pairs
+by cleaning them by producing more and
+cleaning them they train a captioner
+which
+whose goal is to produce synthetic
+captions given web images and a filter
+to remove noisy captions from both the
+original web text and the synthetic text
+so the captioner
+will get images produce labels for these
+images or produce alt text and then the
+filter goes over both the generated ones
+and the collected ones and just filters
+out everything that it deems to be
+qualitatively low standard of course
+this needs to be trained on a high
+quality data set but these sort of
+bootstrapping methods we've seen a
+number of times in the recent past that
+they actually work in fact this model
+this paper here seems to be a good um
+accumulation of sort of recognitions and
+good practices over the last few years
+and we're going to point those out as we
+go through
+there they're contributions uh here they
+say we show that the captioner and the
+filter work together to achieve
+substantial performance improvement
+which
+okay i don't know what substantial means
+in these kinds of tasks but it's
+i it's an improvement they are they
+achieve state-of-the-art performance in
+a wide range of vision language tasks
+and interestingly also uh this is a
+property of maybe synthetic data
+generation they show more diverse
+captions yield larger gains this might
+also be a good lesson for people who
+want to go
+and
+apply these methods
+lastly they say
+next to having state of the art in
+downstream fine-tuned tasks they also
+achieve zero shot performance uh when
+directly transferring
+our models to two video language tasks
+so never
+they they were never trained on video
+language tasks never pre-trained never
+fine-tuned yet still they have a good
+zero shot performance which is okay like
+if you understand images then there are
+gonna be some video tasks that are your
+that you're particularly good at right
+um
+so
+let's dive into the model and i've
+already shown you a diagram of the model
+they quickly go through this here they
+have three parts they have actually
+well i want to say four parts to their
+model
+one part one is a visual transformer a
+vit as the image encoder so again they
+take an image and they take a piece of
+text and now they do stuff with it and
+the first part is they encode the image
+using a visual transformer that's all
+they do with the image they encode it
+using evit
+with the text they do three
+three different things
+the first thing is they also just encode
+the text unimodally so put the text
+through an encoder
+and that
+with those two things already they've
+essentially reproduced clip
+except they say it's the same as bert um
+yeah
+so they've reproduced clip with those
+two things because now they can set it
+up this visual transformer
+and the unimodal encoder they can set it
+up as a
+similarity
+metric so the unimodal encoder will give
+you some vector in an embedding space
+the visual transformer will give you
+some vector in an embedding space you
+can set up a contrastive loss
+to check whether these two things go
+together and whether they are apart from
+let's say um any other encoded image or
+text
+you can do this via contrastive learning
+you can do it via regularized methods um
+but essentially this is what we've come
+to known as encoder only models
+the second thing they have is this
+image grounded text encoder so the image
+grounded text encoder
+does almost the same thing as the
+unimodal text encoder however it doesn't
+encode the text separately it jointly um
+it encodes the text while incorporating
+attention into the visual transformer
+we're gonna see how that goes in a
+second but essentially it produces a
+vector let's say this one and
+while producing that on the path as it
+produces that it incorporates
+information from the visual transformer
+so it will this here is the
+output of the visual transformer it will
+incorporate that
+at multiple layers here via cross
+attention into the process so this here
+is really a joint kind of encoding of
+the text
+given the image that's why it's called
+image grounded text encoder
+what this can do is you can build a
+classifier on top of this like a binary
+classifier because it is a
+representation of the text that has but
+that has already
+uh the information of the image inside
+of it so it's kind of a joint
+representation of the image and the text
+so you can build a classifier uh for
+example whether or not the two things go
+together again but you don't have to use
+a contrastive loss you can in fact use a
+supervised loss and classify
+and build a classifier the third thing
+is this image grounded text decoder now
+again being image grounded that is a
+that is a long what is going on
+something's up here
+there's an image grounded text decoder
+the image grounded text decoder is much
+like the image grounded text encoder in
+that it incorporates cell across
+attention however it's a text decoder so
+what it will do is it will actually
+produce text so it will auto
+aggressively produce the text while
+incorporating again
+information via cross attention from the
+visual representation
+you can see that they have a different
+section on the pre-training objectives
+these just map to these three parts so
+there's the image text contrastive loss
+which is the loss for the first part
+there is the image
+the image text matching loss which is
+the loss for the second part and again
+this is just a binary classification
+task where the model uses a linear layer
+head what they call it an itm an image
+text text matching head but it's a
+linear layer
+to predict whether an image text pair is
+positive
+which means matched or negative
+unmatched given their multi-modal
+feature
+the the special thing here is they do
+have a hard negative mining strategy so
+they go to the top part here they go to
+the
+uh
+joint no sir to the disjoint encoding to
+this part and they look which ones are
+the hard negatives which means that
+uh
+negatives that have a high contrastive
+similarity and they use those
+specifically to train this loss here
+the last loss is a language modeling
+loss
+which is
+obviously relevant for the third part
+this is a cross-entropy loss it
+maximizes the likelihood of the text in
+an auto-regressive manner
+if we put all of this together we get
+this model right here
+again if we go through it the input data
+are two things the input data are the
+image down here and the piece of text
+here again we know these go together
+because we've scraped them from the web
+so these two we know they're go they go
+together this is not an unsupervised
+training this is essentially supervised
+learning
+for two things that we know go together
+the first thing is we gonna encode the
+image through the image encoder that's
+the image encoder this is the image
+representation this is just a vit this
+is a visual transformer um
+i don't know i don't think they freeze
+it but they may start from a checkpoint
+all of this is jointly trained so all of
+these losses i i as i understand them
+are jointly trained
+um so then we have the vision
+representation what we can do is we can
+put the text first of all through the
+text encoder you can see we can append
+different tokens right here to let the
+encoder know what we're currently doing
+because we also have some parameter
+sharing going on so the text encoder
+gets the input text it will also compute
+an encoding and then we have this
+contrastive loss between the two
+encodings they need to be close for
+pairs that we know go together
+and um they need to be far apart for
+other pairs you can do something like in
+batch negatives or you can as we said
+mine hard negatives from the contrastive
+from this part
+well that makes no sense you can
+mine contrastive so you can mine hard
+negatives
+for that part over here given this part
+over here
+which makes me believe okay maybe i
+haven't read
+closely enough maybe they also just
+train one of the losses maybe for each
+batch uh because they are they have to
+sample differently for the things
+um i it doesn't make too much of a
+difference whether they train it really
+all jointly jointly or always activate
+one of the three text pathways
+this would be interesting to figure out
+yeah
+so
+the last thing the second thing they do
+is they give it to this image grounded
+text encoder again this gets the text
+and a little token to show what's going
+on it will encode and now you can see it
+has this cross attention module and the
+cross attention module as it encodes it
+incorporates information
+that comes from all the way over here it
+comes all the way over here from the
+image so the image representation is
+part of the encoding here which means
+this thing has information about both
+the text and the image
+now
+um
+yeah of course it's still a it's still
+it's not symmetric right we don't uh the
+joint encoding is asymmetric in the
+sense that it is the text that is
+encoded based on the image and that
+allows them to you to only compute the
+image representation once so they only
+need to do this pathway on the left here
+once and then they can reuse that
+representation for all of the for all of
+the different paths in the text here
+um
+yeah you can see that on the left this
+is the difference on the left here this
+is skipped the cross attention is
+skipped
+we don't have cross attention is just
+an encoding of the text itself and here
+it's really a joint encoding
+which means that this thing here
+contains information on both the image
+and the text and we can perform any sort
+of task that we want with this joint in
+coding in our case we simply train it on
+a very similar objective as the
+contrastive loss in that it's a binary
+classification it needs to figure out
+whether or not the two things actually
+go together or not
+the third thing again almost the same is
+this decoder the text decoder same input
+except there's a little decode token
+there is a difference in that this is
+bi-directional the other two modules
+have bi-directional self-attention
+because they are encoders so they get to
+use bi-directionality
+here we use causal self-attention which
+essentially means that in the text you
+only get to attend things so if you
+produce a particular token right here
+you only get to attend to tokens that
+are behind
+yourself this is
+a bit of a hack
+because otherwise we couldn't train
+these things with batches or in parallel
+um
+it is definitely it is definitely
+possible to use bi-directional
+self-attention as long as you cap as
+long as you mask whatever comes next so
+you you want to mask sort of the future
+but within the past you could totally
+use bi-directional self-attention
+again this is just a hack to make
+training easier but it's become it's
+come to be a popular hack so everyone's
+doing it
+again you can see there's cross
+attention coming from the image and here
+you can really see that it's necessary
+right
+if i want to actually
+produce text i need some sort of
+information of what i want to produce
+and so this language modeling loss here
+really needs the the cross attention
+really needs the input from the image so
+again this comes from here
+from the image representation so there
+you have it it's an unholy concoction of
+many different things uh in one
+and this is all trained jointly right
+and uh yeah
+i'm excited about this because i think
+not necessarily this particular
+arrangement like i have lots of stuff to
+criticize or or uh
+like lots of choices here that are kind
+of arbitrary like why is this why this
+asymmetry in you know i have the image
+encoded once and i have cross attention
+into all the text encoders um
+why not the other way around why don't
+we do image generation tasks why don't
+we do any sort of masked masked modeling
+like masked language modeling this could
+even be in the image
+there's lots of stuff let's say to
+criticize but i think what this thing
+shows is that
+a good recipe for the future could be to
+combine lots of these different methods
+together combine lots of them into one
+big thing
+reusing parts intelligently and then
+train them jointly we could even think
+of frameworks that do this automatically
+or that allow you to really easily set
+this up with a few lines of code and it
+will figure out by itself like the
+framework would figure out itself how
+what it can compose and how how it could
+reuse what you can also see right here
+is uh i've over i've overshadowed it a
+little bit with my
+thing right here but there's color and
+the color indicates shared parameters
+which is also really interesting so you
+can see that essentially the text
+encoders aren't three separate encoders
+but they're they largely share
+parameters for example the feed forward
+uh parameters are shared the cross
+attention parameters they're all shared
+except of course they're not active in
+this encoder
+the bi-directional self-attention
+parameters are shared the causal
+self-attention uh those ones are
+separate over here but if we had some
+sort of other autoregressive
+other regressive module
+they would be shared too so you share
+whatever you could in these
+architectures and that reduces the
+overhead but also in their evaluations
+really helps which
+i guess makes sense um
+well i don't know if the tasks are too
+distant you might get this catastrophic
+forgetting
+but in their case
+it does help
+yes which i can i can i could guess
+right by for example the the
+bi-directional self-attention right here
+since these two modules are almost doing
+the same task it's
+it's
+reasonable that they would share
+parameters
+so we've gone through a whole lot of
+things that they say down here
+they do reason through their choices a
+little bit even though i think i think
+these choices they
+are either arbitrary or they're guided
+by experiments you know just seeing what
+works better they do bring up some
+hypotheses of what they think you know
+why why the things work and why the
+things don't work
+they say the text encoder and decoder
+share all parameters except for the
+self-attention layer the reason is that
+the differences between the encoding and
+decoding tasks are best captured by the
+self-attention layers so they're
+essentially saying that
+whether you want to encode or decode
+that is mostly gonna be different in the
+attention layers not from the
+architectural perspective but um
+from sort of the how the task is done
+perspective and that i don't i don't
+think necessarily you can say this right
+like you can't necessarily say the feed
+forward layers have a similar job in or
+have similar features and perform
+similar functions whether you're
+encoding or decoding i i don't just
+don't think that's
+out of the box
+really evident uh that would need to be
+supported by evidence so yeah
+um
+but it seems to work well in empirical
+evaluations and so i'm going to i'm
+going to i'm with them sharing the
+parameters but the reasoning are more
+hypotheses
+so the second part they go into is this
+cap filled again this is a bit
+disconnected although it plays well into
+their model
+here they criticize how these data sets
+are usually collected
+they say alt text often do not
+accurately describe the visual content
+of the images that are scraped from the
+web and that's why they have a
+bootstrapping method so what they do
+is they collect a dataset from the
+internet and um
+yeah well i find this diagram here to be
+a little bit
+complicated uh so we're just gonna make
+our own so they they have the internet
+i'm gonna this is a globe with you know
+the lines and so on so we're gonna
+collect a big chunk of data uh of pairs
+of images and text
+images and all text from the web really
+noisy
+and what we're going to do with this
+stuff is we're going to train a first
+blip architecture
+or a first no how they call it med
+architecture multi something something
+whatever their model is on top we're
+just going to train that with this noisy
+data and that's going to be our first
+iteration model now this is really
+noisy so far and so on but what we're
+going to do then is we're going to
+fine-tune this um we're going to
+fine-tune a filter and a captioner so
+we're going to fine-tune a filter and a
+captioner on supervised data
+there exists some supervised data sets
+um
+and one of them i believe is the coco
+data set um yes the coco data set so
+this step here
+we need supervised data and supervised
+data of image text pairs so human-made
+captions for existing images which uh
+it's a sort of a proxy for quality so of
+these things we can be sure that the
+quality is relatively high
+if we could find some sort of an
+automated way to get really high quality
+image text pair data
+it doesn't necessarily need to be human
+labeled it just needs to be high in
+quality
+so they use that to train a filter and a
+captioner now what is the filter and the
+captioning model
+now these are going to be uh fine-tuned
+versions of their med models for example
+the captioner takes in an image right
+and gives you a caption a synthetic
+caption now this is something our model
+can do if we
+you know we just take two parts so we
+take this part and we take this part
+right here
+um
+this is now a captioning model
+so the idea here the general idea of of
+blip of this med model is that we
+pre-train all of these things together
+and then we sub-select uh or we
+rearrange even the different
+sub-components and then fine tune them
+on a downstream task
+and one
+easy way is to take two components
+simply deactivate all others and let
+them run in inference mode so now we
+have a captioning model
+the captioning the filtering model on
+the other hand uh very similar but it
+takes an image and a piece of text both
+inside and it will output a score of
+whether the two things go together or
+not now this
+of course we can achieve in multiple
+ways but we can achieve this
+in the probably the most high quality
+way by taking the image encoder and
+taking this part right here that is
+specifically trained to jointly encode
+you might ask why don't we use why don't
+we use this module right here and then
+use this contrastive estimation
+we could also do that definitely
+but usually
+um there are always there are always
+multiple ways of determining similarity
+you can have sort of the
+the two stack encoder so here is the
+image and here is the text you can have
+separate encoders for them and then at
+the end determine whether they go
+together and that's usually good if you
+want to do something like um
+like a search index because you can
+pre-compute a lot of these things you
+can pre-compute all the embeddings for
+the images
+and then at inference time if you have a
+query using text you want to search an
+image via text you only need to encode
+the text
+whereas with a joint encoding it's
+really different you need to you need to
+input both into the encoder
+and that will give you a score at the
+end
+and
+if you want to build a search engine
+like this then for every single time you
+issue a query what you need to do is you
+need to go through the whole data set
+and encode the
+query here together with all of the
+images get the score for each one and
+then evaluate that so you can see there
+is a trade-off the left side is way
+friendlier computation wise if you have
+an existing data set the right side is
+qualitatively higher because during
+computation through these layers the two
+things can already attend to one another
+whereas really the only interaction here
+is the end
+over here
+so this is qualitatively better estimate
+of um
+of whether the two things match or don't
+match
+and that's where we that's why we're
+going to
+to
+take to have the filter here
+since we're working since we're
+filtering the data set we can jointly
+encode the two things anyway so we're
+going to fine tune that part to pre to
+become our filter so now we have a
+fine-tuned part one captioner one filter
+what can we do now well we can take our
+data set
+this thing right here and we can use the
+captioner to produce another data set by
+just taking the images so we just take
+the images here we put them through the
+captioner and we get another data set so
+we get another data set it has it's
+going to have the same images right but
+it's going to have different text so i'm
+going to put this so this is a
+synthetic data set we can then join the
+two data sets together
+so join the two day the sets
+and then we can put them both through
+the filter so
+i'm going to put them both through the
+filter and the filter will simply
+filter out any image text pair that is
+not adequate which means that
+it will filter out any image text pair
+which doesn't match well together given
+the fine tuning of the filter on the on
+the supervised or high quality data set
+so then we end up with a data set of and
+we can restrict it like to only have one
+caption for each image or something like
+this and we end up with a data set of
+image text pairs which is large because
+we've augmented it with synthetic data
+but also is of high quality because we
+have done the filtering
+now that
+all of this being said again this highly
+relies on the quality of the data set
+that we fine-tune on and of the
+diversity of that data set as well
+because you can also imagine if that
+data set isn't um
+containing much of the domain that
+you're looking at then your filter will
+learn to essentially down rank
+everything because it says well uh my
+data set says these two things don't go
+well together because i actually have
+just no data in that region so there's a
+bit of danger in doing this uh you
+really need to pay attention at what
+data set you're fine-tuning but this is
+how you bootstrap a good data set so you
+can see go from here to here and you can
+think of multiple things again i think
+this paper is less about the particular
+method they choose um and i think more
+about
+you know what could be recipes for the
+future and i think
+in the recent times we've seen a lot of
+synthetic data generation first of all
+being really helpful we've seen this in
+a number of reinforcement learning
+applications um a number of even nlp
+applications so synthetic data is really
+really uh
+picking up i want to say
+with advances in sim to real and so on
+and then also this this approach of
+filtering
+this has come up more and more in recent
+years where generative models are paired
+with discriminative models that either
+re-rank their outputs or filter their
+outputs for quality this seems to be a
+very good recipe
+for achieving for achieving generative
+tasks in general
+not only train a generator but train a
+ranker or filter on top of that it's
+pretty computationally efficient it's
+easy to implement and uh yeah i think
+it's a good recipe for the future
+and one can think of various ways here
+to improve this like to multi mult to do
+this bootstrapping multiple times um
+yeah
+to to uh collect this supervised data
+set in a different manner and so on i
+think this there's a lot of
+possibilities here that are not uh yet
+explored uh which i find to be pretty
+pretty cool
+so that's essentially
+all
+yeah okay no i was actually wrong here
+you can see the filter is actually
+fine-tuned
+on both of the objectives to learn
+whether text matches the image
+so this it's both the contrastive and
+the uh the single classifier loss
+although i do think
+um
+i do think the filter
+like what they actually pay attention to
+at the end is going to be this thing
+right here is going to be uh the
+classification head
+but i i guess it doesn't hurt to use
+both losses as you fine tune it
+and since all parameters are shared
+essentially
+you really don't have
+you really don't have you can like it's
+it's easy to try and it's not too much
+of an overhead so that's the methods
+again they have this uh concoction of
+modules that they all pre-train jointly
+with their respective losses and then on
+the other hand they have
+this bootstrapping method
+where they can directly use their model
+right that's the way these integrate
+these two
+since they have a model that can do all
+of these different things they can
+fine-tune that model to become a filter
+or to become a captioner and the same
+thing holds for the results downstream
+um
+here they have some examples by the way
+of generated and
+so the bottom text is always a generated
+one
+the top text is one from the data set
+anything that's red is filtered out by
+the filter
+anything that's
+green is accepted by the filter
+yeah so they
+they also discuss a little bit of the
+dangers of doing this of training the
+filtering and the captioning uh on the
+from the same pre-training state on the
+same data set which is that
+like there is some going to be some
+confirmation bias in that
+the filter will uprank things that the
+captioner produces because they're
+essentially
+learned from the same data that's why
+they don't share perhaps they fine-tune
+them separately to combat this a little
+bit but i still think that you're going
+to have
+some of that in there definitely
+but you know it's
+this is you know
+this is a real data
+from bridge near my house which might be
+true right but it's not very descriptive
+and the filter realizes it yet a flock
+of birds flying over a lake at sunset
+that's pretty descriptive
+another interesting thing is that they
+use nucleus sampling here which is a
+common strategy but they do
+find that using nuclear sampling leads
+to better performance and that
+because it generates more diverse and
+surprising captions which contain more
+new information that the model could
+benefit from
+this they compare this to beam search
+and beam search essentially goes for the
+highest likelihood sample it tends to
+generate safe captions that are common
+in the data set hence offering less
+extra knowledge i think that's also
+really cool uh recognition right here
+that
+um
+if we sample things from generative
+models we might have different goals and
+therefore it might not always be good to
+like it might be good to have an
+objective or a sampling method that
+encourages diversity we've already seen
+this in alpha code and my question there
+was already a little bit do we even have
+the correct training procedures for this
+because we train maximum likelihood uh
+or do we have the correct sampling
+procedures for this
+all of these are interesting questions
+and i think this kind of research
+validates that it's not all the same
+like
+uh depending on what we want to do
+our training and sampling procedures uh
+need to adjust i don't want to dive too
+deep into the results they are
+outperforming other things by some
+margin like i don't necessarily agree
+that they outperform things so heavily
+as they advertise but you know that's
+research currently um
+again they allude to the fact that they
+share parameters here
+and why that is
+they say sharing all the layers except
+for the self attention leads to better
+performance compared to not sharing
+that's the part i believe right totally
+you share numbers go up good
+but then they say if the shared
+attention layers are shared the model's
+performance would degrade to the
+conflict between the encoding and the
+decoding tasks and this
+i think yeah this stuff needs needs
+evidence
+um
+because
+i mean yeah i'm fine with just going
+with the numbers here you can see the
+various ways they combine the things for
+example for visual question answering
+they first encode the image then they
+feed that to the text encoder then they
+feed that to the decoder so you can see
+you can not only sub select modules but
+you can rearrange them right because you
+fine tune you can adjust the parameters
+so this connection already exists in the
+previous model this connection doesn't
+so you can sort of rearrange and
+recombine these modules uh to do various
+things you can see here we have two
+image or a double image encoder or i
+guess the image encoder get just gets
+two samples and then we also have two
+one
+a duplication of these cross attention
+modules and then
+we output that into a newly trained
+merge layer so this is the exciting part
+right here and i feel i feel really i
+don't want to necessarily go into this
+because we might go into this in the
+interview
+but
+i feel a future where we have frameworks
+coding frameworks where this kind of
+stuff could be supported in an automatic
+fashion where i don't have to you know
+go and really hand define exactly how i
+want these things combined but i could
+have a more high level descriptive
+language that allows me to do this whole
+pre-training arrangements and this
+recombination for downstream fine-tuning
+that's really exciting
+all right i'm gonna leave it at that i
+hope you had a good overview if you want
+to dive into the results you know
+feel free there's lots of tables in here
+it's a really thorough evaluation which
+is really cool because it lends a lot of
+credence to their methods and with that
+let me know what you think in the
+comments and bye bye
+[Music]

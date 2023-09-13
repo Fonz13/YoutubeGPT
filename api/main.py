@@ -4,11 +4,12 @@ from pydantic import BaseModel
 
 from fastapi.middleware.cors import CORSMiddleware
 from routers import url, chat
+from config import settings
 
 app = FastAPI()
 
 
-origins = ["http://localhost:3000",]
+origins = settings.BACKEND_CORS_ORIGINS
 
     
 app.include_router(url.router)

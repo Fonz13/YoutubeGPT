@@ -3,8 +3,6 @@ import Message from './Message'
 import { useState, useEffect, useRef } from 'react'
 import api from "../api";
 
-import  LoadingSpinner  from '../components/LoadingSpinner'
-
 
 const Chat = (props) => {
   const videoID = props.videoID
@@ -50,7 +48,7 @@ const Chat = (props) => {
   /*
   *Keep the chat log scrolled to the bottom
   */
-  const ref = React.useRef(HTMLDivElement>(null));
+  const ref = useRef(HTMLDivElement>(null));
   useEffect(() => {
     if (chatLog.length) {
       ref.current?.scrollIntoView({
